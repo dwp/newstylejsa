@@ -1,7 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const radioButtonRedirect = require("radio-button-redirect");
-router.use(radioButtonRedirect);
+
 
 // Route index page
 router.get("/", function (req, res) {
@@ -95,6 +94,11 @@ router.use(
   "/design-ideas/1974-af-option-2/",
   require("./views/design-ideas/1974-af-option-2/_routes")
 );
+router.use(
+  "/design-ideas/1974-af-option-3/",
+  require("./views/design-ideas/1974-af-option-3/_routes")
+);
+
 
 ///////////////////////////////////////////////////////////////////////////////
 //                                                                           //
