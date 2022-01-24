@@ -12,35 +12,49 @@
 
       <h1 class="govuk-heading-l">
         <span class="govuk-caption-xl">Personal details</span>
-        What type of audio form do you need?
+        What size print do you need?
       </h1>
-      <form class ="form" action="letters-contact-preference-audio" method="post" >
+      <form action="address-is-it-postal" method="get">
 
 
         {% from "govuk/components/radios/macro.njk" import govukRadios %}
 
         {{ govukRadios({
-          idPrefix: "letters-contact-preference-audio",
-          name: "letters-contact-preference-audio",
+          idPrefix: "print-size",
+          name: "Print size",
           fieldset: {
             legend: {
               isPageHeading: true,
               classes: "govuk-fieldset__legend--l"
             }
           },
-
+          hint: {
+            text: "Select one option"
+          },
           items: [
             {
-              value: "mp3",
-              text: "Mp3"
+              value: "size-16",
+              text: "Size 16"
             },
             {
-              value: "cd",
-              text: "CD"
+              value: "size-18",
+              text: "Size 18"
             },
             {
-              value: "cassette",
-              text: "Cassette"
+              value: "size-20",
+              text: "Size 20"
+            },
+            {
+              value: "size-22",
+              text: "Size 22"
+            },
+            {
+              value: "size-24",
+              text: "Size 24"
+            },
+            {
+              value: "size-26",
+              text: "Size 26"
             }
           ]
         }) }}
@@ -48,6 +62,7 @@
         {{ govukButton({
             text: "Continue"
         }) }}
+
 
       </form>
     </div>

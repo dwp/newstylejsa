@@ -97,48 +97,65 @@ router.post('/alternate-format-contact-preference', function (req, res) {
   }
 });
 
-router.post('/letters-contact-preference', function (req, res) {
-var answer = req.session.data['lettersContactPreference'];
+
+router.post('/letters-phone-contact-preference', function (req, res) {
+var answer = req.session.data['letters-phone-contact-preference'];
 
 console.log(answer, 'submitted answer')
   if (answer.includes('audio')) {
-  res.redirect(`${ABS_BASE_PATH}/letters-contact-preference-audio`);
+  res.redirect(`${ABS_BASE_PATH}/letters-phone-contact-preference-audio`);
 } else if (answer.includes('braille')){
-  res.redirect(`${ABS_BASE_PATH}/letters-contact-preference-braille`);
+  res.redirect(`${ABS_BASE_PATH}/letters-phone-contact-preference-braille`);
 } else if (answer.includes('colouredPaper')){
-  res.redirect(`${ABS_BASE_PATH}/letters-contact-preference-coloured-paper`);
+  res.redirect(`${ABS_BASE_PATH}/letters-phone-contact-preference-coloured-paper`);
 } else if (answer.includes('largePrint')){
-  res.redirect(`${ABS_BASE_PATH}/letters-contact-preference-large-print`);
+  res.redirect(`${ABS_BASE_PATH}/letters-phone-contact-preference-large-print`);
 } else {
-  res.redirect(`${ABS_BASE_PATH}/address-is-it-postal`);
+  res.redirect(`${ABS_BASE_PATH}/phone-contact-preference`);
 }
 });
 
-router.get('/letters-contact-preference-audio', function (request, response){
+
+// router.post('/letters-contact-preference', function (req, res) {
+// var answer = req.session.data['lettersContactPreference'];
+//
+// console.log(answer, 'submitted answer')
+//   if (answer.includes('audio')) {
+//   res.redirect(`${ABS_BASE_PATH}/letters-contact-preference-audio`);
+// } else if (answer.includes('braille')){
+//   res.redirect(`${ABS_BASE_PATH}/letters-contact-preference-braille`);
+// } else if (answer.includes('colouredPaper')){
+//   res.redirect(`${ABS_BASE_PATH}/letters-contact-preference-coloured-paper`);
+// } else if (answer.includes('largePrint')){
+//   res.redirect(`${ABS_BASE_PATH}/letters-contact-preference-large-print`);
+// } else {
+//   res.redirect(`${ABS_BASE_PATH}/address-is-it-postal`);
+// }
+// });
+
+
+router.post('/letters-contact-preference', function (request, response){
 
   let preferences = request.session.data['lettersContactPreference'];
 
   if (preferences.length && preferences.includes('audio')) {
-    response.render(`${ABS_BASE_PATH}/letters-contact-preference-audio`)
+    response.redirect(`${ABS_BASE_PATH}/letters-contact-preference-audio`);
   } else {
-    response.redirect("/letters-contact-preference-braille")
+    response.redirect("/letters-contact-preference-braille");
   }
 
 });
 
-router.get('/letters-contact-preference-braille', function(request, response){
-
-  let preferences = request.session.data['lettersContactPreference'];
-
-  if (preferences.length && preferences.includes('braille')) {
-    response.render(`${ABS_BASE_PATH}/letters-contact-preference-braille`)
-  } else {
-    response.redirect("/letters-contact-preference-coloured-paper")
-  }
-
-});
-
-
-
+// router.get('/letters-contact-preference-braille', function(request, response){
+//
+//   let preferences = request.session.data['lettersContactPreference'];
+//
+//   if (preferences.length && preferences.includes('braille')) {
+//     response.render(`${ABS_BASE_PATH}/letters-contact-preference-braille`)
+//   } else {
+//     response.redirect("/letters-contact-preference-coloured-paper")
+//   }
+//
+// });
 
 module.exports = router;

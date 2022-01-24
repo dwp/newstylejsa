@@ -12,16 +12,16 @@
 
       <h1 class="govuk-heading-l">
         <span class="govuk-caption-xl">Personal details</span>
-        What type of audio form do you need?
+        What type of braille do you need?
       </h1>
-      <form class ="form" action="letters-contact-preference-audio" method="post" >
+      <form action="braille-type" method="get">
 
 
         {% from "govuk/components/radios/macro.njk" import govukRadios %}
 
         {{ govukRadios({
-          idPrefix: "letters-contact-preference-audio",
-          name: "letters-contact-preference-audio",
+          idPrefix: "letters-contact-preference-braille",
+          name: "letters-contact-preference-braille",
           fieldset: {
             legend: {
               isPageHeading: true,
@@ -31,16 +31,12 @@
 
           items: [
             {
-              value: "mp3",
-              text: "Mp3"
+              value: "uncontracted-braille-grade-1",
+              text: "Uncontracted braille (grade 1)"
             },
             {
-              value: "cd",
-              text: "CD"
-            },
-            {
-              value: "cassette",
-              text: "Cassette"
+              value: "contracted-braille-grade-2",
+              text: "Contracted braille (grade 2)"
             }
           ]
         }) }}
@@ -48,6 +44,7 @@
         {{ govukButton({
             text: "Continue"
         }) }}
+
 
       </form>
     </div>

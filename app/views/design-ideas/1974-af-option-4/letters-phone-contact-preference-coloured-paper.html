@@ -12,16 +12,16 @@
 
       <h1 class="govuk-heading-l">
         <span class="govuk-caption-xl">Personal details</span>
-        What type of audio form do you need?
+        What colour paper do you need?
       </h1>
-      <form class ="form" action="letters-contact-preference-audio" method="post" >
+      <form action="coloured-paper" method="get">
 
 
         {% from "govuk/components/radios/macro.njk" import govukRadios %}
 
         {{ govukRadios({
-          idPrefix: "letters-contact-preference-audio",
-          name: "letters-contact-preference-audio",
+          idPrefix: "coloured-paper",
+          name: "colouredPaper",
           fieldset: {
             legend: {
               isPageHeading: true,
@@ -31,16 +31,16 @@
 
           items: [
             {
-              value: "mp3",
-              text: "Mp3"
+              value: "cream",
+              text: "Cream"
             },
             {
-              value: "cd",
-              text: "CD"
+              value: "pastel-blue",
+              text: "Pastel blue"
             },
             {
-              value: "cassette",
-              text: "Cassette"
+              value: "pastel-yellow",
+              text: "Pastel yellow"
             }
           ]
         }) }}
@@ -48,6 +48,7 @@
         {{ govukButton({
             text: "Continue"
         }) }}
+
 
       </form>
     </div>
