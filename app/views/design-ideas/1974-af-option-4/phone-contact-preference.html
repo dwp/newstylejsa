@@ -15,7 +15,7 @@
       <span class="govuk-caption-xl">Personal details</span>
       <h1 class="govuk-heading-l">What do you need instead of phone calls?</h1>
 
-      <form action="address-is-it-postal" method="get">
+      <form action="nino" method="get">
 
         {% from "govuk/components/radios/macro.njk" import govukRadios %}
         {% from "govuk/components/input/macro.njk" import govukInput %}
@@ -29,7 +29,10 @@
           spellcheck: false,
           classes: "govuk-!-width-one-third",
           label: {
-            text: "Email address"
+            text: "Enter an email address"
+          },
+          hint: {
+            text: "For example name@example.com"
           }
         }) }}
         {% endset -%}
