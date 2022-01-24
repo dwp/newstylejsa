@@ -38,16 +38,6 @@ var answer = req.session.data['contact-telephone-number-af'];
 }
 });
 
-router.post('/address-af', function (req, res) {
-var answer = req.session.data['address-af'];
-
-  if (answer === 'yes') {
-  res.redirect(`${ABS_BASE_PATH}/address-af-yes`);
-} else {
-  res.redirect(`${ABS_BASE_PATH}/address-is-it-postal`);
-}
-});
-
 router.post('/contact-do-you-have-an-email', function (req, res) {
   const answer = req.body.contactDoYouHaveAnEmail;
 
@@ -62,16 +52,6 @@ router.post('/contact-do-you-have-an-email', function (req, res) {
   }
 });
 
-router.post('/address-af-yes', function (req, res) {
-var answer = req.session.data['alternative-letter-format'];
-
-console.log(answer, 'submitted answer')
-  if (answer.includes('print')) {
-  res.redirect(`${ABS_BASE_PATH}/large-print`);
-} else {
-  res.redirect(`${ABS_BASE_PATH}/address-is-it-postal`);
-}
-});
 
 router.post('/alternate-format', function (req, res) {
   const answer = req.body.AlternateFormat;
@@ -82,20 +62,6 @@ router.post('/alternate-format', function (req, res) {
     res.redirect(`${ABS_BASE_PATH}/nino`);
   }
 });
-
-// router.post('/alternate-format-contact-preference', function (req, res) {
-//   const answer = req.body.contactPreference;
-//
-//   if (answer === 'letters') {
-//     res.redirect(`${ABS_BASE_PATH}/letters-contact-preference`);
-//   } else if (answer === 'phoneCall') {
-//     res.redirect(`${ABS_BASE_PATH}/phone-contact-preference`);
-//   } else if (answer === 'lettersPhoneCall') {
-//     res.redirect(`${ABS_BASE_PATH}/letters-phone-contact-preference`);
-//   } else {
-//     res.redirect(`${ABS_BASE_PATH}/address-postal-address`);
-//   }
-// });
 
 router.post('/alternate-format-contact-preference', function (req, res) {
   let data = req.session.data;
@@ -115,7 +81,7 @@ router.post('/alternate-format-contact-preference', function (req, res) {
   } else if (answer.includes('phoneCalls')) {
     res.redirect(`${ABS_BASE_PATH}/phone-contact-preference`);
   } else {
-    res.redirect(`${ABS_BASE_PATH}/address-is-it-postal`);
+    res.redirect(`${ABS_BASE_PATH}/nino`);
   }
 
 });
@@ -145,7 +111,7 @@ router.post('/letters-contact-preference', function (req, res) {
   } else if (answer.includes('largePrint')) {
     res.redirect(`${ABS_BASE_PATH}/letters-contact-preference-large-print`);
   } else {
-    res.redirect(`${ABS_BASE_PATH}/address-is-it-postal`);
+    res.redirect(`${ABS_BASE_PATH}/nino`);
   }
 
 });
