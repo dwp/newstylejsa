@@ -1,0 +1,71 @@
+
+{% extends "layout-beta.html" %}
+
+{% block pageTitle %}
+  DWP - Jobseeker&rsquo;s Allowance
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        <span class="govuk-caption-xl">Personal details</span>
+        What size print do you need?
+      </h1>
+      <form action="address-is-it-postal" method="get">
+
+
+        {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+        {{ govukRadios({
+          idPrefix: "print-size",
+          name: "Print size",
+          fieldset: {
+            legend: {
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          hint: {
+            text: "Select one option"
+          },
+          items: [
+            {
+              value: "size-16",
+              text: "Size 16"
+            },
+            {
+              value: "size-18",
+              text: "Size 18"
+            },
+            {
+              value: "size-20",
+              text: "Size 20"
+            },
+            {
+              value: "size-22",
+              text: "Size 22"
+            },
+            {
+              value: "size-24",
+              text: "Size 24"
+            },
+            {
+              value: "size-26",
+              text: "Size 26"
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+            text: "Continue"
+        }) }}
+
+
+      </form>
+    </div>
+  </div>
+
+{% endblock %}

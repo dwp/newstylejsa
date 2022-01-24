@@ -1,0 +1,77 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  DWP - Jobseeker&rsquo;s Allowance
+{% endblock %}
+
+{% block beforeContent %}
+  <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <span class="govuk-caption-xl">Personal details</span>
+      <h1 class="govuk-heading-l">What do you need instead of standard letters?</h1>
+
+      <form class="form" action="letters-contact-preferences" method="post">
+
+        {% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
+
+        {{ govukCheckboxes({
+          idPrefix: "letters-contact-preferences",
+          name: "letters-contact-preferences",
+          fieldset: {
+            legend: {
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          hint: {
+            text: "Select the best options for your needs."
+          },
+          items: [
+            {
+              value: "audio-form",
+              text: "Audio form"
+            },
+            {
+              value: "braille",
+              text: "Braille"
+            },
+            {
+              value: "coloured-paper",
+              text: "Coloured paper"
+            },
+            {
+              value: "email",
+              text: "Email"
+            },
+            {
+              value: "large-print",
+              text: "Large print"
+            },
+            {
+              value: "word-document",
+              text: "Word document"
+            },
+            {
+              divider: "or"
+            },
+            {
+              value: "none",
+              text: "No, I will not need any of these formats",
+              behaviour: "exclusive"
+            }
+          ]
+        }) }}
+
+
+        <button class="govuk-button" data-module="govuk-button">Continue</button>
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
