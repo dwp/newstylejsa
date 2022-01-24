@@ -10,10 +10,10 @@ router.post('/start-date', function (req, res) {
 
   if (answer === 'yes') {
     // Yes, I want my claim to start from today {current-date}
-    res.redirect(`${NEXT_PATH}/nino`);
+    res.redirect(`${NEXT_PATH}/alternate-format`);
   } else {
     // No, I want my claim to start from an earlier date
-    res.redirect(`${ABS_BASE_PATH}/nino`);
+    res.redirect(`${ABS_BASE_PATH}/alternate-format`);
   };
 });
 
@@ -79,7 +79,7 @@ router.post('/alternate-format', function (req, res) {
   if (answer === 'alternateFormatYes') {
     res.redirect(`${ABS_BASE_PATH}/alternate-format-contact-preference`);
   } else {
-    res.redirect(`${ABS_BASE_PATH}/address-postal-address`);
+    res.redirect(`${ABS_BASE_PATH}/nino`);
   }
 });
 

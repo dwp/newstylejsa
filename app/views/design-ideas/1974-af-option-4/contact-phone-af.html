@@ -39,30 +39,6 @@
   </div>
 </details>
 
-
-
-
-        <h2 class="govuk-heading-m">
-          Do you have a disability or health condition that means we need to use an accessible format when we call you?
-        </h2>
-
-
-        {{ govukRadios({
-          idPrefix: 'contact-telephone-number',
-          name: 'contact-telephone-number-af',
-          classes: "govuk-radios--inline",
-          items: [{
-            value: "yes",
-            text: "Yes",
-            conditional: {
-              html: contactPhoneYes
-            }
-          }, {
-            value: "no",
-            text: "No"
-          }]
-        }) }}
-
         {{ govukButton({
             text: "Continue"
         }) }}

@@ -29,10 +29,31 @@
           spellcheck: false,
           classes: "govuk-!-width-one-third",
           label: {
-            text: "Email address"
+            text: "Enter an email address"
+          },
+          hint: {
+            text: "For example name@example.com"
           }
         }) }}
         {% endset -%}
+
+        {% set emailHtmlWord %}
+        {{ govukInput({
+          id: "contact-by-email",
+          name: "contact-by-email",
+          type: "email",
+          autocomplete: "email",
+          spellcheck: false,
+          classes: "govuk-!-width-one-third",
+          label: {
+            text: "We'll send Word documents by email, enter an email address"
+          },
+          hint: {
+            text: "For example name@example.com"
+          }
+        }) }}
+        {% endset -%}
+
 
         {{ govukCheckboxes({
           idPrefix: "letters-contact-preference",
@@ -75,7 +96,7 @@
               value: "WordEmail",
               text: "Word document",
               conditional: {
-                html: emailHtml
+                html: emailHtmlWord
               }
             },
 
