@@ -83,19 +83,44 @@ router.post('/alternate-format', function (req, res) {
   }
 });
 
-router.post('/alternate-format-contact-preference', function (req, res) {
-  const answer = req.body.contactPreference;
+// router.post('/alternate-format-contact-preference', function (req, res) {
+//   const answer = req.body.contactPreference;
+//
+//   if (answer === 'letters') {
+//     res.redirect(`${ABS_BASE_PATH}/letters-contact-preference`);
+//   } else if (answer === 'phoneCall') {
+//     res.redirect(`${ABS_BASE_PATH}/phone-contact-preference`);
+//   } else if (answer === 'lettersPhoneCall') {
+//     res.redirect(`${ABS_BASE_PATH}/letters-phone-contact-preference`);
+//   } else {
+//     res.redirect(`${ABS_BASE_PATH}/address-postal-address`);
+//   }
+// });
 
-  if (answer === 'letters') {
-    res.redirect(`${ABS_BASE_PATH}/letters-contact-preference`);
-  } else if (answer === 'phoneCall') {
-    res.redirect(`${ABS_BASE_PATH}/phone-contact-preference`);
-  } else if (answer === 'lettersPhoneCall') {
-    res.redirect(`${ABS_BASE_PATH}/letters-phone-contact-preference`);
+router.post('/alternate-format-contact-preference', function (req, res) {
+  let data = req.session.data;
+  let answer;
+
+  if (data['alternateFormatPreference']) {
+    answer = data['alternateFormatPreference'];
   } else {
-    res.redirect(`${ABS_BASE_PATH}/address-postal-address`);
+    answer = [];
+  };
+
+  answer = [].concat(answer);
+  console.log(answer, typeof answer);
+
+  if (answer.includes('letters')) {
+    res.redirect(`${ABS_BASE_PATH}/letters-contact-preference`);
+  } else if (answer.includes('phoneCalls')) {
+    res.redirect(`${ABS_BASE_PATH}/phone-contact-preference`);
+  } else {
+    res.redirect(`${ABS_BASE_PATH}/address-is-it-postal`);
   }
+
 });
+
+
 
 router.post('/letters-contact-preference', function (req, res) {
   let data = req.session.data;
@@ -117,6 +142,8 @@ router.post('/letters-contact-preference', function (req, res) {
   } else if (answer.includes('colouredPaper')) {
     res.redirect(`${ABS_BASE_PATH}/letters-contact-preference-coloured-paper`);
     // add more here
+  } else if (answer.includes('largePrint')) {
+    res.redirect(`${ABS_BASE_PATH}/letters-contact-preference-large-print`);
   } else {
     res.redirect(`${ABS_BASE_PATH}/address-is-it-postal`);
   }

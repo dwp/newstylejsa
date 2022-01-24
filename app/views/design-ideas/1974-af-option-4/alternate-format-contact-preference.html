@@ -18,7 +18,7 @@
 
       <form class="form" action="alternate-format-contact-preference" method="post">
 
-          {% from "govuk/components/radios/macro.njk" import govukRadios %}
+          <!-- {% from "govuk/components/radios/macro.njk" import govukRadios %}
 
           {{ govukRadios({
             idPrefix: "contact-preference",
@@ -49,7 +49,44 @@
                 text: "None of these"
               }
             ]
-          }) }}
+          }) }} -->
+
+
+                  {% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
+
+                  {{ govukCheckboxes({
+                    idPrefix: "alternate-format-preference",
+                    name: "alternateFormatPreference",
+                    fieldset: {
+                      legend: {
+                        classes: "govuk-fieldset__legend--l"
+                      }
+                    },
+                    hint: {
+                      text: "Select the best options for your needs."
+                    },
+                    items: [
+                      {
+                        value: "letters",
+                        text: "Letters"
+                      },
+                      {
+                        value: "phoneCalls",
+                        text: "Phone Calls"
+                      },
+
+                      {
+                        divider: "or"
+                      },
+                      {
+                        value: "none",
+                        text: "None of these",
+                        behaviour: "exclusive"
+                      }
+                    ]
+                  }) }}
+
+
 
         <button class="govuk-button" data-module="govuk-button">Continue</button>
 

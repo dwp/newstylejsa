@@ -33,6 +33,10 @@
           },
           items: [
             {
+              value: "size-14",
+              text: "Size 14"
+            },
+            {
               value: "size-16",
               text: "Size 16"
             },
@@ -51,18 +55,22 @@
             {
               value: "size-24",
               text: "Size 24"
-            },
-            {
-              value: "size-26",
-              text: "Size 26"
             }
           ]
         }) }}
 
-        {{ govukButton({
-            text: "Continue"
-        }) }}
 
+        {% if 'phoneCalls' in data['alternateFormatPreference'] %}
+          {{ govukButton({
+                text: "Continue",
+                href: "phone-contact-preference"
+            }) }}
+        {% else %}
+          {{ govukButton({
+                text: "Continue",
+                href: "address-is-it-postal"
+            }) }}
+        {% endif %}
 
       </form>
     </div>

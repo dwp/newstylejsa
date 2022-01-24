@@ -45,10 +45,23 @@
           ]
         }) }}
 
-        {{ govukButton({
-            text: "Continue"
-        }) }}
+        {% if 'largePrint' in data['lettersContactPreference'] %}
+          {{ govukButton({
+                text: "Continue",
+                href: "letters-contact-preference-large-print"
+            }) }}
 
+        {% elif 'phoneCalls' in data['alternateFormatPreference'] %}
+          {{ govukButton({
+                text: "Continue",
+                href: "phone-contact-preference"
+            }) }}          
+        {% else %}
+          {{ govukButton({
+                text: "Continue",
+                href: "address-is-it-postal"
+            }) }}
+        {% endif %}
 
       </form>
     </div>
