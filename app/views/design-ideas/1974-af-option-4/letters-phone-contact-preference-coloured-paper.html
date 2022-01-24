@@ -1,0 +1,57 @@
+
+{% extends "layout-beta.html" %}
+
+{% block pageTitle %}
+  DWP - Jobseeker&rsquo;s Allowance
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        <span class="govuk-caption-xl">Personal details</span>
+        What colour paper do you need?
+      </h1>
+      <form action="coloured-paper" method="get">
+
+
+        {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+        {{ govukRadios({
+          idPrefix: "coloured-paper",
+          name: "colouredPaper",
+          fieldset: {
+            legend: {
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+
+          items: [
+            {
+              value: "cream",
+              text: "Cream"
+            },
+            {
+              value: "pastel-blue",
+              text: "Pastel blue"
+            },
+            {
+              value: "pastel-yellow",
+              text: "Pastel yellow"
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+            text: "Continue"
+        }) }}
+
+
+      </form>
+    </div>
+  </div>
+
+{% endblock %}

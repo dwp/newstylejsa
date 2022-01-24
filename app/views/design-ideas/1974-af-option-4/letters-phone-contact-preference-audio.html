@@ -14,8 +14,8 @@
         <span class="govuk-caption-xl">Personal details</span>
         What type of audio form do you need?
       </h1>
+      <form class ="form" action="address-is-it-postal" method="get" >
 
-      <form class="form" action="letters-contact-preference-audio" method="post" >
 
         {% from "govuk/components/radios/macro.njk" import govukRadios %}
 
@@ -45,22 +45,9 @@
           ]
         }) }}
 
-      {% if 'braille' in data['lettersContactPreference'] %}
         {{ govukButton({
-              text: "Continue",
-              href: "letters-contact-preference-braille"
-          }) }}
-      {% elif 'colouredPaper' in data['lettersContactPreference'] %}
-        {{ govukButton({
-              text: "Continue",
-              href: "letters-contact-preference-coloured-paper"
-          }) }}
-      {% else %}
-        {{ govukButton({
-              text: "Continue",
-              href: "address-is-it-postal"
-          }) }}
-      {% endif %}
+            text: "Continue"
+        }) }}
 
       </form>
     </div>
