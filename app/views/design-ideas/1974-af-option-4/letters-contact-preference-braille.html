@@ -14,7 +14,7 @@
         <span class="govuk-caption-xl">Personal details</span>
         What type of braille do you need?
       </h1>
-      <form action="braille-type" method="get">
+      <form action="letters-contact-preference-braille" method="post">
 
 
         {% from "govuk/components/radios/macro.njk" import govukRadios %}
@@ -41,9 +41,17 @@
           ]
         }) }}
 
-        {{ govukButton({
-            text: "Continue"
-        }) }}
+        {% if 'colouredPaper' in data['lettersContactPreference'] %}
+          {{ govukButton({
+                text: "Continue",
+                href: "letters-contact-preference-coloured-paper"
+            }) }}
+        {% else %}
+          {{ govukButton({
+                text: "Continue",
+                href: "braille-type"
+            }) }}
+        {% endif %}
 
 
       </form>
