@@ -50,6 +50,9 @@
         }) }}
         {% endset -%}
 
+
+        {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
         {{ govukRadios({
           idPrefix: "phone-contact-preferences",
           name: "phone-contact-preferences",
@@ -58,9 +61,6 @@
               classes: "govuk-fieldset__legend--l"
             }
           },
-
-
-
           items: [
             {
               value: "email",
@@ -69,28 +69,32 @@
                 html: emailHtml
               }
             },
-
             {
               value: "relay-uk",
               text: "Relay UK",
               hint: {
                 text: "For if you cannot hear or speak on the phone"
                 }
-              },
-
+            },
             {
-            value: "video-relay-service",
-            text: "Video Relay Service",
-            hint: {
-              text: "For British Sign Language users"
-              },
-            conditional: {
-              html: phoneHtml
-          }
-    }
+              value: "video-relay-service",
+              text: "Video Relay Service",
+              hint: {
+                text: "For British Sign Language users"
+                },
+                conditional: {
+                  html: phoneHtml
+              }
+            },
+            {
+              divider: "or"
+            },
+            {
+              value: "none",
+              text: "No, I will not need any of these formats"
+            }
           ]
         }) }}
-
         <button class="govuk-button" data-module="govuk-button">Continue</button>
 
       </form>
