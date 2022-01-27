@@ -34,9 +34,125 @@
             value: {
               text: "22/07/2020"
             }
-            ]
-          }
+          ]
+        }
+
+
           }) }}
+
+
+          <!-- PREVIOUS EMPLOYMENT -->
+          <h2 class="govuk-heading-l">Accessibility</h2>
+
+          {{ govukSummaryList({
+            classes: 'govuk-!-margin-bottom-9',
+            rows: [
+              {
+                key: {
+                  text: "Do you need us to contact you in an alternative format?"
+                },
+                value: {
+                  html: "Yes"
+                },
+                actions: {
+                  items: [
+                    {
+                    }
+                  ]
+                }
+              }
+            ]
+          }) }}
+
+          <!-- FIRST PREVIOUS EMPLOYMENT -->
+          <div class="govuk-grid-column-three-quarters">
+            <h3 class="govuk-heading-m">Accessibility details</h3>
+          </div>
+          <div class="govuk-grid-column-one-quarter govuk-align-right">
+            <a href="7-previous-employment/when-employer" class="govuk-body">Change</a>
+          </div>
+
+          {{ govukSummaryList({
+            classes: 'govuk-!-margin-bottom-9',
+            rows: [
+              {
+                key: {
+                  text: "What do you need in an alternative format?"
+                },
+                value: {
+                  html: "Letters and Phone"
+                },
+                actions: {
+                  items: [
+                    {
+                    }
+                  ]
+                }
+              },
+              {
+                key: {
+                  text: "What do you need instead of standard letters?"
+                },
+                value: {
+                  html: "Coloured paper, Large print"
+                },
+                actions: {
+                  items: [
+                    {
+                    }
+                  ]
+                }
+              },
+              {
+                key: {
+                  text: "What colour paper do you need?"
+                },
+                value: {
+                  html: "Pastel blue"
+                },
+                actions: {
+                  items: [
+                    {
+                    }
+                  ]
+                }
+              },
+              {
+                key: {
+                  text: "What size print do you need?"
+                },
+                value: {
+                  html: "Size 16"
+                },
+                actions: {
+                  items: [
+                    {
+                    }
+                  ]
+                }
+              },
+              {
+                key: {
+                  text: "What do you need instead of phone calls"
+                },
+                value: {
+                  html: "Email, example@example.com"
+                },
+                actions: {
+                  items: [
+                    {
+                    }
+                  ]
+                }
+              }
+            ]
+          }) }}
+          <div class="govuk-grid-column-three-quarters govuk-!-margin-bottom-9">
+            <a href="#" class="govuk-body">Add accessibility details</a>
+          </div>
+          <div class="govuk-grid-column-one-quarter govuk-align-right govuk-!-margin-bottom-9">
+            <a href="#" class="govuk-body">Remove accessibility details</a>
+          </div>
 
       <!-- PERSONAL DETAILS -->
       <h2 class="govuk-heading-l">Personal details</h2>
@@ -60,6 +176,7 @@
               ]
             }
           },
+
           {
             key: {
               text: "Name"
@@ -108,38 +225,8 @@
               ]
             }
           },
-          {
-            key: {
-              text: "Do you have a disability or health condition that means we need to send you letters in an accessible format?"
-            },
-            value: {
-              text: "Yes"
-            },
-            actions: {
-              items: [
-                {
-                  href: "/design-ideas/1974-af-option-1/address-af",
-                  text: "Change"
-                }
-              ]
-            }
-          },
-          {
-            key: {
-              text: "What format do you need us to use when we send you letters?"
-            },
-            value: {
-              text: "Braille"
-            },
-            actions: {
-              items: [
-                {
-                  href: "/design-ideas/1974-af-option-1/address-af-yes",
-                  text: "Change"
-                }
-              ]
-            }
-          },
+
+
           {
             key: {
               text: "Do you want to add a different address for your post?"
@@ -172,38 +259,8 @@
               ]
             }
           },
-          {
-            key: {
-              text: "Do you need us to use any different formats when we contact you by phone?"
-            },
-            value: {
-              text: "Yes"
-            },
-            actions: {
-              items: [
-                {
-                  href: "/design-ideas/1974-af-option-1/contact-phone-af",
-                  text: "Change"
-                }
-              ]
-            }
-          },
-          {
-            key: {
-              text: "What format do you need us to use when we contact you by phone?"
-            },
-            value: {
-              text: "Relay UK, Typetalk or textphone"
-            },
-            actions: {
-              items: [
-                {
-                  href: "/design-ideas/1974-af-option-1/contact-phone-af-yes",
-                  text: "Change"
-                }
-              ]
-            }
-          },
+
+
           {
             key: {
               text: "Do you have an email we can contact you on?"
