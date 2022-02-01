@@ -102,6 +102,10 @@ router.use(
   "/design-ideas/1974-af-option-4/",
   require("./views/design-ideas/1974-af-option-4/_routes")
 );
+router.use(
+  "/design-ideas/1974-af-option-5/",
+  require("./views/design-ideas/1974-af-option-5/_routes")
+);
 
 ///////////////////////////////////////////////////////////////////////////////
 //                                                                           //
