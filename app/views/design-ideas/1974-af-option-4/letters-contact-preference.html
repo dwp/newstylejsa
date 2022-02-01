@@ -37,6 +37,23 @@
         }) }}
         {% endset -%}
 
+        {% set emailHtmlWeb %}
+        {{ govukInput({
+          id: "contact-by-email",
+          name: "contact-by-email",
+          type: "email",
+          autocomplete: "email",
+          spellcheck: false,
+          classes: "govuk-!-width-one-third",
+          label: {
+            text: "We'll send PDFs by email, enter an email address"
+          },
+          hint: {
+            text: "For example name@example.com"
+          }
+        }) }}
+        {% endset -%}
+
         {% set emailHtmlWord %}
         {{ govukInput({
           id: "contact-by-email",
@@ -93,6 +110,13 @@
               text: "Large print"
             },
             {
+              value: "pdf",
+              text: "PDF",
+              conditional: {
+                html: emailHtmlWeb
+              }
+            },
+            {
               value: "WordEmail",
               text: "Word document",
               conditional: {
@@ -110,7 +134,7 @@
             }
           ]
         }) }}
-      
+
         {{ govukButton({
               text: "Continue"
           }) }}
