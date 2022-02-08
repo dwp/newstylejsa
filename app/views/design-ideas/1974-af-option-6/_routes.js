@@ -63,28 +63,28 @@ router.post('/alternate-format', function (req, res) {
   }
 });
 
-router.post('/alternate-format-contact-preference', function (req, res) {
-  let data = req.session.data;
-  let answer;
-
-  if (data['alternateFormatPreference']) {
-    answer = data['alternateFormatPreference'];
-  } else {
-    answer = [];
-  };
-
-  answer = [].concat(answer);
-  console.log(answer, typeof answer);
-
-  if (answer.includes('letters')) {
-    res.redirect(`${ABS_BASE_PATH}/letters-contact-preference`);
-  } else if (answer.includes('phoneCalls')) {
-    res.redirect(`${ABS_BASE_PATH}/phone-contact-preference`);
-  } else {
-    res.redirect(`${ABS_BASE_PATH}/nino`);
-  }
-
-});
+// router.post('/alternate-format-contact-preference', function (req, res) {
+//   let data = req.session.data;
+//   let answer;
+//
+//   if (data['alternateFormatPreference']) {
+//     answer = data['alternateFormatPreference'];
+//   } else {
+//     answer = [];
+//   };
+//
+//   answer = [].concat(answer);
+//   console.log(answer, typeof answer);
+//
+//   if (answer.includes('letters')) {
+//     res.redirect(`${ABS_BASE_PATH}/letters-contact-preference`);
+//   } else if (answer.includes('phoneCalls')) {
+//     res.redirect(`${ABS_BASE_PATH}/phone-contact-preference`);
+//   } else {
+//     res.redirect(`${ABS_BASE_PATH}/nino`);
+//   }
+//
+// });
 
 
 

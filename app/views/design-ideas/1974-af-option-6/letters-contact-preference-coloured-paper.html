@@ -53,11 +53,6 @@
                 href: "letters-contact-preference-large-print"
             }) }}
 
-        {% elif 'phoneCalls' in data['alternateFormatPreference'] %}
-          {{ govukButton({
-                text: "Continue",
-                href: "phone-contact-preference"
-            }) }}
         {% else %}
           {{ govukButton({
                 text: "Continue",
