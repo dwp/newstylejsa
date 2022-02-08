@@ -1,0 +1,190 @@
+
+{% extends "layout-no-back.html" %}
+
+{% block pageTitle %}
+  DWP - Jobseeker&rsquo;s Allowance
+{% endblock %}
+
+{% block content %}
+
+      <main class="govuk-main-wrapper">
+
+            <div class="govuk-grid-row">
+              <div class="govuk-grid-column-two-thirds">
+                <h1 class="govuk-heading-xl">Jobseeker&rsquo;s Allowance (JSA)</h1>
+
+                  <p class="govuk-body">Contents</p>
+
+                  <ul class="govuk-list">
+                  <li>
+                  <a class="govuk-link" href="#">How it works</a>
+                  </li>
+                  <li>
+                    <a class="govuk-link-small" href="#">Eligibility</a>
+                  </li>
+                  <li>
+                    Apply for 'new style' JSA
+                  </li>
+                  <li>
+                    <a class="govuk-link" href="#">Your JSA claim</a>
+                  </li>
+                  <li>
+                    <a class="govuk-link" href="#">If you're getting contribution-based or income-based JSA</a>
+                  </li>
+                  <li>
+                    <a class="govuk-link" href="#s">Report a change of circumstances</a>
+                  </li>
+                </ul>
+                <div class="govuk-!-padding-bottom-4"></div>
+                </div>
+
+
+                        <div class="govuk-grid-column-two-thirds">
+
+                          <hr>
+                          <div class="govuk-!-padding-4"></div>
+                        <h2 class="govuk-heading-m">Apply for 'new style' JSA</h2>
+
+                        <p>Before you apply for ‘new style’ Jobseeker’s Allowance (JSA), check if you’re eligible.</p>
+
+                          {{ govukInsetText({
+                            text: "There is a different process in Northern Ireland."
+                          }) }}
+                          <p>To apply, you’ll need your:</p>
+                        <ul class="govuk-list govuk-list--bullet">
+                          <li>National Insurance number</li>
+                          <li>bank or building society account details (or those of a family member or trusted friend)</li>
+                          <li>employment details for the past 6 months, including employer contact details and dates you worked with them</li>
+                          <li>private pension statement letter</li>
+                        </ul>
+                        <p>To reclaim you need to apply again, even if your details have not changed.</p>
+
+                        <h2 class="govuk-heading-m">Backdating your claim</h2>
+
+                          <p class="govuk-body">When you apply, you can ask for your claim to be backdated by up to 3 months if you were not able to claim sooner.</p>
+                          <p>If you want to backdate your claim, you'll need:</p>
+
+
+                          <ul class="govuk-list govuk-list--bullet">
+                            <li>the date you want your claim to start from</li>
+                            <li>the reason your claim was delayed</li>
+                          </ul>
+
+                            <p>Your claim may not be backdated if you do not have a good reason for the delay in making your claim. Reasons for backdating your claim could include:</p>
+
+                            <ul class="govuk-list govuk-list--bullet">
+                              <li>you had a family bereavement - a partner, parent, child, brother or sister died</li>
+                              <li>you were given the wrong advice that you could not get JSA</li>
+                            </ul>
+                            <div class="govuk-!-padding-bottom-5"></div>
+
+                            <!-- <details class="govuk-details" data-module="govuk-details">
+                              <summary class="govuk-details__summary">
+                                <span class="govuk-details__summary-text">
+                                  If you cannot apply online or need alternative formats
+                                </span>
+                              </summary>
+                              <div class="govuk-details__text">
+                                <p><a href="https://www.gov.uk/contact-jobcentre-plus/new-benefit-claims">Contact Jobcentre Plus</a>if any of the following apply:</p>
+                                <div class="contact">
+
+                                  <ul class="govuk-list govuk-list--bullet">
+                                    <li>you’re aged 16 to 17</li>
+                                    <li>you need help applying</li>
+                                    <li>you need communications to be sent to you in an alternative format, such as braille, large print or audio CD</li>
+                                  </ul>
+                              </div>
+                            </details> -->
+
+                            <h2 class="govuk-heading-m">Apply online</h2>
+                            <p class="govuk-body">You cannot apply online if you’re under 18.</p>
+
+
+
+                        {{ govukButton({
+                          text: "Apply for new style JSA",
+                          href: "start-date",
+                          isStartButton: false
+                        }) }}
+
+                        <div class="govuk-!-padding-bottom-9"></div>
+
+                                  <h2 class="govuk-heading-m">If you cannot apply online or need alternative formats</h2>
+                                  <p><a href="https://www.gov.uk/contact-jobcentre-plus/new-benefit-claims">Contact Jobcentre Plus</a> if any of the following apply:</p>
+                                  <div class="contact">
+
+                                  <ul class="govuk-list govuk-list--bullet">
+                                    <li>you’re aged 16 to 17</li>
+                                    <li>you need help applying</li>
+                                    <li>you need communications to be sent to you in an alternative format, such as braille, large print or audio CD</li>
+                                  </ul>
+
+                        <h2 class="govuk-heading-m">After you make your claim<h2>
+                        <p>If you applied online, you’ll get a text to confirm that your application has been submitted.</p>
+                        <p>The Department for Work and Pensions (DWP) will then contact you within 10 days of applying.</p>
+                        <p>You do not need to contact DWP unless it has been more than 10 days since you applied and you haven’t heard anything.</p>
+
+                        <h3 class="govuk-heading-s">If you’re eligible</h3>
+                        <p>DWP will contact you within 10 days to schedule a phone interview that you must attend. It will normally be with a work coach from your local Jobcentre Plus office.</p>
+                        <p>At the interview, you’ll be asked some questions to confirm your identity and then you’ll make an agreement about what steps you’ll take to look for work. This agreement is called a ‘Claimant Commitment’.</p>
+                        <p>If you need support during the appointment, you can have another person with you.</p>
+
+                        <p><a href="https://www.gov.uk/contact-jobcentre-plus/new-benefit-claims">Contact Jobcentre Plus</a> before your appointment if you:</p>
+
+                          <ul class="govuk-list govuk-list--bullet">
+                            <li>need a foreign language interpreter, and do not have someone who can help with interpretation</li>
+                            <li>have a disability or health condition, for example a hearing impairment which means you cannot attend a phone interview</li>
+                          </ul>
+
+                        <h3 class="govuk-heading-s">If you’re not eligible</h3>
+                        <p>DWP will send you a letter within 10 days to explain why you are not eligible for JSA.</p>
+
+                        <h2 class="govuk-heading-m">If you disagree with a decision<h2>
+                        <p>You can <a href="#">challenge a decision</a> about your claim. This is called asking for mandatory reconsideration.
+
+                  </p>
+
+
+</div>
+                        <h2 class="govuk-heading-m">Make a complaint</h2>
+                        <p>You can <a href="#">complain about Jobcentre Plus</a> if you’re unhappy with the service you’ve received.</p>
+</div>
+
+    <div class="govuk-grid-column-one-third">
+      <hr color = "	#1d70b8";>
+      <h3 class="govuk-heading-s">Related content</h3>
+
+      <ul class="govuk-list">
+      <li>
+      <a class="govuk-link" href="#">Benefits calculators</a>
+      </li>
+      <li>
+        <a class="govuk-link" href="#">Find a job</a>
+      </li>
+      <li>
+        Apply for 'new style' JSA
+      </li>
+      <li>
+        <a class="govuk-link" href="#">Employment and support allowance</a>
+      </li>
+      <li>
+        <a class="govuk-link" href="#">Contact Jobcentre Plus</a>
+      </li>
+      <li>
+        <a class="govuk-link" href="#s">How and when your benefits are paid</a>
+      </li>
+    </ul>
+    <div class="govuk-!-padding-bottom-4"></div>
+      </div>
+  <div class="govuk-!-padding-bottom-4"></div>
+</div>
+
+
+
+
+
+
+  </main>
+
+
+{% endblock %}

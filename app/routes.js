@@ -106,7 +106,10 @@ router.use(
   "/design-ideas/1974-af-option-5/",
   require("./views/design-ideas/1974-af-option-5/_routes")
 );
-
+router.use(
+  "/design-ideas/1974-af-option-6/",
+  require("./views/design-ideas/1974-af-option-6/_routes")
+);
 ///////////////////////////////////////////////////////////////////////////////
 //                                                                           //
 //  ROUTING FOR VERSION 2.0                                                 //
