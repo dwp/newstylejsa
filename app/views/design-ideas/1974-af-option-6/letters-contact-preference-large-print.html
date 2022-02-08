@@ -15,7 +15,7 @@
         What size print do you need?
       </h1>
       <p>Our letters are usually in font size 12.</p>
-      <form action="phone-contact-preference" method="get">
+      <form action="address-is-it-postal" method="get">
 
 
         {% from "govuk/components/radios/macro.njk" import govukRadios %}
@@ -61,10 +61,17 @@
         }) }}
 
 
-        {{ govukButton({
-              text: "Continue"
-          }) }}
-
+        {% if 'phoneCalls' in data['alternateFormatPreference'] %}
+          {{ govukButton({
+                text: "Continue",
+                href: "phone-contact-preference"
+            }) }}
+        {% else %}
+          {{ govukButton({
+                text: "Continue",
+                href: "nino"
+            }) }}
+        {% endif %}
 
       </form>
     </div>
