@@ -14,14 +14,14 @@
         <span class="govuk-caption-xl">Accessibility</span>
         What type of braille do you need?
       </h1>
-      <form action="letters-contact-preference-braille" method="post">
+      <form action="braille" method="post">
 
 
         {% from "govuk/components/radios/macro.njk" import govukRadios %}
 
         {{ govukRadios({
-          idPrefix: "letters-contact-preference-braille",
-          name: "letters-contact-preference-braille",
+          idPrefix: "braille",
+          name: "braille",
           fieldset: {
             legend: {
               isPageHeading: true,
@@ -46,8 +46,15 @@
         {% if 'colouredPaper' in data['lettersContactPreference'] %}
           {{ govukButton({
                 text: "Continue",
-                href: "letters-contact-preference-coloured-paper"
+                href: "coloured-paper"
             }) }}
+
+            {% elif 'largePrint' in data['lettersContactPreference'] %}
+              {{ govukButton({
+                    text: "Continue",
+                    href: "large-print"
+                }) }}
+
         {% else %}
           {{ govukButton({
                 text: "Continue",

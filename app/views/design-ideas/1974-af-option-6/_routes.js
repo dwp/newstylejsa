@@ -102,14 +102,14 @@ router.post('/letters-contact-preference', function (req, res) {
   console.log(answer, typeof answer);
 
   if (answer.includes('audio')) {
-    res.redirect(`${ABS_BASE_PATH}/letters-contact-preference-audio`);
+    res.redirect(`${ABS_BASE_PATH}/audio`);
   } else if (answer.includes('braille')) {
-    res.redirect(`${ABS_BASE_PATH}/letters-contact-preference-braille`);
+    res.redirect(`${ABS_BASE_PATH}/braille`);
   } else if (answer.includes('colouredPaper')) {
-    res.redirect(`${ABS_BASE_PATH}/letters-contact-preference-coloured-paper`);
+    res.redirect(`${ABS_BASE_PATH}/coloured-paper`);
     // add more here
   } else if (answer.includes('largePrint')) {
-    res.redirect(`${ABS_BASE_PATH}/letters-contact-preference-large-print`);
+    res.redirect(`${ABS_BASE_PATH}/large-print`);
   } else {
     res.redirect(`${ABS_BASE_PATH}/phone-contact-preference`);
   }

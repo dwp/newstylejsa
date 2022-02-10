@@ -15,13 +15,13 @@
         What type of audio do you need?
       </h1>
 
-      <form class="form" action="letters-contact-preference-audio" method="post" >
+      <form class="form" action="audio" method="post" >
 
         {% from "govuk/components/radios/macro.njk" import govukRadios %}
 
         {{ govukRadios({
-          idPrefix: "letters-contact-preference-audio",
-          name: "letters-contact-preference-audio",
+          idPrefix: "audio",
+          name: "audio",
           fieldset: {
             legend: {
               isPageHeading: true,
@@ -51,22 +51,23 @@
       {% if 'braille' in data['lettersContactPreference'] %}
         {{ govukButton({
               text: "Continue",
-              href: "letters-contact-preference-braille"
+              href: "braille"
           }) }}
       {% elif 'colouredPaper' in data['lettersContactPreference'] %}
         {{ govukButton({
               text: "Continue",
-              href: "letters-contact-preference-coloured-paper"
+              href: "coloured-paper"
           }) }}
-      {% elif 'phoneCalls' in data['alternateFormatPreference'] %}
-          {{ govukButton({
-                text: "Continue",
-                href: "phone-contact-preference"
-          }) }}
+          {% elif 'largePrint' in data['lettersContactPreference'] %}
+            {{ govukButton({
+                  text: "Continue",
+                  href: "large-print"
+              }) }}
+
       {% else %}
         {{ govukButton({
               text: "Continue",
-              href: "nino"
+              href: "phone-contact-preference"
           }) }}
       {% endif %}
 
