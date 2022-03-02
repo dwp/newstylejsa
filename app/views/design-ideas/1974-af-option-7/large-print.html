@@ -14,11 +14,22 @@
         <span class="govuk-caption-xl">Accessibility</span>
         What size print do you need?
       </h1>
-      <p>Our letters are usually in font size 12.</p>
+      <p>Our letters are usually in Arial font size 12.</p>
       <form action="address-is-it-postal" method="get">
 
 
         {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+        {% from "govuk/components/radios/macro.njk" import govukRadios %}
+        {% set emailHtml %}
+            {{ govukInput({
+                  id: "other",
+                  name: "other",
+                  type: "other",
+                  spellcheck: false,
+                  classes: "govuk-!-width-one-third"
+                }) }}
+        {% endset -%}
 
         {{ govukRadios({
           idPrefix: "print-size",
@@ -33,10 +44,7 @@
              text: "Select the best option for your needs."
            },
           items: [
-            {
-              value: "size-14",
-              text: "Size 14"
-            },
+
             {
               value: "size-16",
               text: "Size 16"
@@ -46,16 +54,15 @@
               text: "Size 18"
             },
             {
-              value: "size-20",
-              text: "Size 20"
-            },
-            {
-              value: "size-22",
-              text: "Size 22"
-            },
-            {
               value: "size-24",
               text: "Size 24"
+            },
+            {
+              value: "other",
+              text: "Other",
+              conditional: {
+                html: emailHtml
+              }
             }
           ]
         }) }}

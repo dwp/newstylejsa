@@ -18,7 +18,15 @@
 
 
         {% from "govuk/components/radios/macro.njk" import govukRadios %}
-
+        {% set emailHtml %}
+            {{ govukInput({
+                  id: "other",
+                  name: "other",
+                  type: "other",
+                  spellcheck: false,
+                  classes: "govuk-!-width-one-third"
+                }) }}
+                {% endset -%}
         {{ govukRadios({
           idPrefix: "coloured-paper",
           name: "Coloured paper",
@@ -43,6 +51,13 @@
             {
               value: "pastel-yellow",
               text: "Pastel yellow"
+            },
+            {
+              value: "other",
+              text: "Other",
+              conditional: {
+                html: emailHtml
+              }
             }
           ]
         }) }}
