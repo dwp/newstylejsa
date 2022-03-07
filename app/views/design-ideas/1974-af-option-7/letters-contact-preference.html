@@ -13,8 +13,8 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
       <span class="govuk-caption-xl">Accessibility</span>
-      <h1 class="govuk-heading-l">What do you need instead of standard letters?</h1>
-      <p>We usually send letters on white paper and use font size 12. You'll be able to tell us more later, for example if you select large print you'll be able to choose the font size.</p>
+      <h1 class="govuk-heading-l">What do you need instead of a standard letter?</h1>
+      <p>We usually send letters on white paper and in Arial font size 12. You can tell us more about your alternative format later. For example, if you select large print you can then choose the font size.</p>
       <form class="form" action="letters-contact-preference" method="post">
 
         {% from "govuk/components/radios/macro.njk" import govukRadios %}
@@ -29,10 +29,10 @@
                   spellcheck: false,
                   classes: "govuk-!-width-one-third",
                   label: {
-                    text: "Enter an email address"
+                    text: "Enter your email address"
                   },
                   hint: {
-                    text: "For example name@example.com"
+                    text: "For example, name@example.com"
                   }
                 }) }}
                 {% endset -%}
@@ -46,6 +46,14 @@
               }
             },
           items: [
+          {
+            value: "email",
+            text: "Accessible Email",
+            conditional: {
+              html: emailHtml
+            }
+          },
+
             {
               value: "audio",
               text: "Audio"
@@ -63,15 +71,6 @@
               value: "colouredPaperLargePrint",
               text: "Coloured paper and large print"
             },
-
-            {
-              value: "email",
-              text: "Email",
-              conditional: {
-                html: emailHtml
-              }
-            },
-
             {
               value: "largePrint",
               text: "Large print"
