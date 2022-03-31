@@ -27,21 +27,25 @@
               classes: "govuk-fieldset__legend--l"
             }
           },
-          hint: {
-             text: "Select the best option for your needs."
-           },
+          
           items: [
+          {
+            value: "plain text",
+            text: "In plain text"
+          },
+
             {
               value: "PDF",
-              text: "PDF attachment"
+              text: "With attached PDF"
             },
-            {
-              value: "plain text",
-              text: "Plain text"
-            },
+            
             {
               value: "wordDocument",
-              text: "Word document attachment"
+              text: "With  attached word document"
+            },
+            {
+              value: "odf",
+              text: "With  attached Open Document Format (ODF) file"
             }
           ]
         }) }}
