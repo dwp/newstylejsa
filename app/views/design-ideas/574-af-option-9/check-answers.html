@@ -41,118 +41,7 @@
           }) }}
 
 
-          <!-- PREVIOUS EMPLOYMENT -->
-          <h2 class="govuk-heading-l">Accessibility</h2>
 
-          {{ govukSummaryList({
-            classes: 'govuk-!-margin-bottom-9',
-            rows: [
-              {
-                key: {
-                  text: "Do you need us to contact you in an alternative format?"
-                },
-                value: {
-                  html: "Yes"
-                },
-                actions: {
-                  items: [
-                    {
-                    }
-                  ]
-                }
-              }
-            ]
-          }) }}
-
-          <!-- FIRST PREVIOUS EMPLOYMENT -->
-          <div class="govuk-grid-column-three-quarters">
-            <h3 class="govuk-heading-m">Accessibility details</h3>
-          </div>
-          <div class="govuk-grid-column-one-quarter govuk-align-right">
-            <a href="7-previous-employment/when-employer" class="govuk-body">Change</a>
-          </div>
-
-          {{ govukSummaryList({
-            classes: 'govuk-!-margin-bottom-9',
-            rows: [
-              {
-                key: {
-                  text: "What do you need in an alternative format?"
-                },
-                value: {
-                  html: "Letters and Phone"
-                },
-                actions: {
-                  items: [
-                    {
-                    }
-                  ]
-                }
-              },
-              {
-                key: {
-                  text: "What do you need instead of standard letters?"
-                },
-                value: {
-                  html: "Coloured paper, Large print"
-                },
-                actions: {
-                  items: [
-                    {
-                    }
-                  ]
-                }
-              },
-              {
-                key: {
-                  text: "What colour paper do you need?"
-                },
-                value: {
-                  html: "Pastel blue"
-                },
-                actions: {
-                  items: [
-                    {
-                    }
-                  ]
-                }
-              },
-              {
-                key: {
-                  text: "What size print do you need?"
-                },
-                value: {
-                  html: "Size 16"
-                },
-                actions: {
-                  items: [
-                    {
-                    }
-                  ]
-                }
-              },
-              {
-                key: {
-                  text: "What do you need instead of phone calls"
-                },
-                value: {
-                  html: "Email, example@example.com"
-                },
-                actions: {
-                  items: [
-                    {
-                    }
-                  ]
-                }
-              }
-            ]
-          }) }}
-          <div class="govuk-grid-column-three-quarters govuk-!-margin-bottom-9">
-            <a href="#" class="govuk-body">Add accessibility details</a>
-          </div>
-          <div class="govuk-grid-column-one-quarter govuk-align-right govuk-!-margin-bottom-9">
-            <a href="#" class="govuk-body">Remove accessibility details</a>
-          </div>
 
       <!-- PERSONAL DETAILS -->
       <h2 class="govuk-heading-l">Personal details</h2>
@@ -295,6 +184,119 @@
           }
         ]
       }) }}
+
+      <!-- ALT FORMATS -->
+      <h2 class="govuk-heading-l">Accessibility</h2>
+
+      {{ govukSummaryList({
+        classes: 'govuk-!-margin-bottom-9',
+        rows: [
+          {
+            key: {
+              text: "Do you need us to contact you in an alternative format?"
+            },
+            value: {
+              html: "Yes"
+            },
+            actions: {
+              items: [
+                {
+                }
+              ]
+            }
+          }
+        ]
+      }) }}
+
+      <!-- ALT FORMAT DETAILS -->
+      <div class="govuk-grid-column-three-quarters">
+        <h3 class="govuk-heading-m">Accessibility details</h3>
+      </div>
+      <div class="govuk-grid-column-one-quarter govuk-align-right">
+        <a href="7-previous-employment/when-employer" class="govuk-body">Change</a>
+      </div>
+
+      {{ govukSummaryList({
+        classes: 'govuk-!-margin-bottom-9',
+        rows: [
+          {
+            key: {
+              text: "What do you need in an alternative format?"
+            },
+            value: {
+              html: "Letters and Phone"
+            },
+            actions: {
+              items: [
+                {
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "What do you need instead of standard letters?"
+            },
+            value: {
+              html: "Coloured paper, Large print"
+            },
+            actions: {
+              items: [
+                {
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "What colour paper do you need?"
+            },
+            value: {
+              html: "Pastel blue"
+            },
+            actions: {
+              items: [
+                {
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "What size print do you need?"
+            },
+            value: {
+              html: "Size 16"
+            },
+            actions: {
+              items: [
+                {
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "What do you need instead of phone calls"
+            },
+            value: {
+              html: "Email, example@example.com"
+            },
+            actions: {
+              items: [
+                {
+                }
+              ]
+            }
+          }
+        ]
+      }) }}
+      <div class="govuk-grid-column-three-quarters govuk-!-margin-bottom-9">
+        <a href="#" class="govuk-body">Add accessibility details</a>
+      </div>
+      <div class="govuk-grid-column-one-quarter govuk-align-right govuk-!-margin-bottom-9">
+        <a href="#" class="govuk-body">Remove accessibility details</a>
+      </div>
 
       <!-- BANK DETAILS -->
       <h2 class="govuk-heading-l">Bank details</h2>

@@ -39,7 +39,7 @@ var answer = req.session.data['contact-telephone-number-af'];
 });
 
 router.post('/contact-do-you-have-an-email', function (req, res) {
-  console.log(contact-email-address); 
+  console.log(contact-email-address);
   const answer = req.body.contactDoYouHaveAnEmail;
 
   if (typeof answer !== 'undefined') {
@@ -60,7 +60,7 @@ router.post('/alternate-format', function (req, res) {
   if (answer === 'alternateFormatYes') {
     res.redirect(`${ABS_BASE_PATH}/letters-contact-preference`);
   } else {
-    res.redirect(`${ABS_BASE_PATH}/nino`);
+    res.redirect(`${ABS_BASE_PATH}/bank-account`);
   }
 });
 
