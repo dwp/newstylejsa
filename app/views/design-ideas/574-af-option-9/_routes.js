@@ -64,6 +64,18 @@ router.post('/alternate-format', function (req, res) {
   }
 });
 
+router.post('/bank-account', function (req, res) {
+  const answer = req.body.lettersContactPreference;
+
+  if (answer === 'Relay UK') {
+    res.redirect(`${ABS_BASE_PATH}/contact-phone-af-relay`);
+  } else if (answer === 'Textphone') {
+    res.redirect(`${ABS_BASE_PATH}/contact-phone-af-relay`);
+  } else {
+    res.redirect(`${ABS_BASE_PATH}/bank-account`);
+  }
+});
+
 router.post('/alternate-format-contact-preference', function (req, res) {
   let data = req.session.data;
   let answer;

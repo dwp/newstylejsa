@@ -17,7 +17,7 @@
 
       <p>We usually call you if we have any questions about your application. </p>
 
-      <form action="bank-account" method="get">
+      <form action="bank-account" method="post">
         {% from "govuk/components/radios/macro.njk" import govukRadios %}
         {% from "govuk/components/input/macro.njk" import govukInput %}
 
@@ -51,12 +51,12 @@
 
 
           {
-            value: "relayUk",
+            value: "Relay UK",
             text: "Relay UK"
           },
 
             {
-              value: "textphone",
+              value: "Textphone",
               text: "Textphone"
             },
             {
