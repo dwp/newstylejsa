@@ -810,4 +810,28 @@ router.use(
 
 // Add your routes here - above the module.exports line
 
+// Email verification ROUTING
+
+router.post('/design-ideas/wt-800-email-verification/contact-email-verification', function (req, res) {
+
+  let email = req.session.data['email']
+
+  if (email === 'No') {
+    res.redirect('/design-ideas/wt-800-email-verification/bank-account')
+  } else {
+    res.redirect('/design-ideas/wt-800-email-verification/contact-email-verification')
+  }
+})
+
+router.post('/design-ideas/wt-800-email-verification/bank-account', function (req, res) {
+
+  let email = req.session.data['emailverification']
+
+  if (email === 'No') {
+    res.redirect('/design-ideas/wt-800-email-verification/contact-email')
+  } else {
+    res.redirect('/design-ideas/wt-800-email-verification/bank-account')
+  }
+})
+
 module.exports = router;
