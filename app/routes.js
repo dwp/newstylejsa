@@ -11,6 +11,7 @@ router.get("/", function (req, res) {
 
 // Add your routes here - above the module.exports line
 
+
 // Routing for ticket 1001
 router.use(
   "/design-ideas/1001-no-fixed-address/v2/",
@@ -831,6 +832,134 @@ router.post('/design-ideas/wt-800-email-verification/bank-account', function (re
     res.redirect('/design-ideas/wt-800-email-verification/contact-email')
   } else {
     res.redirect('/design-ideas/wt-800-email-verification/bank-account')
+  }
+})
+
+// Pensions changes routing
+router.post('/design-ideas/wt-720-pensions-changes/9a-current-pension/provider-name', function (req, res) {
+
+  let guard = req.session.data['guard']
+
+  if (guard === 'Yes') {
+    res.redirect('/design-ideas/wt-720-pensions-changes/9a-current-pension/inherited')
+  } else {
+    res.redirect('/design-ideas/wt-720-pensions-changes/9a-current-pension/blank')
+  }
+})
+
+router.post('/design-ideas/wt-720-pensions-changes/9a-current-pension/inherited', function (req, res) {
+
+  let inherited = req.session.data['inherited']
+
+  if (inherited === 'Yes') {
+    res.redirect('/design-ideas/wt-720-pensions-changes/9a-current-pension/another-one')
+  } else if (inherited === 'No') {
+    res.redirect('/design-ideas/wt-720-pensions-changes/9a-current-pension/provider-name')
+  } else {
+    res.redirect('/design-ideas/wt-720-pensions-changes/9a-current-pension/provider-name')
+  }
+})
+
+router.post('/design-ideas/wt-720-pensions-changes/9a-current-pension/another-one', function (req, res) {
+
+  let another = req.session.data['another']
+
+  if (another === 'Yes') {
+    res.redirect('/design-ideas/wt-720-pensions-changes/9a-current-pension/inherited')
+  } else {
+    res.redirect('/design-ideas/wt-720-pensions-changes/9a-current-pension/another-one')
+  }
+})
+
+router.post('/design-ideas/wt-720-pensions-changes/9a-current-pension/increase-does-it', function (req, res) {
+
+  let increase = req.session.data['increase']
+
+  if (increase === 'Yes') {
+    res.redirect('/design-ideas/wt-720-pensions-changes/9a-current-pension/increase-when')
+  } else {
+    res.redirect('/design-ideas/wt-720-pensions-changes/9a-current-pension/another-one')
+  }
+})
+
+router.post('/design-ideas/wt-720-pensions-changes/9a-current-pension/increase-when', function (req, res) {
+
+  let increase = req.session.data['increase']
+
+  if (increase === 'Yes') {
+    res.redirect('/design-ideas/wt-720-pensions-changes/9a-current-pension/another-one')
+  } else {
+    res.redirect('/design-ideas/wt-720-pensions-changes/9a-current-pension/another-one')
+  }
+})
+
+// Pensions version 2
+
+router.post('/design-ideas/wt-720-pensions-changes/9b-current-pension/provider-name', function (req, res) {
+
+  let guard = req.session.data['guard']
+
+  if (guard === 'Yes') {
+    res.redirect('/design-ideas/wt-720-pensions-changes/9b-current-pension/inherited')
+  } else {
+    res.redirect('/design-ideas/wt-720-pensions-changes/9b-current-pension/blank')
+  }
+})
+
+router.post('/design-ideas/wt-720-pensions-changes/9b-current-pension/inherited', function (req, res) {
+
+  let inherited = req.session.data['inherited']
+
+  if (inherited === 'Yes') {
+    res.redirect('/design-ideas/wt-720-pensions-changes/9b-current-pension/another-one-inherited')
+  } else if (inherited === 'No') {
+    res.redirect('/design-ideas/wt-720-pensions-changes/9b-current-pension/provider-name')
+  } else {
+    res.redirect('/design-ideas/wt-720-pensions-changes/9b-current-pension/provider-name')
+  }
+})
+
+router.post('/design-ideas/wt-720-pensions-changes/9b-current-pension/another-one', function (req, res) {
+
+  let another = req.session.data['another']
+
+  if (another === 'Yes') {
+    res.redirect('/design-ideas/wt-720-pensions-changes/9b-current-pension/inherited')
+  } else {
+    res.redirect('/design-ideas/wt-720-pensions-changes/9b-current-pension/another-one')
+  }
+})
+
+router.post('/design-ideas/wt-720-pensions-changes/9b-current-pension/increase-does-it', function (req, res) {
+
+  let increase = req.session.data['increase']
+
+  if (increase === 'Yes') {
+    res.redirect('/design-ideas/wt-720-pensions-changes/9b-current-pension/increase-when')
+  } else {
+    res.redirect('/design-ideas/wt-720-pensions-changes/9b-current-pension/another-one')
+  }
+})
+
+router.post('/design-ideas/wt-720-pensions-changes/9b-current-pension/another-one-inherited', function (req, res) {
+
+  let another = req.session.data['another']
+
+  if (another === 'Yes') {
+    res.redirect('/design-ideas/wt-720-pensions-changes/9b-current-pension/provider-name')
+  } else {
+    res.redirect('/design-ideas/wt-720-pensions-changes/9b-current-pension/another-one-inherited')
+  }
+})
+
+router.post('/design-ideas/wt-720-pensions-changes/9b-current-pension/increase-when', function (req, res) {
+
+  let increase = req.session.data['increase']
+
+  if (increase === 'Yes') {
+    res.redirect('/design-ideas/wt-720-pensions-changes/9b-current-pension/another-one')
+  } else {
+    res.redirect('/design-ideas/wt-720-pensions-changes/9b-current-pension/another-one')
   }
 })
 

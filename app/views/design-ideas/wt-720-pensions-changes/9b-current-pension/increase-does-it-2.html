@@ -1,0 +1,48 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  DWP - Jobseeker&rsquo;s Allowance
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        <span class="govuk-caption-xl">Pension or annuity</span>
+        Does your pension or annuity increase in the next 6 months?
+      </h1>
+
+      <form action="increase-does-it" method="post">
+
+        <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset">
+          <div class="govuk-radios govuk-radios--inline" data-module="govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="increase" name="increase" type="radio" value="Yes">
+              <label class="govuk-label govuk-radios__label" for="increase">
+                Yes
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="increase-2" name="increase" type="radio" value="No">
+              <label class="govuk-label govuk-radios__label" for="increase-2">
+                No
+              </label>
+            </div>
+          </div>
+
+        </fieldset>
+      </div>
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+    </div>
+  </div>
+
+{% endblock %}
