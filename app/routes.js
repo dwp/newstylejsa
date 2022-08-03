@@ -957,9 +957,9 @@ router.post('/design-ideas/wt-720-pensions-changes/9b-current-pension/increase-w
   let increase = req.session.data['increase']
 
   if (increase === 'Yes') {
-    res.redirect('/design-ideas/wt-720-pensions-changes/9b-current-pension/another-one')
+    res.redirect('/design-ideas/wt-720-pensions-changes/9b-current-pension/another-one-inherited')
   } else {
-    res.redirect('/design-ideas/wt-720-pensions-changes/9b-current-pension/another-one')
+    res.redirect('/design-ideas/wt-720-pensions-changes/9b-current-pension/another-one-inherited')
   }
 })
 
