@@ -937,7 +937,7 @@ router.post('/design-ideas/wt-720-pensions-changes/9b-current-pension/increase-d
   if (increase === 'Yes') {
     res.redirect('/design-ideas/wt-720-pensions-changes/9b-current-pension/increase-when')
   } else {
-    res.redirect('/design-ideas/wt-720-pensions-changes/9b-current-pension/another-one')
+    res.redirect('/design-ideas/wt-720-pensions-changes/9b-current-pension/another-one-inherited')
   }
 })
 
