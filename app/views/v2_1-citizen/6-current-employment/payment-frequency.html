@@ -1,0 +1,159 @@
+
+{% extends "layout-live-nobanner.html" %}
+
+{% block pageTitle %}
+  DWP - Jobseeker&rsquo;s Allowance
+{% endblock %}
+
+{% block content %}
+
+{#
+<p><strong>
+Note: The pound sign needs to be inside the input text box, this is styled by macros/macros.njk
+</strong></p>
+#}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        <span class="govuk-caption-xl">Current employment</span>
+        How often are you paid?
+      </h1>
+
+      <form action="payment-frequency" method="post">
+
+        <div class="govuk-form-group">
+            <div class="govuk-radios" data-module="govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="current-work-paid" name="current-work-paid" type="radio" value="Weekly" data-aria-controls="conditional-current-work-paid" {{ checked("current-work-paid", "Weekly") }}>
+                <label class="govuk-label govuk-radios__label" for="current-work-paid">
+                  Weekly
+                </label>
+              </div>
+              <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-current-work-paid">
+                <div class="govuk-form-group">
+                  <label class="govuk-label" for="current-work-paid-weekly">
+                    <strong>What is your net pay?<br></strong>
+                    This is the exact amount that is paid into your bank account
+                  </label>
+                  <div id="current-work-paid-weekly-hint" class="govuk-hint">
+                    For example, £80.00
+                  </div>
+                  <input class="govuk-input govuk-!-width-one-third" id="current-work-paid-weekly-amount" name="current-work-paid-weekly-amount" type="numeric" spellcheck="false" autocomplete="email" value="{{ data['current-work-paid-weekly-amount'] }}">
+                </div>
+              </div>
+
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="current-work-paid-2" name="current-work-paid" type="radio" value="Every 2 weeks" data-aria-controls="conditional-current-work-paid-2" {{ checked("current-work-paid", "Every 2 weeks") }}>
+                <label class="govuk-label govuk-radios__label" for="current-work-paid">
+                  Every 2 weeks
+                </label>
+              </div>
+              <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-current-work-paid-2">
+                <div class="govuk-form-group">
+                  <label class="govuk-label" for="current-work-paid-weekly">
+                    <strong>What is your net pay?<br></strong>
+                    This is the exact amount that is paid into your bank account
+                  </label>
+                  <div id="current-work-paid-weekly-hint" class="govuk-hint">
+                    For example, £80.00
+                  </div>
+                  <input class="govuk-input govuk-!-width-one-third" id="current-work-paid-weekly-amount" name="current-work-paid-fortnightly-amount" type="numeric" spellcheck="false" autocomplete="email" value="{{ data['current-work-paid-fortnightly-amount'] }}">
+                </div>
+              </div>
+
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="current-work-paid-3" name="current-work-paid" type="radio" value="Every 3 weeks" data-aria-controls="conditional-current-work-paid-3" {{ checked("current-work-paid", "Every 3 weeks") }}>
+                <label class="govuk-label govuk-radios__label" for="current-work-paid">
+                  Every 3 weeks
+                </label>
+              </div>
+              <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-current-work-paid-3">
+                <div class="govuk-form-group">
+                  <label class="govuk-label" for="current-work-paid-weekly">
+                    <strong>What is your net pay?<br></strong>
+                    This is the exact amount that is paid into your bank account
+                  </label>
+                  <div id="current-work-paid-weekly-hint" class="govuk-hint">
+                    For example, £80.00
+                  </div>
+                  <input class="govuk-input govuk-!-width-one-third" id="current-work-paid-weekly-amount" name="current-work-paid-3weeks-amount" type="numeric" spellcheck="false" autocomplete="email" value="{{ data['current-work-paid-3weeks-amount'] }}">
+                </div>
+              </div>
+
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="current-work-paid-4" name="current-work-paid" type="radio" value="Every month" data-aria-controls="conditional-current-work-paid-4" {{ checked("current-work-paid", "Every month") }}>
+                <label class="govuk-label govuk-radios__label" for="current-work-paid">
+                  Every month
+                </label>
+              </div>
+              <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-current-work-paid-4">
+                <div class="govuk-form-group">
+                  <label class="govuk-label" for="current-work-paid-weekly">
+                    <strong>What is your net pay?<br></strong>
+                    This is the exact amount that is paid into your bank account
+                  </label>
+                  <div id="current-work-paid-weekly-hint" class="govuk-hint">
+                    For example, £80.00
+                  </div>
+                  <input class="govuk-input govuk-!-width-one-third" id="current-work-paid-weekly-amount" name="current-work-paid-monthly-amount" type="numeric" spellcheck="false" autocomplete="email" value="{{ data['current-work-paid-monthly-amount'] }}">
+                </div>
+              </div>
+            </div>
+        </div>
+
+        <!-- {% set jobref = "job" + data["jobnum"] + "-" %}
+        {% set prefix = jobref + "current-employment-" %}
+
+        {{ govukRadios({
+          idPrefix: "current-work-paid",
+          name: jobref + "currentWorkPaid",
+          items: [{
+            value: "Weekly",
+            text: "Every week",
+            checked: checked(jobref + "currentWorkPaid", "Weekly"),
+            conditional: {
+              html: netPaymentAmountInput(prefix, "weekly")
+            }
+          }, {
+            value: "Fortnightly",
+            text: "Every 2 weeks",
+            checked: checked(jobref + "currentWorkPaid", "Fortnightly"),
+            conditional: {
+              html: netPaymentAmountInput(prefix, "fortnightly")
+            }
+          }, {
+            value: "FourWeekly",
+            text: "Every 4 weeks",
+            checked: checked(jobref + "currentWorkPaid", "FourWeekly"),
+            conditional: {
+              html: netPaymentAmountInput(prefix, "four-weekly")
+            }
+          }, {
+            value: "Monthly",
+            text: "Every month",
+            checked: checked(jobref + "currentWorkPaid", "Monthly"),
+            conditional: {
+              html: netPaymentAmountInput(prefix, "monthly")
+            }
+          }]
+        })}} -->
+
+      <!-- save the value from the last screen with the current job no -->
+      <!-- {{ govukInput({
+          type: "hidden",
+          id: jobref + "ceCurrentWorkType",
+          name: jobref + "ceCurrentWorkType",
+          value: data["ceCurrentWorkType"]
+        })  }} -->
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+    </div>
+  </div>
+
+{% endblock %}
