@@ -1,0 +1,74 @@
+
+{% extends "layout-live-nobanner.html" %}
+
+{% block pageTitle %}
+  DWP - Jobseeker&rsquo;s Allowance
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        <span class="govuk-caption-xl">Previous employment</span>
+        Why did this job end?
+      </h1>
+
+      <form action="name" method="post">
+
+        {% set peOtherHtml %}
+            {{ govukCharacterCount({
+              name: "pe-more-detail",
+              id: "pe-more-detail",
+              value: data['pe-more-detail'],
+              label: {
+                text: "Can you provide more detail about why this job ended?"
+              },
+              maxlength: 200
+        }) }}
+
+        {% endset -%}
+
+        {{ govukRadios({
+          idPrefix: 'pe-why-end',
+          name: 'peWhyEnd',
+          items: [{
+            value: "Redundancy",
+            checked: checked("peWhyEnd", "Redundancy"),
+            text: "Redundancy"
+          }, {
+            value: "Long term sickness",
+            checked: checked("peWhyEnd", "Long term sickness"),
+            text: "Long term sickness"
+          }, {
+            value: "Dismissal",
+            checked: checked("peWhyEnd", "Dismissal"),
+            text: "Dismissal"
+          }, {
+            value: "Left voluntarily",
+            checked: checked("peWhyEnd", "Left voluntarily"),
+            text: "Left voluntarily"
+          }, {
+            value: "End of contract",
+            checked: checked("peWhyEnd", "End of contract"),
+            text: "End of contract"
+          }, {
+            value: "Other",
+            checked: checked("peWhyEnd", "Other"),
+            text: "Other",
+            conditional: {
+              html: peOtherHtml
+            }
+          }]
+        }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+    </div>
+  </div>
+
+{% endblock %}

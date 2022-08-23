@@ -54,7 +54,7 @@ module.exports = function (env) {
       const STEP = i - ROW_COUNT
 
       nextSixMonths.push({
-        value: `${MONTH_NAMES[STEP].toLowerCase()}-${(ROW + 1)}`,
+        value: `${MONTH_NAMES[STEP].toLowerCase()}`,
         text: MONTH_NAMES[STEP]
       })
     }
@@ -69,8 +69,8 @@ module.exports = function (env) {
     if (typeof date !== 'undefined') {
       const rightNow = moment(new Date(date))
 
-      if (typeof method !== 'undefined' && 
-        typeof amount !== 'undefined' && 
+      if (typeof method !== 'undefined' &&
+        typeof amount !== 'undefined' &&
         typeof unit !== 'undefined') {
 
         const configObj = {
@@ -86,7 +86,7 @@ module.exports = function (env) {
           newDate = rightNow[configObj.method](configObj.amount, configObj.unit)
         }
       }
-      
+
       newDate = rightNow.format('DD MM YYYY')
     } else {
       const month = newDate.getMonth() + 1 < 10 ? `0${newDate.getMonth() + 1}` : newDate.getMonth()
