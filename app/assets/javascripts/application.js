@@ -107,3 +107,21 @@ if(document.querySelector(".date")) {
 if(document.querySelector(".short-date")) {
   document.querySelector(".short-date").innerHTML = d + " " + monthNamesShort[m] + " " + y;
 }
+
+// convert month numbers to names
+var months = document.getElementById("months");
+function myFunction() {
+    months.innerHTML = months.innerHTML.replace('01', 'January');
+    months.innerHTML = months.innerHTML.replace('02', 'February');
+    months.innerHTML = months.innerHTML.replace('03', 'March');
+    months.innerHTML = months.innerHTML.replace('04', 'April');
+    months.innerHTML = months.innerHTML.replace('05', 'May');
+    months.innerHTML = months.innerHTML.replace('06', 'June');
+    months.innerHTML = months.innerHTML.replace('07', 'July');
+    months.innerHTML = months.innerHTML.replace('08', 'August');
+    months.innerHTML = months.innerHTML.replace('09', 'September');
+    months.innerHTML = months.innerHTML.replace('10', 'October');
+    months.innerHTML = months.innerHTML.replace('11', 'November');
+    months.innerHTML = months.innerHTML.replace('12', 'December');
+}
+myFunction();
