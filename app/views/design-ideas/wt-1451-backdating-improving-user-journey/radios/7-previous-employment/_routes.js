@@ -3,9 +3,9 @@ const router = express.Router();
 
 const MAX_PREVIOUS_JOBS = 4;
 
-const BASE_PATH = 'design-ideas/wt-1451-backdating-improving-user-journey/radios/7-previous-employment';
+const BASE_PATH = 'design-ideas/wt-1451-backdating-improving-user-journey/checkboxes/7-previous-employment';
 const ABS_BASE_PATH = `/${BASE_PATH}`;
-const NEXT_PATH = '/design-ideas/wt-1451-backdating-improving-user-journey/radios/8-abroad';
+const NEXT_PATH = '/design-ideas/wt-1451-backdating-improving-user-journey/checkboxes/8-abroad';
 
 /*
  * Branching for previous employment
@@ -13,7 +13,7 @@ const NEXT_PATH = '/design-ideas/wt-1451-backdating-improving-user-journey/radio
 
 // Redirect /previous-employment to first question in sequence
 router.get('/', function (req, res) {
-  res.redirect('/design-ideas/wt-1451-backdating-improving-user-journey/radios/7-previous-employment/job-ended-last-six-months');
+  res.redirect('/design-ideas/wt-1451-backdating-improving-user-journey/checkboxes/7-previous-employment/job-ended-last-six-months');
 });
 
 // After last 6 months we ask when did you work for employer

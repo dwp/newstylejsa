@@ -11,11 +11,11 @@
     <div class="govuk-grid-column-two-thirds">
 
       <h1 class="govuk-heading-l">
-        <span class="govuk-caption-xl">Application start date</span>
-        Have you asked for advice about applying for New Style Jobseeker&rsquo;s Allowance since 22 July 2020?
+        <span class="govuk-caption-xl">Claim start date</span>
+        Have you asked for advice about applying for New Style Jobseeker&rsquo;s Allowance since {{ data['claim-start-day'] }} <span class="months">{{ data['claim-start-month'] }}</span> {{ data['claim-start-year'] }}?
       </h1>
       <p>This could be spoken or written advice from a government department, a legal or professional adviser or from an advice agency, such as Citizens Advice.</p>
-      <form action="/v2_1-citizen/3-details/nino" method="post">
+      <form action="/design-ideas/wt-1451-backdating-improving-user-journey/radios/3-details/nino" method="post">
 
         {% set askedAdviceYes %}
 

@@ -2,9 +2,9 @@ const express = require('express');
 const router = express.Router();
 //const pensionTracker = require('pension-tracker');
 
-const BASE_PATH = 'design-ideas/wt-1451-backdating-improving-user-journey/radios/9-pensions';
+const BASE_PATH = 'design-ideas/wt-1451-backdating-improving-user-journey/checkboxes/9-pensions';
 const ABS_BASE_PATH = `/${BASE_PATH}`;
-const NEXT_PATH = '/design-ideas/wt-1451-backdating-improving-user-journey/radios/10-education';
+const NEXT_PATH = '/design-ideas/wt-1451-backdating-improving-user-journey/checkboxes/10-education';
 
 // Redirect /education to first question in sequence
 router.get('/', function (req, res) {

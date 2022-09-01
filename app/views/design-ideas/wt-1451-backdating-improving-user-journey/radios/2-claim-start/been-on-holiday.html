@@ -11,8 +11,8 @@
     <div class="govuk-grid-column-two-thirds">
 
       <h1 class="govuk-heading-l">
-        <span class="govuk-caption-xl">Application start date</span>
-        Have you travelled outside of England, Wales or Scotland since 22 July 2020?
+        <span class="govuk-caption-xl">Claim start date</span>
+        Have you travelled outside of England, Wales or Scotland since {{ data['claim-start-day'] }} <span class="months">{{ data['claim-start-month'] }}</span> {{ data['claim-start-year'] }}?
       </h1>
       <p class="govuk-body">
         Select yes if you have travelled outside of Great Britain (England, Wales or Scotland) for any reason.

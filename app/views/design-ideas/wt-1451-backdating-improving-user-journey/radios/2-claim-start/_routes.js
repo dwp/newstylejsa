@@ -14,14 +14,28 @@ router.post('/start-date', function (req, res) {
     res.redirect(`${NEXT_PATH}/nino`);
   } else {
     // No, I want my claim to start from an earlier date
-    res.redirect(`${ABS_BASE_PATH}/change-date`);
+    res.redirect(`${ABS_BASE_PATH}/reason`);
+  };
+});
+
+// Why did you not apply for New Style JSA before today?
+router.post('/reason', function (req, res) {
+
+  if (req.session.data['reason'].includes('Other'))  {
+    res.redirect(`${ABS_BASE_PATH}/ineligible`)
+  } else if (req.session.data['reason'].includes('You did not know you could get New Style JSA'))  {
+    res.redirect(`${ABS_BASE_PATH}/ineligible`)
+  } else if (req.session.data['reason'].includes('You thought you would get a job'))  {
+    res.redirect(`${ABS_BASE_PATH}/ineligible`)
+  } else {
+    res.redirect(`${ABS_BASE_PATH}/reason-info`);
   };
 });
 
 // When do you want your claim to start?
-router.post('/change-date', function (req, res) {
-  res.redirect(`${NEXT_PATH}`);
-});
+// router.post('/change-date', function (req, res) {
+//   res.redirect(`${NEXT_PATH}`);
+// });
 
 // Did you ask for advice?
 // router.post('/asked-for-advice', function (req, res) {

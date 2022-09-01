@@ -20,7 +20,7 @@ router.post('/radios', function (req, res) {
 });
 
 router.post('/checkboxes', function (req, res) {
-  res.redirect(`${ABS_BASE_PATH}/checkboxes?show=errors`);
+  res.redirect(`${ABS_BASE_PATH}/radios?show=errors`);
 });
 
 module.exports = router;
