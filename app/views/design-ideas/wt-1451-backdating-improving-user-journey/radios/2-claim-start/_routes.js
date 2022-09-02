@@ -21,11 +21,11 @@ router.post('/start-date', function (req, res) {
 // Why did you not apply for New Style JSA before today?
 router.post('/reason', function (req, res) {
 
-  if (req.session.data['reason'].includes('Other'))  {
+  if (req.session.data['reason'].includes('You did not think you could claim New Style JSA straight away after being made redundant'))  {
     res.redirect(`${ABS_BASE_PATH}/ineligible`)
-  } else if (req.session.data['reason'].includes('You did not know you could get New Style JSA'))  {
+  } else if (req.session.data['reason'].includes('You did not know you could claim New Style JSA'))  {
     res.redirect(`${ABS_BASE_PATH}/ineligible`)
-  } else if (req.session.data['reason'].includes('You thought you would get a job'))  {
+  } else if (req.session.data['reason'].includes('You did not think you were eligible for New Style JSA'))  {
     res.redirect(`${ABS_BASE_PATH}/ineligible`)
   } else {
     res.redirect(`${ABS_BASE_PATH}/reason-info`);

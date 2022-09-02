@@ -12,21 +12,28 @@
 
       <h1 class="govuk-heading-l">
         <span class="govuk-caption-xl">Claim start date</span>
-        You may not be eligible for backdating
+        You are not be eligible for backdating
       </h1>
 
-      <p>This is based on your answer to the previous question. You can still continue to claim from today's date.</p>
+      <p>This is based on your answer to the previous question.</p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>{{ data['reason'] }}</li>
+
+      </ul>
+
+      <p>You can continue to claim from today's date.</p>
 
       <form action="/design-ideas/wt-1451-backdating-improving-user-journey/checkboxes/3-details/nino" method="post">
 
         {{ govukButton({
           classes: "govuk-!-margin-top-6",
-          text: "Continue to claim from today's date"
+          text: "Claim from today's date"
         }) }}
 
       </form>
 
-      <a href="reason-info" class="govuk-body">I want to backdate my claim</a>
+      <a href="reason-info" class="govuk-body">I still want to backdate my claim</a>
     </div>
   </div>
 
