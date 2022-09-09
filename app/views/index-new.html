@@ -5,9 +5,10 @@
 {% endblock %}
 
 {% block content %}
-
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
   <h1 class="govuk-heading-l">
-    <span class="govuk-caption-l">Prototypes</span>
+    <span class="govuk-caption-l">Prototype</span>
     Apply for New Style Jobseeker&rsquo;s Allowance
   </h1>
 
@@ -56,40 +57,37 @@
     </ul>'
     }) }}
 
-  {{ govukDetails({
-    summaryText: "Version 2.1 shortcut links",
-    html: '
-      <div class="govuk-clearfix"><div class="govuk-grid-column-one-half">
-        <ul class="govuk-list govuk-list--bullet">
-          <li><a href="v2_1-citizen/1-eligibility/introduction">Eligibility</a></li>
-          <li><a href="v2_1-citizen/2-claim-start/start-date">Claim start date</a></li>
-          <li><a href="v2_1-citizen/3-details">Personal details (NINO)</a></li>
-          <li><a href="v2_1-citizen/4-other-benefits">Other benefits</a></li>
-          <li><a href="v2_1-citizen/5-jury-service">Jury service</a></li>
-          <li><a href="v2_1-citizen/6-current-employment">Current employment</a></li>
-          <li><a href="v2_1-citizen/7-previous-employment">Previous employment</a></li>
-          <li><a href="v2_1-citizen/8-abroad">Worked or claimed benefit outside UK</a></li>
-        <ul>
-      </div>
-      <div class="govuk-grid-column-one-half">
-        <ul class="govuk-list govuk-list--bullet">
-          <li><a href="v2_1-citizen/9-pensions/9a-current-pension">Current pension</a></li>
-          <li><a href="v2_1-citizen/9-pensions/9b-deferred-pension">Deferred pension</a></li>
-          <li><a href="v2_1-citizen/9-pensions/9c-future-pension">Future pension</a></li>
-          <li><a href="v2_1-citizen/10-education">Education or training</a></li>
-          <li><a href="v2_1-citizen/11-availability">Availability</a></li>
-          <li><a href="v2_1-citizen/check-answers">Check your answers</a></li>
-          <li><a href="v2_1-citizen/declaration">Declaration</a></li>
-          <li><a href="v2_1-citizen/confirmation">Confirmation</a></li>
-        </ul>
-      </div>'
-    }) }}
-
     {{ govukButton({
       text: "Start version 2.1",
       href: "v2_1-citizen/1-eligibility/introduction",
       isStartButton: true
     }) }}
+  </div>
+
+  <div class="govuk-grid-column-one-quarter govuk-!-padding-0 govuk-!-margin-right-4" style="border-top: 4px solid #1d71b8; float: right;">
+    <h3 class="govuk-heading-s govuk-!-margin-top-2">
+      Quick links
+    </h3>
+      <ul class="govuk-list govuk-!-font-size-16">
+        <li><a href="v2_1-citizen/1-eligibility/introduction">Eligibility</a></li>
+        <li><a href="v2_1-citizen/2-claim-start/start-date">Claim start date</a></li>
+        <li><a href="v2_1-citizen/3-details">Personal details (NINO)</a></li>
+        <li><a href="v2_1-citizen/4-other-benefits">Other benefits</a></li>
+        <li><a href="v2_1-citizen/5-jury-service">Jury service</a></li>
+        <li><a href="v2_1-citizen/6-current-employment">Current employment</a></li>
+        <li><a href="v2_1-citizen/7-previous-employment">Previous employment</a></li>
+        <li><a href="v2_1-citizen/8-abroad">Worked or claimed benefit outside UK</a></li>
+        <li><a href="v2_1-citizen/9-pensions/9a-current-pension">Current pension</a></li>
+        <!-- <li><a href="v2_1-citizen/9-pensions/9b-deferred-pension">Deferred pension</a></li> -->
+        <!-- <li><a href="v2_1-citizen/9-pensions/9c-future-pension">Future pension</a></li> -->
+        <li><a href="v2_1-citizen/10-education">Education or training</a></li>
+        <!-- <li><a href="v2_1-citizen/11-availability">Availability</a></li> -->
+        <li><a href="v2_1-citizen/check-answers">Check your answers</a></li>
+        <li><a href="v2_1-citizen/declaration">Declaration</a></li>
+        <li><a href="v2_1-citizen/confirmation">Confirmation</a></li>
+      </ul>
+  </div>
+</div>
 
 
   <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
