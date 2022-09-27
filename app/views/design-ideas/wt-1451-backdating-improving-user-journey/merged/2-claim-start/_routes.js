@@ -21,14 +21,32 @@ router.post('/start-date', function (req, res) {
 // Why did you not apply for New Style JSA before today?
 router.post('/reason', function (req, res) {
 
-  if (req.session.data['reason'].includes('None of these circumstances apply to me'))  {
-    res.redirect(`${ABS_BASE_PATH}/ineligible`)
-  } else if (req.session.data['reason'].includes('You did not know you could claim New Style JSA'))  {
-    res.redirect(`${ABS_BASE_PATH}/ineligible`)
-  } else if (req.session.data['reason'].includes('You thought you would get a job'))  {
-    res.redirect(`${ABS_BASE_PATH}/ineligible`)
+  if (req.session.data['reason'].includes('Your partner, parent, child, brother or sister has died'))  {
+    res.redirect(`${ABS_BASE_PATH}/why-have-you-not-claimed`)
+  } else if (req.session.data['reason'].includes('You were caring for someone with an illness or disability'))  {
+    res.redirect(`${ABS_BASE_PATH}/why-have-you-not-claimed`)
+  } else if (req.session.data['reason'].includes('You had a domestic emergency, for example burglary, vehicle theft or vehicle accident'))  {
+    res.redirect(`${ABS_BASE_PATH}/why-have-you-not-claimed`)
+  } else if (req.session.data['reason'].includes('The relationship with your partner ended'))  {
+    res.redirect(`${ABS_BASE_PATH}/why-have-you-not-claimed`)
+  } else if (req.session.data['reason'].includes('You have problems communicating because you are blind or deaf'))  {
+    res.redirect(`${ABS_BASE_PATH}/why-have-you-not-claimed`)
+  } else if (req.session.data['reason'].includes('You have problems communicating because of a learning, language or literacy difficulty'))  {
+    res.redirect(`${ABS_BASE_PATH}/why-have-you-not-claimed`)
+  } else if (req.session.data['reason'].includes('You were told that you could not get New Style JSA by the Department for Work and Pensions'))  {
+    res.redirect(`${ABS_BASE_PATH}/why-have-you-not-claimed`)
+  } else if (req.session.data['reason'].includes('You received written advice that you could not get New Style JSA by a legal or professional advisor or an advice agency like Citizens Advice'))  {
+    res.redirect(`${ABS_BASE_PATH}/why-have-you-not-claimed`)
+  } else if (req.session.data['reason'].includes('Your attempt to claim was unsuccessful because of a problem with DWP telephone lines or online systems'))  {
+    res.redirect(`${ABS_BASE_PATH}/why-have-you-not-claimed`)
+  } else if (req.session.data['reason'].includes('Your attempt to claim was unsuccessful because of a problem with your local Jobcentre Plus office'))  {
+    res.redirect(`${ABS_BASE_PATH}/why-have-you-not-claimed`)
+  } else if (req.session.data['reason'].includes('You could not get to your local Jobcentre Plus office because of transport difficulties and alternatives were not available'))  {
+    res.redirect(`${ABS_BASE_PATH}/why-have-you-not-claimed`)
+  } else if (req.session.data['reason'].includes('You were receiving Employment Support Allowance and were not told that your claim had expired'))  {
+    res.redirect(`${ABS_BASE_PATH}/why-have-you-not-claimed`)
   } else {
-    res.redirect(`${ABS_BASE_PATH}/why-have-you-not-claimed`);
+    res.redirect(`${ABS_BASE_PATH}/ineligible`);
   };
 });
 
