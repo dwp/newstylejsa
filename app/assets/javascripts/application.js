@@ -108,6 +108,18 @@ if(document.querySelector(".short-date")) {
   document.querySelector(".short-date").innerHTML = d + " " + monthNamesShort[m] + " " + y;
 }
 
+// Show backdate date
+backdateDate = new Date();
+var numberOfDaysToAdd = -60;
+backdateDate.setDate(backdateDate.getDate() + numberOfDaysToAdd);
+ny = backdateDate.getFullYear();
+nm = backdateDate.getMonth();
+nd = backdateDate.getDate();
+
+if(document.querySelector(".backdate-date")) {
+  document.querySelector(".backdate-date").innerHTML = nd + " " + nm + " " + ny;
+}
+
 // convert month numbers to names
 var months = document.querySelector(".months");
 
