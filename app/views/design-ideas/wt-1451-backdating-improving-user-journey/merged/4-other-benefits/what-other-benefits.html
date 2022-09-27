@@ -11,23 +11,21 @@
     <div class="govuk-grid-column-two-thirds">
 
       <h1 class="govuk-heading-l">
-        <span class="govuk-caption-xl">Claim start date</span>
-        Tell us more about why you did not claim before today's date
+        <span class="govuk-caption-xl">Other benefits</span>
+        Tell us what other benefits you have applied for in the last 12 weeks
       </h1>
 
-      <form action="any-paid-work" method="post">
-
+      <form action="what-other-benefits" method="post">
         {% call govukFieldset({
         }) %}
 
         {{ govukCharacterCount({
-          name: "why-did-you-not-claim",
-          id: "why-did-you-not-claim",
-          rows: 5,
-          maxlength: 1000,
-          value: data['why-did-you-not-claim'],
-          label: {
-            text: "Give as much information as you can about why you did not apply sooner."
+          name: "ob-more-detail",
+          id: "ob-more-detail",
+          maxlength: 100,
+          value: data['ob-more-detail'],
+          hint: {
+            html: "For example, Carer's Allowance"
           }
         }) }}
 

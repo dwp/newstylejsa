@@ -1,9 +1,9 @@
 const express = require('express');
 const router = express.Router();
 
-const BASE_PATH = 'design-ideas/wt-1451-backdating-improving-user-journey/radios/2-claim-start';
+const BASE_PATH = 'design-ideas/wt-1451-backdating-improving-user-journey/merged/2-claim-start';
 const ABS_BASE_PATH = `/${BASE_PATH}`;
-const NEXT_PATH = '/design-ideas/wt-1451-backdating-improving-user-journey/radios/3-details';
+const NEXT_PATH = '/design-ideas/wt-1451-backdating-improving-user-journey/merged/3-details';
 
 // Do you want to change the start date?
 router.post('/start-date', function (req, res) {
@@ -21,18 +21,14 @@ router.post('/start-date', function (req, res) {
 // Why did you not apply for New Style JSA before today?
 router.post('/reason', function (req, res) {
 
-  if (req.session.data['reason'].includes('You did not think you could claim New Style JSA straight away after being made redundant'))  {
+  if (req.session.data['reason'].includes('None of these circumstances apply to me'))  {
     res.redirect(`${ABS_BASE_PATH}/ineligible`)
   } else if (req.session.data['reason'].includes('You did not know you could claim New Style JSA'))  {
     res.redirect(`${ABS_BASE_PATH}/ineligible`)
-  } else if (req.session.data['reason'].includes('You did not think you were eligible for New Style JSA'))  {
-    res.redirect(`${ABS_BASE_PATH}/ineligible`)
   } else if (req.session.data['reason'].includes('You thought you would get a job'))  {
     res.redirect(`${ABS_BASE_PATH}/ineligible`)
-  } else if (req.session.data['reason'].includes('None of these circumstances applied to me in the past 3 months'))  {
-    res.redirect(`${ABS_BASE_PATH}/ineligible`)
   } else {
-    res.redirect(`${ABS_BASE_PATH}/reason-info`);
+    res.redirect(`${ABS_BASE_PATH}/why-have-you-not-claimed`);
   };
 });
 

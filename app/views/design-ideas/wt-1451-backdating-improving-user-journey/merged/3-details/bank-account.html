@@ -1,0 +1,94 @@
+
+{% extends "layout-live-nobanner.html" %}
+
+{% block pageTitle %}
+  DWP - Jobseeker&rsquo;s Allowance
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        <span class="govuk-caption-xl">Personal details</span>
+        Your bank details
+      </h1>
+
+      <form action="/v2_1-citizen/4-other-benefits/guard" method="post">
+
+        {% call govukFieldset({
+        }) %}
+
+        <p>This is the account your New Style Jobseeker&rsquo;s Allowance will be paid into.</p>
+
+        {{ govukDetails({
+            summaryText: "What to do if you don't have a bank account",
+            html: '<p>We can use an account of a trusted family member or friend if you don&rsquo;t have a bank account.</p>
+            <p><a href="/v2_1-citizen/4-other-benefits/guard">Continue without providing bank details</a></p>'
+        }) }}
+
+        {{ govukInput({
+            label: {
+                text: "Name of account holder"
+            },
+            id: "pay-account-holder",
+            name: "pay-account-holder",
+            value: data['pay-account-holder'],
+            classes: "govuk-input--width-20"
+        }) }}
+
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="sort-code">
+            Sort code
+          </label>
+          <!-- <div id="sort-code-hint" class="govuk-hint">
+            Must be 6 digits long
+          </div> -->
+          <input class="govuk-input govuk-input--width-5" id="sort-code" name="sort-code" type="text" spellcheck="false" aria-describedby="sort-code-hint" inputmode="numeric" value="{{ data['sort-code'] }}">
+        </div>
+
+
+        {{ govukInput({
+            label: {
+                text: "Account number"
+            },
+            id: "pay-account-number",
+            name: "pay-account-number",
+            value: data['pay-account-number'],
+            classes: "govuk-input--width-20",
+            type: "number",
+            attributes: {
+                "maxlength": "18"
+            }
+        }) }}
+
+        {{ govukInput({
+            label: {
+                text: "Building society roll or reference number (optional)"
+            },
+            id: "pay-reference-number",
+            name: "pay-reference-number",
+            value: data['pay-reference-number'],
+            classes: "govuk-input--width-20",
+            type: "number",
+            hint: {
+                text: "If your building society uses a roll or reference number, you will find it on your passbook."
+            },
+            attributes: {
+                "maxlength": "18"
+            }
+        }) }}
+
+
+        {% endcall %}
+
+          {{ govukButton({
+              text: "Continue"
+          }) }}
+
+      </form>
+    </div>
+  </div>
+
+{% endblock %}

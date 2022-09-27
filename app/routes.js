@@ -288,6 +288,84 @@ router.use(
   require("./views/design-ideas/wt-1451-backdating-improving-user-journey/radios/error/_routes")
 );
 
+// Merged VERSION
+
+router.use(
+  "/design-ideas/wt-1451-backdating-improving-user-journey/merged/1-eligibility/",
+  require("./views/design-ideas/wt-1451-backdating-improving-user-journey/merged/1-eligibility/_routes")
+);
+
+// This moves `abroad` routing to `abroad` directory
+router.use(
+  "/design-ideas/wt-1451-backdating-improving-user-journey/merged/2-claim-start/",
+  require("./views/design-ideas/wt-1451-backdating-improving-user-journey/merged/2-claim-start/_routes")
+);
+
+// This moves details routing to details directory
+router.use(
+  "/design-ideas/wt-1451-backdating-improving-user-journey/merged/3-details/",
+  require("./views/design-ideas/wt-1451-backdating-improving-user-journey/merged/3-details/_routes")
+);
+
+// Redirect to first question in details sequence
+router.get("/design-ideas/wt-1451-backdating-improving-user-journey/merged/3-details/", function (req, res) {
+  res.redirect("/design-ideas/wt-1451-backdating-improving-user-journey/merged/3-details/nino");
+});
+
+// This moves `other-benefits` routing to `other-benefits` directory
+router.use(
+  "/design-ideas/wt-1451-backdating-improving-user-journey/merged/4-other-benefits/",
+  require("./views/design-ideas/wt-1451-backdating-improving-user-journey/merged/4-other-benefits/_routes")
+);
+
+// This moves jury-service routing to jury-service directory
+router.use(
+  "/design-ideas/wt-1451-backdating-improving-user-journey/merged/5-jury-service/",
+  require("./views/design-ideas/wt-1451-backdating-improving-user-journey/merged/5-jury-service/_routes")
+);
+
+// This moves current-employment routing to current-employment directory
+router.use(
+  "/design-ideas/wt-1451-backdating-improving-user-journey/merged/6-current-employment/",
+  require("./views/design-ideas/wt-1451-backdating-improving-user-journey/merged/6-current-employment/_routes")
+);
+
+// This moves previous-employment routing to previous-employment directory
+router.use(
+  "/design-ideas/wt-1451-backdating-improving-user-journey/merged/7-previous-employment/",
+  require("./views/design-ideas/wt-1451-backdating-improving-user-journey/merged/7-previous-employment/_routes")
+);
+
+// This moves `abroad` routing to `abroad` directory
+router.use(
+  "/design-ideas/wt-1451-backdating-improving-user-journey/merged/8-abroad/",
+  require("./views/design-ideas/wt-1451-backdating-improving-user-journey/merged/8-abroad/_routes")
+);
+
+// This moves `pensions` routing to `pensions` directory
+router.use(
+  "/design-ideas/wt-1451-backdating-improving-user-journey/merged/9-pensions/",
+  require("./views/design-ideas/wt-1451-backdating-improving-user-journey/merged/9-pensions/_routes")
+);
+
+// This moves `education` routing to `education` directory
+router.use(
+  "/design-ideas/wt-1451-backdating-improving-user-journey/merged/10-education/",
+  require("./views/design-ideas/wt-1451-backdating-improving-user-journey/merged/10-education/_routes")
+);
+
+// This moves `availability` routing to `availability` directory
+router.use(
+  "/design-ideas/wt-1451-backdating-improving-user-journey/merged/11-availability/",
+  require("./views/design-ideas/wt-1451-backdating-improving-user-journey/merged/11-availability/_routes")
+);
+
+// This moves `error` routing to `error` directory
+router.use(
+  "/design-ideas/wt-1451-backdating-improving-user-journey/merged/error/",
+  require("./views/design-ideas/wt-1451-backdating-improving-user-journey/merged/error/_routes")
+);
+
 ///////////////////////////////////////////////////////////////////////////////
 //                                                                           //
 //  ROUTING FOR DFC CONTENT                                                  //
