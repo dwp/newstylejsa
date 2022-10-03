@@ -21,11 +21,11 @@ router.post('/start-date', function (req, res) {
 // Why did you not apply for New Style JSA before today?
 router.post('/reason', function (req, res) {
 
-  if (req.session.data['reason'].includes('Your partner, parent, child, brother or sister has died'))  {
+  if (req.session.data['reason'].includes('Your partner, parent, child, brother or sister died'))  {
     res.redirect(`${ABS_BASE_PATH}/why-have-you-not-claimed`)
   } else if (req.session.data['reason'].includes('You were caring for someone with an illness or disability'))  {
     res.redirect(`${ABS_BASE_PATH}/why-have-you-not-claimed`)
-  } else if (req.session.data['reason'].includes('You had a domestic emergency, for example burglary, vehicle theft or vehicle accident'))  {
+  } else if (req.session.data['reason'].includes('You had a domestic emergency, for example, a house fire, house flooding or a serious family dispute'))  {
     res.redirect(`${ABS_BASE_PATH}/why-have-you-not-claimed`)
   } else if (req.session.data['reason'].includes('The relationship with your partner ended'))  {
     res.redirect(`${ABS_BASE_PATH}/why-have-you-not-claimed`)
@@ -35,7 +35,7 @@ router.post('/reason', function (req, res) {
     res.redirect(`${ABS_BASE_PATH}/why-have-you-not-claimed`)
   } else if (req.session.data['reason'].includes('You were told that you could not get New Style JSA by the Department for Work and Pensions'))  {
     res.redirect(`${ABS_BASE_PATH}/why-have-you-not-claimed`)
-  } else if (req.session.data['reason'].includes('You received written advice that you could not get New Style JSA by a legal or professional advisor or an advice agency like Citizens Advice'))  {
+  } else if (req.session.data['reason'].includes('You received written advice that you could not get New Style JSA by a legal advisor or an advice agency like Citizens Advice'))  {
     res.redirect(`${ABS_BASE_PATH}/why-have-you-not-claimed`)
   } else if (req.session.data['reason'].includes('Your attempt to claim was unsuccessful because of a problem with DWP telephone lines or online systems'))  {
     res.redirect(`${ABS_BASE_PATH}/why-have-you-not-claimed`)
