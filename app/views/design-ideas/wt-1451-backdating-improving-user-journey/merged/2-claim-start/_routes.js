@@ -25,7 +25,7 @@ router.post('/reason', function (req, res) {
     res.redirect(`${ABS_BASE_PATH}/why-have-you-not-claimed`)
   } else if (req.session.data['reason'].includes('You were caring for someone with an illness or disability'))  {
     res.redirect(`${ABS_BASE_PATH}/why-have-you-not-claimed`)
-  } else if (req.session.data['reason'].includes('You had a domestic emergency, for example, a house fire, house flooding or a serious family dispute'))  {
+  } else if (req.session.data['reason'].includes('You had a domestic emergency, for example, flood, fire, burglary or other unexpected serious domestic incidents'))  {
     res.redirect(`${ABS_BASE_PATH}/why-have-you-not-claimed`)
   } else if (req.session.data['reason'].includes('The relationship with your partner ended'))  {
     res.redirect(`${ABS_BASE_PATH}/why-have-you-not-claimed`)
@@ -43,7 +43,7 @@ router.post('/reason', function (req, res) {
     res.redirect(`${ABS_BASE_PATH}/why-have-you-not-claimed`)
   } else if (req.session.data['reason'].includes('You could not get to your local Jobcentre Plus office because of transport difficulties and alternatives were not available'))  {
     res.redirect(`${ABS_BASE_PATH}/why-have-you-not-claimed`)
-  } else if (req.session.data['reason'].includes('You were receiving Employment Support Allowance and were not told that your claim had expired'))  {
+  } else if (req.session.data['reason'].includes('You were receiving Employment Support Allowance and were not told by DWP your claim had expired'))  {
     res.redirect(`${ABS_BASE_PATH}/why-have-you-not-claimed`)
   } else {
     res.redirect(`${ABS_BASE_PATH}/ineligible`);
