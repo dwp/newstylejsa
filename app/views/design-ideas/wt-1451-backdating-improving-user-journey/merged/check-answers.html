@@ -63,6 +63,21 @@
 
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key govuk-!-width-one-half">
+            Tell us more about why did you not apply before today?
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['why-did-you-not-claim'] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="/design-ideas/wt-1451-backdating-improving-user-journey/merged/2-claim-start/why-have-you-not-claimed">
+              Change
+              <span class="govuk-visually-hidden"> answer</span>
+            </a>
+          </dd>
+        </div>
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-width-one-half">
             Available for work since
             {% if data['claimstart']=="yes" %}
               <span class='date'></span>
@@ -97,21 +112,6 @@
           </dd>
           <dd class="govuk-summary-list__actions">
             <a href="/design-ideas/wt-1451-backdating-improving-user-journey/merged/2-claim-start/searching-for-work">
-              Change
-              <span class="govuk-visually-hidden"> answer</span>
-            </a>
-          </dd>
-        </div>
-
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key govuk-!-width-one-half">
-            Why did you not apply before today?
-          </dt>
-          <dd class="govuk-summary-list__value">
-            {{ data['why-did-you-not-claim'] }}
-          </dd>
-          <dd class="govuk-summary-list__actions">
-            <a href="/design-ideas/wt-1451-backdating-improving-user-journey/merged/2-claim-start/why-have-you-not-claimed">
               Change
               <span class="govuk-visually-hidden"> answer</span>
             </a>
