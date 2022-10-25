@@ -1,0 +1,55 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  DWP - Jobseeker&rsquo;s Allowance
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        <span class="govuk-caption-xl">Pension or annuity</span>
+        Are you getting money from a pension or an annuity?
+      </h1>
+
+      <form action="provider-name" method="post">
+
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset" aria-describedby="pension-hint">
+            <div id="pension-hint" class="govuk-hint">
+              <p>You can tell us about more than one and you can enter them in any order.</p>
+              <p>A <strong>pension</strong> is an income you receive after you retire from a job. An <strong>annuity</strong> is an insurance product that guarantees a regular income for the rest of your life.</p>
+            </div>
+            <div class="govuk-inset-text">
+                You do not need to tell us about a pension or annuity if it's inherited from someone who died.
+            </div>
+            <div class="govuk-radios govuk-radios--inline" data-module="govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="guard" name="guard" type="radio" value="Yes">
+                <label class="govuk-label govuk-radios__label" for="guard">
+                  Yes
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="guard-2" name="guard" type="radio" value="No">
+                <label class="govuk-label govuk-radios__label" for="guard-2">
+                  No
+                </label>
+              </div>
+            </div>
+
+          </fieldset>
+        </div>
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+    </div>
+  </div>
+
+{% endblock %}
