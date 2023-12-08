@@ -1,0 +1,46 @@
+
+{% extends "layout-live-nobanner.html" %}
+
+{% block pageTitle %}
+  DWP - Jobseeker&rsquo;s Allowance
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        <span class="govuk-caption-xl">Claim start date</span>
+        Were you available for work from {{ data['claim-start-day'] }} <span class="months">{{ data['claim-start-month'] }}</span> {{ data['claim-start-year'] }}?
+      </h1>
+      <form action="searching-for-work" method="post">
+
+        {{ govukRadios({
+          classes: "govuk-radios--inline",
+          idPrefix: "ce-currently-working",
+          name: "ceCurrentlyWorking",
+          hint: {
+            text: ""
+          },
+          items: [{
+            value: "yes",
+            text: "Yes",
+            checked: checked("ceCurrentlyWorking", "yes")
+          },
+          {
+            value: "no",
+            text: "No",
+            checked: checked("ceCurrentlyWorking", "no")
+          }]
+        }) }}
+
+        {{ govukButton({
+            text: "Continue"
+        }) }}
+
+      </form>
+    </div>
+  </div>
+
+{% endblock %}

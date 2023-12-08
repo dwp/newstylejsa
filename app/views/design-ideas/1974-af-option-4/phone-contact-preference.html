@@ -1,0 +1,108 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  DWP - Jobseeker&rsquo;s Allowance
+{% endblock %}
+
+{% block beforeContent %}
+  <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <span class="govuk-caption-xl">Accessibility</span>
+      <h1 class="govuk-heading-l">What do you need instead of phone calls?</h1>
+
+      <form action="nino" method="get">
+
+        {% from "govuk/components/radios/macro.njk" import govukRadios %}
+        {% from "govuk/components/input/macro.njk" import govukInput %}
+
+        {% set emailHtml %}
+        {{ govukInput({
+          id: "contact-by-email",
+          name: "contact-by-email",
+          type: "email",
+          autocomplete: "email",
+          spellcheck: false,
+          classes: "govuk-!-width-one-third",
+          label: {
+            text: "Enter an email address"
+          },
+          hint: {
+            text: "For example name@example.com"
+          }
+        }) }}
+        {% endset -%}
+
+        {% set phoneHtml %}
+        {{ govukInput({
+          id: "contact-by-phone",
+          name: "contact-by-phone",
+          type: "tel",
+          autocomplete: "tel",
+          classes: "govuk-!-width-one-third",
+          label: {
+            text: "i-now number"
+          }
+        }) }}
+        {% endset -%}
+
+
+        {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+        {{ govukRadios({
+          idPrefix: "phone-contact-preferences",
+          name: "phone-contact-preferences",
+          fieldset: {
+            legend: {
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+        hint: {
+           text: "Select the best option for your needs."
+         },
+          items: [
+            {
+              value: "email",
+              text: "Email",
+              conditional: {
+                html: emailHtml
+              }
+            },
+            {
+              value: "relay-uk",
+              text: "Relay UK",
+              hint: {
+                text: "For if you cannot hear or speak on the phone"
+                }
+            },
+            {
+              value: "video-relay-service",
+              text: "Video Relay Service",
+              hint: {
+                text: "For British Sign Language users"
+                },
+                conditional: {
+                  html: phoneHtml
+              }
+            },
+            {
+              divider: "or"
+            },
+            {
+              value: "none",
+              text: "You can contact me by phone"
+            }
+          ]
+        }) }}
+        <button class="govuk-button" data-module="govuk-button">Continue</button>
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

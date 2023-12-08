@@ -1,0 +1,59 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  DWP - Jobseeker&rsquo;s Allowance
+{% endblock %}
+
+{% block beforeContent%}{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        Confirmation 9 April 2020 start date
+      </h1>
+
+      <p class="govuk-body">
+        Based on your new start date (<strong>9 April 2020</strong>), the following information previosuly
+        entered will be affected:
+      </p>
+
+      <ul class="govuk-list govuk-list--bullet govuk-list--spaced govuk-!-margin-bottom-6">
+        <li>
+          <strong>Jury service</strong><br>The dates entered are now outside of 12 weeks from the new start date
+        </li>
+        <li>
+          <strong>Previous employment</strong><br>A number of your previous employers will be removed as you left longer than 6 months ago from the new start date
+        </li>
+        <li>
+          <strong>Worked or claimed benefits outside of the United Kingdom</strong><br>Your new claim start date maybe beyond the 4 years allowed for having worked or claimed benefits outside of the United Kingdom
+        </li>
+        <li>
+          <strong>Current pensions</strong><br>You stated a number of your current pensions were going to increase within 6 months. These increases now occur outside of the 6 month period of the new start date
+        </li>
+        <li>
+          <strong>Future pensions</strong><br>A number of your future pensions will be removed as they begin more than 6 months after your new start date
+        </li>
+        <li>
+          <strong>Education and training</strong><br>Your education and training took place more than 4 years before your new start date
+        </li>
+      </ul>
+
+      {{ govukButton({
+        text: "No, cancel start date change",
+        classes: "inline-item govuk-!-margin-right-2",
+        href: "check-answers"
+      }) }}
+
+      {{ govukButton({
+        text: "Yes, confirm start date change",
+        classes: "govuk-button--secondary",
+        href: "jury-service-have-been"
+      }) }}
+
+    </div>
+  </div>
+
+{% endblock %}

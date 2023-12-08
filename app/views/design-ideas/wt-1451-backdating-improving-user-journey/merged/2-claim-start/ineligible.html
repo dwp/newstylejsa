@@ -1,0 +1,40 @@
+
+{% extends "layout-live-nobanner.html" %}
+
+{% block pageTitle %}
+  DWP - Jobseeker&rsquo;s Allowance
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        <span class="govuk-caption-xl">Claim start date</span>
+        You may not be eligible for backdating
+      </h1>
+
+      <p>This is based on your answer to the previous question.</p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>{{ data['reason'] }}</li>
+
+      </ul>
+
+      <p>You can continue to claim from today's date.</p>
+
+      <form action="/design-ideas/wt-1451-backdating-improving-user-journey/checkboxes/3-details/nino" method="post">
+
+        {{ govukButton({
+          classes: "govuk-!-margin-top-6",
+          text: "Claim from today's date"
+        }) }}
+
+      </form>
+
+      <a href="why-have-you-not-claimed" class="govuk-body">I still want to backdate my claim</a>
+    </div>
+  </div>
+
+{% endblock %}

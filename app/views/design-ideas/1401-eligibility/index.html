@@ -1,0 +1,244 @@
+{% extends "layout-no-back.html" %}
+
+{% block pageTitle %}
+  DWP - Apply for New Style Jobseeker&rsquo;s Allowance
+{% endblock %}
+
+{% block content %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back()"
+  }) }}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        <span class="govuk-caption-l"><a href="https://jira.service.dwpcloud.uk/browse/BWADH-1401">Jira reference: 1401</a></span>
+        Improve eligibility questions
+      </h1>
+      <p>Effort to improve the vagueness of eligibility for JSA to move away from might be/might not be eligible.
+      Also looks at improvements to NI contributions questions. <a href="https://confluence.service.dwpcloud.uk/display/BWADH/Eligibility+-+National+Insurance+Contributions">DWP Confluence page</a>.</p>
+
+      <p>Worked on by: Anne Ramsden, Gareth Joyce, Dan Howarth, Garrett Stettler, Poppy Davis, Rita Holdsworth</p>
+
+      <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+      <h2 class="govuk-heading-l">Versions</h2>
+
+        <ul class="govuk-list">
+
+            <li>
+                <span class="govuk-caption-m">1 February 2021</span>
+                <h2 class="govuk-heading-m">#9 Focusing on location and work</h2>
+                <p>Prototype following content review feedback from GDS.</p>
+                <ul class="govuk-list govuk-list--bullet">
+                  <li><a href="/design-ideas/1401-eligibility/Jan">Iteration 1</a> – 1 February updates from Poppy Davis</li>
+                </ul>
+                  
+                <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+            </li>
+
+              <li>
+                  <span class="govuk-caption-m">16 December 2020</span>
+                  <h2 class="govuk-heading-m"><a href="/design-ideas/1401-eligibility/v8">#8 Likelihood content reframe</a></h2>
+                    {{ govukDetails({
+                      summaryText: "Poppy’s hypothesis",
+                      html: '
+                      <p>We’ve seen people submit applications for NSJSA when we’ve told them they ’may not be eligible’ based on their NI contributions;</p>
+                      <p>so if we tell these people they’re ’unlikely’ to be eligible instead;</p>
+                      <p>we’ll see fewer applications rejected on the basis of NI contributions.</p>
+                      '
+                    }) }}
+                  <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+              </li>
+
+              <li>
+                  <span class="govuk-caption-m">10 November 2020</span>
+                  <h2 class="govuk-heading-m"><a href="/design-ideas/1401-eligibility/v7">#7 Cover everything!</a></h2>
+                    {{ govukDetails({
+                      summaryText: "Garrett’s hypothesis",
+                      html: '
+                      <p>We’ve seen that people are overwhelmed by complex, vague questions;</p>
+                      <p>so if we ask a series of single definite questions and minimise the number of questions we ask before determining eligibility;</p>
+                      <p>we’ll see that people will reach an accurate conclusion and believe it is accurate.</p>
+                      '
+                    }) }}
+                  <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+              </li>
+
+              <li>
+                  <span class="govuk-caption-m">10 November 2020</span>
+                  <h2 class="govuk-heading-m">#6 Stop and think about NI contributions</h2>
+                  <ul class="govuk-list govuk-list--bullet">
+                    <li><a href="/design-ideas/1401-eligibility/v6?version=6.2">Iteration 6.2</a> – includes 26 weeks detail</li>
+                    <li><a href="/design-ideas/1401-eligibility/v6?version=6.1">Iteration 6.1</a> – includes NI classes detail</li>
+                    <li><a href="/design-ideas/1401-eligibility/v6?version=6">Iteration 6.0</a></li>
+                  </ul>
+                    {{ govukDetails({
+                      summaryText: "Gareth’s hypothesis",
+                      html: '
+                      <p>We’ve seen people wrongly saying they’ve made <strong>enough</strong> National Insurance contributions to get Jobseeker’s allowance;</p>
+                      <p>so if we make users stop and think about what <strong>enough</strong> means;</p>
+                      <p>we’ll see fewer applications rejected on the basis of NI contributions.</p>
+                      '
+                    }) }}
+                  <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+              </li>
+
+              {% set OctoberMVPHtml %}
+                <p>From testing V1 to 5, we know that users respond well to definites;</p>
+                {{ govukTable({
+                  caption: "Learnings recommendations",
+                  captionClasses: "govuk-visually-hidden",
+                  firstCellIsHeader: false,
+                  head: [
+                    {
+                      text: "Dont use"
+                    },
+                    {
+                      text: "Use"
+                    }
+                  ],
+                  rows: [
+                    [
+                      {
+                        text: "last 2 to 3 years"
+                      },
+                      {
+                        text: "since April 2017"
+                      }
+                    ],
+                    [
+                      {
+                        text: "you might be eligible"
+                      },
+                      {
+                        text: "you are eligible"
+                      }
+                    ]
+                  ]
+                }) }}
+              {% endset -%}
+      
+            <li>
+                <span class="govuk-caption-m">2 November 2020</span>
+                <h2 class="govuk-heading-m">Learnings from testing</h2>
+                <p>A prototype to capture what we know works for users.</p>
+                <ul class="govuk-list govuk-list--bullet">
+                  <li><a href="/design-ideas/1401-eligibility/Dec">Iteration 2</a> – 9 December updates from Poppy Davis</li>
+                  <li><a href="/design-ideas/1401-eligibility/Oct-mvp">Iteration 1</a> – October learnings from testing V1 to V5</li>
+                </ul>
+                  {{ govukDetails({
+                    summaryText: "What we know",
+                    html: OctoberMVPHtml
+                  }) }}
+                <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+            </li>
+
+            <li>
+                <span class="govuk-caption-m">26 October 2020</span>
+                <h2 class="govuk-heading-m"><a href="/design-ideas/1401-eligibility/v5">#5 Focus on past 2 to 3 years only</a></h2>
+                  {{ govukDetails({
+                    summaryText: "Rita’s hypothesis",
+                    html: '
+                    <p>We’ve seen people who have worked all their life until recently wrongly saying they’ve made enough National Insurance contributions to get Jobseeker’s allowance;</p>
+                    <p>so if we make it clear we only care about the last 2 to 3 years;</p>
+                    <p>we’ll see fewer applications rejected on the basis of NI contributions.</p>
+                    '
+                  }) }}
+                  <h3>Outcome</h3>
+                  <ul class="govuk-list govuk-list--bullet"> 
+                    <li>Inconclusive</li>
+                    <li>Need to test with more of the demographic</li>
+                  </ul>
+                <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+            </li>
+            <li>
+                <span class="govuk-caption-m">22 October 2020</span>
+                <h2 class="govuk-heading-m"><a href="/design-ideas/1401-eligibility/v4">#4 Telling users we check</a></h2>
+                  {{ govukDetails({
+                    summaryText: "Gareth’s hypothesis",
+                    html: '
+                    <p>We’ve seen people apply to get Jobseeker’s allowance without checking their NI contributions;</p>
+                    <p>so by telling them that we do a check, we’ll prompt users to check and;</p>
+                    <p>we’ll see fewer applications rejected on the basis of NI contributions.</p>
+                    '
+                  }) }}
+                  <h3>Outcome</h3>
+                  <ul class="govuk-list govuk-list--bullet"> 
+                    <li>Users tended to miss the "we'll check" line</li>
+                    <li>Uncertain if we want to encourage users who the "we'll check" message gives confidence to apply to</li>
+                  </ul>
+                <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+            </li>
+            <li>
+                <span class="govuk-caption-m">21 October 2020</span>
+                <h2 class="govuk-heading-m"><a href="/design-ideas/1401-eligibility/v3">#3 Removing doubt and self serving</a></h2>
+                {{ govukDetails({
+                    summaryText: "Gareth’s hypotheses",
+                    html: '
+                    <p>We’ve seen people being told they are not eligible to get Jobseeker’s allowance after applying;</p>
+                    <p>so if we provide clear information when we know they are or aren’t eligible;</p>
+                    <p>we’ll see fewer applications rejected.</p>
+                    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+                    <p>We’ve seen people wrongly saying they’ve made enough National Insurance contributions to get Jobseeker’s allowance;</p>
+                    <p>so if we provide clear signposting to help users find this out for themselves;</p>
+                    <p>we’ll see fewer applications rejected on the basis of NI contributions.</p>
+                    '
+                  }) }}
+                <h3>Outcome</h3>
+                <ul class="govuk-list govuk-list--bullet"> 
+                  <li>Users like definite outcomes (you are eligible)</li>
+                  <li>Not all users want to use the phone to call HMRC (aspergers user)</li>
+                </ul>
+                <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+            </li>
+            <li>
+                <span class="govuk-caption-m">9 October 2020</span>
+                <h2 class="govuk-heading-m">#2 Provide users with information about NI contributions</h2>
+                <ul class="govuk-list govuk-list--bullet">
+                  <li><a href="/design-ideas/1401-eligibility/v2?version=2.1">Iteration 2.1</a></li>
+                  <li><a href="/design-ideas/1401-eligibility/v2?version=2">Iteration 2.0</a></li>
+                </ul>
+                {{ govukDetails({
+                    summaryText: "Dan’s hypothesis",
+                    html: '
+                    <p>We’ve seen people wrongly saying they’ve made enough National Insurance contributions to get Jobseeker’s allowance;</p>
+                    <p>so if we provide clear information about NI contributions and how the user will know if they’ve paid them;</p>
+                    <p>we’ll see fewer applications rejected on the basis of NI contributions.</p>
+                    '
+                }) }}
+                <h3>Outcome</h3>
+                <ul class="govuk-list govuk-list--bullet"> 
+                  <li>Users confused by amount of technical language</li>
+                  <li>Not all users interact with details component</li>
+                  <li>Users confused by tax language</li>
+                </ul>
+                <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+            </li>
+            <li>
+                <span class="govuk-caption-m">9 October 2020</span>
+                <h2 class="govuk-heading-m"><a href="/design-ideas/1401-eligibility/v1">#1 Ask about employment and benefits</a></h2>
+                {{ govukDetails({
+                    summaryText: "Anne’s hypothesis",
+                    html: '
+                    <p>We’ve seen people wrongly saying they’ve made enough National Insurance contributions to get Jobseeker’s allowance;</p>
+                    <p>so if we ask specific questions about employment and benefits - rather than about NI contributions - and route the user accordingly;</p>
+                    <p>we’ll see fewer applications rejected on the basis of NI contributions.</p>
+                    '
+                }) }}
+                <h3>Outcome</h3>
+                <ul class="govuk-list govuk-list--bullet"> 
+                  <li>Users confused about the meaning of employed, some are employed and on zero hours contracts</li>
+                  <li>Users confused by "most and some of the time"</li>
+                  <li>Not all users know what the other benefits are</li>
+                </ul>
+            </li>
+        </ul>
+        
+    </div>
+</div>
+<hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+  
+
+{% endblock %}

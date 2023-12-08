@@ -1,0 +1,69 @@
+
+{% extends "layout-live-nobanner.html" %}
+
+{% block pageTitle %}
+  DWP - Jobseeker&rsquo;s Allowance
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        <span class="govuk-caption-xl">Time spent abroad</span>
+        Working or claiming benefits abroad
+      </h1>
+      <p class="govuk-body">
+        The UK has agreements with some countries for social security contributions. If you have worked or claimed benefits abroad you can tell us here so we can consider this when we assess your claim. 
+      </p>
+      <h2 class="govuk-heading-s govuk-!-margin-bottom-2">
+        If you have worked abroad in the last 4 years
+      </h2>
+      <p class="govuk-body">
+        The time you spent working abroad may count towards your National Insurance contributions. 
+        <br> If you worked abroad for a UK company you do not need to tell us because this will not affect your entitlement.
+      </p>
+      <h2 class="govuk-heading-s govuk-!-margin-bottom-2">
+        If you have claimed benefits abroad in the last 4 years
+      </h2>
+      <p class="govuk-body">
+        The benefits you have claimed may count towards your National Insurance contributions. 
+        <br>If you travelled abroad on holiday while claiming UK benefits you do not need to tell us because this will not affect your entitlement.
+      </p>
+      
+      <form action="working-abroad" method="post">
+
+        {{ govukRadios({
+          name: "workBenefitAbroad",
+          fieldset: {
+            legend: {
+              text: "Have you worked or claimed benefits abroad in the last 4 years?",
+              isPageHeading: false,
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+         
+          items: [
+            {
+              value: "yes",
+              text: "Yes, I have worked or claimed benefits abroad in the last 4 years"
+            },
+            {
+              value: "no",
+              text: "No, I have not worked or claimed benefits abroad in the last 4 years"
+            }
+          ]
+        }) }}
+
+       
+
+        {{ govukButton({
+            text: "Continue"
+        }) }}
+
+      </form>
+    </div>
+  </div>
+
+{% endblock %}

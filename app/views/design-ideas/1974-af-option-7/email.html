@@ -1,0 +1,62 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  DWP - Jobseeker&rsquo;s Allowance
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        <span class="govuk-caption-xl">Accessibility</span>
+        What type of email do you need?
+      </h1>
+      <form action="address-is-it-postal" method="get">
+
+
+        {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+        {{ govukRadios({
+          idPrefix: "emailPreferences",
+          name: "emailPreferences",
+          fieldset: {
+            legend: {
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          
+          items: [
+          {
+            value: "plain text",
+            text: "In plain text"
+          },
+
+            {
+              value: "PDF",
+              text: "With attached PDF"
+            },
+            
+            {
+              value: "wordDocument",
+              text: "With  attached word document"
+            },
+            {
+              value: "odf",
+              text: "With  attached Open Document Format (ODF) file"
+            }
+          ]
+        }) }}
+
+          {{ govukButton({
+                text: "Continue",
+                href: "phone-contact-preference"
+            }) }}
+
+      </form>
+    </div>
+  </div>
+
+{% endblock %}

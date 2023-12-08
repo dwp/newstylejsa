@@ -1,0 +1,58 @@
+
+{% extends "layout-live-nobanner.html" %}
+
+{% block pageTitle %}
+  DWP - Jobseeker&rsquo;s Allowance
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        <span class="govuk-caption-xl">Armed forces</span>
+        Travelling abroad with the armed forces
+      </h1>
+      <p class="govuk-body">
+        You may be able to get National Insurance credits if you are the spouse or registered civil partner of a member of the armed forces and you went with them on an overseas posting in the last 4 years.
+      </p>
+
+      <p class="govuk-body">
+        Credits can help to fill gaps in your National Insurance record, for example if you were not in work when you were with your partner on an overseas posting.
+        You can tell us here so that we can check when we assess your claim.
+      </p>
+
+      <form action="guard" method="post">
+        {{ govukRadios({
+          classes: "govuk-radios--inline",
+          name: "armedForces",
+          fieldset: {
+            legend: {
+              text: "Have you travelled abroad as the spouse or registered civil partner of a member of the armed forces posted overseas in the last 4 years?",
+              isPageHeading: false,
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          items: [
+            {
+              value: "yes",
+              text: "Yes"
+            },
+            {
+              value: "no",
+              text: "No"
+            }
+          ]
+        }) }}
+
+       
+        {{ govukButton({
+            text: "Continue"
+        }) }}
+
+      </form>
+    </div>
+  </div>
+
+{% endblock %}

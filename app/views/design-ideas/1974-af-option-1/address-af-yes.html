@@ -1,0 +1,136 @@
+
+{% extends "layout-beta.html" %}
+
+{% block pageTitle %}
+  DWP - Jobseeker&rsquo;s Allowance
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        <span class="govuk-caption-xl">Personal details</span>
+        What format do you need us to use when we send you letters?
+      </h1>
+
+      <form action="address" method="post">
+
+
+        {% set textHtml %}
+        {{ govukTextarea({
+        id: "more-detail",
+        name: "more-detail",
+        label: {
+        text: "How can we help when we send you letters?"
+        }
+        }) }}
+        {% endset -%}
+
+        {% set printHtml %}
+        {{ govukRadios({
+        id: "print-size",
+        name: "print-size",
+        fieldset: {
+        legend: {
+        text: "What size large print do you need?",
+        classes: "govuk-body govuk-!-font-weight-bold"
+        }
+      },
+        items: [
+  {
+    value: "size-16",
+    text: "Size 16"
+  },
+  {
+    value: "size-18",
+    text: "Size 18"
+  },
+  {
+    value: "size-20",
+    text: "Size 20"
+  },
+  {
+    value: "size-22",
+    text: "Size 22"
+  },
+  {
+    value: "size-24",
+    text: "Size 24"
+  },
+  {
+    value: "size-26",
+    text: "Size 26"
+  }
+]
+        }) }}
+        {% endset -%}
+
+{{ govukCheckboxes({
+  idPrefix: "alternative-letter-format",
+  name: "alternative-letter-format",
+
+  hint: {
+    text: "Select all that apply."
+  },
+
+  items: [
+    {
+      value: "audio",
+      text: "Audio forms on cassette tape, CD or MP3"
+    },
+
+    {
+      value: "braille",
+      text: "Braille"
+    },
+
+    {
+      value: "email",
+      text: "Email"
+    },
+
+    {
+      value: "print",
+      text: "Large print",
+      conditional: {
+        html: printHtml
+      }
+    },
+
+    {
+      value: "paper",
+      text: "Letters on coloured paper"
+    },
+
+    {
+      value: "pdf",
+      text: "Web accessible PDF"
+    },
+    {
+      value: "word",
+      text: "Word document"
+    },
+
+    {
+      value: "other",
+      text: "Something else",
+      conditional: {
+        html: textHtml
+      }
+    }
+  ]
+}) }}
+
+        {{ govukButton({
+            text: "Continue",
+            href: "address-is-it-postal"
+        }) }}
+
+
+      </form>
+    </div>
+  </div>
+
+{% endblock %}

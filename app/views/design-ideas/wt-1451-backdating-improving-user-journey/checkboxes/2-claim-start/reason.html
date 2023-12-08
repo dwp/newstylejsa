@@ -1,0 +1,123 @@
+
+{% extends "layout-live-nobanner.html" %}
+
+{% block pageTitle %}
+  DWP - Jobseeker&rsquo;s Allowance
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        <span class="govuk-caption-xl">Claim start date</span>
+        Why did you not apply for New Style JSA before today?
+      </h1>
+
+      <p>Select all the circumstances that have applied to you in the past 3 months. We may ask you to provide evidence.</p>
+
+      <form action="reason" method="post">
+
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset" aria-describedby="reason-hint">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            </legend>
+            <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="reason" name="reason" type="checkbox" value="Your partner, parent, child, brother or sister has died" {{ checked("reason", "Your partner, parent, child, brother or sister has died") }}>
+                <label class="govuk-label govuk-checkboxes__label" for="reason">
+                  Your partner, parent, child, brother or sister has died
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="reason-2" name="reason" type="checkbox" value="You were caring for someone with an illness or disability" {{ checked("reason", "You were caring for someone with an illness or disability") }}>
+                <label class="govuk-label govuk-checkboxes__label" for="reason-2">
+                  You were caring for someone with an illness or disability
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="reason-3" name="reason" type="checkbox" value="You had a domestic emergency, for example burglary, vehicle theft or vehicle accident" {{ checked("reason", "You had a domestic emergency, for example burglary, vehicle theft or vehicle accident") }}>
+                <label class="govuk-label govuk-checkboxes__label" for="reason-3">
+                  You had a domestic emergency, for example burglary, vehicle theft or vehicle accident 
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="reason-4" name="reason" type="checkbox" value="The relationship with your partner ended" {{ checked("reason", "The relationship with your partner ended") }}>
+                <label class="govuk-label govuk-checkboxes__label" for="reason-4">
+                  The relationship with your partner ended 
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="reason-5" name="reason" type="checkbox" value="You have problems communicating because you are blind or deaf" {{ checked("reason", "You have problems communicating because you are blind or deaf") }}>
+                <label class="govuk-label govuk-checkboxes__label" for="reason-5">
+                  You have problems communicating because you are blind or deaf 
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="reason-6" name="reason" type="checkbox" value="You have problems communicating because of a learning, language or literacy difficulty" {{ checked("reason", "You have problems communicating because of a learning, language or literacy difficulty") }}>
+                <label class="govuk-label govuk-checkboxes__label" for="reason-6">
+                  You have problems communicating because of a learning, language or literacy difficulty 
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="reason-7" name="reason" type="checkbox" value="You were told that you could not get New Style JSA by DWP, a legal or professional advisor or an advice agency like Citizens Advice" {{ checked("reason", "You were told that you could not get New Style JSA by DWP, a legal or professional advisor or an advice agency like Citizens Advice") }}>
+                <label class="govuk-label govuk-checkboxes__label" for="reason-7">
+                  You were told that you could not get New Style JSA by DWP, a legal or professional advisor or an advice agency like Citizens Advice
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="reason-8" name="reason" type="checkbox" value="Your attempt to claim New Style JSA was unsuccessful because of a problem with a DWP system, such as telephone lines, online systems or your local Jobcentre Plus office" {{ checked("reason", "Your attempt to claim New Style JSA was unsuccessful because of a problem with a DWP system, such as telephone lines, online systems or your local Jobcentre Plus office") }}>
+                <label class="govuk-label govuk-checkboxes__label" for="reason-8">
+                  Your attempt to claim New Style JSA was unsuccessful because of a problem with a DWP system, such as telephone lines, online systems or your local Jobcentre Plus office
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="reason-9" name="reason" type="checkbox" value="You were receiving Employment Support Allowance and were not told that your claim had expired" {{ checked("reason", "You were receiving Employment Support Allowance and were not told that your claim had expired") }}>
+                <label class="govuk-label govuk-checkboxes__label" for="reason-9">
+                  You were receiving Employment Support Allowance and were not told that your claim had expired
+                </label>
+              </div>
+              <div class="govuk-checkboxes__divider">or</div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="reason-10" name="reason" type="checkbox" value="None of these circumstances applied to me in the past 3 months" {{ checked("reason", "None of these circumstances applied to me in the past 3 months") }}>
+                <label class="govuk-label govuk-checkboxes__label" for="reason-10">
+                  None of these circumstances applied to me in the past 3 months
+                </label>
+              </div>
+            </div>
+
+          </fieldset>
+        </div>
+
+        <!-- <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            </legend>
+            <div class="govuk-radios" data-module="govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="where-do-you-live" name="reason" type="radio" value="Yes">
+                <label class="govuk-label govuk-radios__label" for="reason">
+                  Yes
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="reason-2" name="reason" type="radio" value="No">
+                <label class="govuk-label govuk-radios__label" for="reason-2">
+                  No
+                </label>
+              </div>
+            </div>
+
+          </fieldset>
+        </div> -->
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+    </div>
+  </div>
+
+{% endblock %}

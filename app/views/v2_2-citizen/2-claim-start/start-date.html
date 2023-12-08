@@ -1,0 +1,96 @@
+
+{% extends "layout-live-nobanner.html" %}
+
+{% block pageTitle %}
+  DWP - Jobseeker&rsquo;s Allowance
+{% endblock %}
+
+{#
+  Backdating page flow:
+
+    index [Do you want your claim to start today?]
+
+    Answer "NO":
+      change-date [When do you want your claim to start?]
+      why-have-you-not-claimed [Tell us why you did not claim NSJSA before today]
+      any-paid-work [Have you been in paid or voluntary work since <date>?]
+      unable-to-work [Have you been ill and unable to work since <date>?]
+      been-on-holiday [Have you been on holiday since <date>?]
+      full-time-education [Have you been in full-time education since <date>?]
+      asked-for-advice [Have you asked for advice about claiming NSJSA since <date>?]
+
+    {Rejoin flow as per answering "YES"}
+
+    Answer "YES":
+      nino [What is your National Insurance number?]
+#}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-l">
+      <span class="govuk-caption-xl">Claim start date</span>
+      Backdating your claim
+    </h1>
+
+    <p>In certain circumstances, you can start your claim from an earlier date than today. These circumstances include:</p>
+
+    <ul class="govuk-list govuk-list--bullet">
+      <li>your partner, parent, child, brother or sister died</li>
+      <li>you were caring for someone with an illness or disability</li>
+      <li>you were told that you could not get New Style JSA by the Department for Work and Pensions (DWP)</li>
+    </ul>
+
+    <p>We cannot backdate your claim if:</p>
+
+    <ul class="govuk-list govuk-list--bullet">
+      <li>you did not know you could apply for New Style JSA before today</li>
+      <li>you thought you would get a job</li>
+    </ul>
+
+    <p>You can only get New Style JSA payments for up to 182 days (about 6 months). Backdating your claim does not extend this period.</p>
+
+    <form action="start-date" method="post">
+
+      {% call govukFieldset({}) %}
+
+      {{ govukWarningText({
+        text: "You cannot change your claim start date later in the application.",
+        iconFallbackText: "Warning"
+      }) }}
+
+      {{ govukRadios({
+        classes: "govuk-radios",
+        idPrefix: "change-claim-start",
+        name: "claimstart",
+        fieldset: {
+          legend: {
+            text: "Do you want your claim to start today?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--m"
+          }
+        },
+        items: [
+          {
+            value: "yes",
+            html: "Yes, I want my claim to start from today <strong class='date'></strong>"
+          },
+          {
+            value: "no",
+            html: "No, I want to backdate my claim"
+          }
+        ]
+      }) }}
+      {% endcall %}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+
+    </form>
+  </div>
+</div>
+
+{% endblock %}

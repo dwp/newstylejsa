@@ -1,0 +1,151 @@
+
+{% extends "layout-beta.html" %}
+
+{% block pageTitle %}
+  DWP - Jobseeker&rsquo;s Allowance
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        <span class="govuk-caption-xl">Personal details</span>
+        What format do you need us to use when we contact you by letter or phone?
+      </h1>
+
+      <form action="alt-format" method="post">
+
+
+        {% set textHtml %}
+        {{ govukTextarea({
+        id: "more-detail",
+        name: "more-detail",
+        label: {
+        text: "How can we help when we contact you by letter or phone?"
+        }
+        }) }}
+        {% endset -%}
+
+        {% set printHtml %}
+        {{ govukRadios({
+        id: "print-size",
+        name: "print-size",
+        fieldset: {
+        legend: {
+        text: "What size large print do you need?",
+        classes: "govuk-body govuk-!-font-weight-bold"
+        }
+      },
+        items: [
+  {
+    value: "size-16",
+    text: "Size 16"
+  },
+  {
+    value: "size-18",
+    text: "Size 18"
+  },
+  {
+    value: "size-20",
+    text: "Size 20"
+  },
+  {
+    value: "size-22",
+    text: "Size 22"
+  },
+  {
+    value: "size-24",
+    text: "Size 24"
+  },
+  {
+    value: "size-26",
+    text: "Size 26"
+  }
+]
+        }) }}
+        {% endset -%}
+
+{{ govukCheckboxes({
+  idPrefix: "alternative-letter-format",
+  name: "alternative-letter-format",
+
+  hint: {
+    text: "Select all that apply."
+  },
+
+  items: [
+    {
+      value: "audio",
+      text: "Audio forms on cassette tape, CD or MP3"
+    },
+
+    {
+      value: "braille",
+      text: "Braille"
+    },
+
+    {
+      value: "email",
+      text: "Email",
+      hint: {
+        text: "You'll be able to tell us your email address later"
+      }
+    },
+
+    {
+      value: "print",
+      text: "Large print",
+      conditional: {
+        html: printHtml
+      }
+    },
+
+    {
+      value: "paper",
+      text: "Letters on coloured paper"
+    },
+
+    {
+      value: "pdf",
+      text: "Web accessible PDF"
+    },
+
+    {
+      value: "relay",
+      text: "Relay UK, Type talk or textphone"
+    },
+
+    {
+      value: "sign",
+      text: "Video Relay Service"
+    },
+
+    {
+      value: "word",
+      text: "Word document"
+
+    },
+
+    {
+      value: "other",
+      text: "Something else",
+      conditional: {
+        html: textHtml
+      }
+    }
+  ]
+}) }}
+
+        {{ govukButton({
+            text: "Continue",
+            href: "address"
+        }) }}
+
+
+      </form>
+    </div>
+  </div>
+
+{% endblock %}

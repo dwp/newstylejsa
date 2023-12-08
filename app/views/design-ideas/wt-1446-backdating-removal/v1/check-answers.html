@@ -1,0 +1,484 @@
+{% extends "layout-live-nobanner.html" %}
+
+{% block pageTitle %}
+  DWP - Jobseeker&rsquo;s Allowance
+{% endblock %}
+
+{% block beforeContent %}
+  {# Remove the "< Back" button from this instance of the template #}
+{% endblock %}
+
+{% block content %}
+
+  {% set currentlyworking = false %}
+  {% set jservice = false %}
+  {% set resultjservice = "no" %}
+  {% set startDateItems = todaysDate.original | moment %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+      <h1 class="govuk-heading-xl">
+        Check your answers
+      </h1>
+
+      <!-- APPLICATION START DATE -->
+      <h2 class="govuk-heading-l">Claim start date</h2>
+
+      <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-width-one-half">
+            Claim start date
+          </dt>
+          <dd class="govuk-summary-list__value">
+
+              <span class="date">1 September 2022</span>
+
+
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <!-- <a href="/master/eligibility-sf-debt">
+              Change
+              <span class="govuk-visually-hidden"> claim start date</span>
+            </a> -->
+          </dd>
+        </div>
+
+
+      </dl>
+
+      <!-- PERSONAL DETAILS -->
+      <h2 class="govuk-heading-l">Personal details</h2>
+
+      <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-width-one-half">
+            National Insurance number
+          </dt>
+          <dd class="govuk-summary-list__value">
+            QQ 12 34 56 C
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="/v2_1-citizen/3-details/nino">
+              Change
+              <span class="govuk-visually-hidden"> your National Insurance number</span>
+            </a>
+          </dd>
+        </div>
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-width-one-half">
+            Name
+          </dt>
+          <dd class="govuk-summary-list__value">
+            Alex Smith
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="/v2_1-citizen/3-details/about-you">
+              Change
+              <span class="govuk-visually-hidden"> your name</span>
+            </a>
+          </dd>
+        </div>
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-width-one-half">
+            Date of birth
+          </dt>
+          <dd class="govuk-summary-list__value">
+            10 05 1980
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="/v2_1-citizen/3-details/dob">
+              Change
+              <span class="govuk-visually-hidden"> your date of birth</span>
+            </a>
+          </dd>
+        </div>
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-width-one-half">
+            Home address
+          </dt>
+          <dd class="govuk-summary-list__value">
+            1 The Avenue<br>
+            High Street<br>
+            Hull<br>
+            HU7 7UL
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="/v2_1-citizen/3-details/address">
+              Change
+              <span class="govuk-visually-hidden"> your address</span>
+            </a>
+          </dd>
+        </div>
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-width-one-half">
+            Do you want to add a different address for your post?
+          </dt>
+          <dd class="govuk-summary-list__value">
+            No
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="/v2_1-citizen/3-details/address-is-it-postal">
+              Change
+              <span class="govuk-visually-hidden"> your postal address</span>
+            </a>
+          </dd>
+        </div>
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-width-one-half">
+            Telephone number
+          </dt>
+          <dd class="govuk-summary-list__value">
+            075411545454
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="/v2_1-citizen/3-details/contact-phone">
+              Change
+              <span class="govuk-visually-hidden"> your phone number</span>
+            </a>
+          </dd>
+        </div>
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-width-one-half">
+            Email address
+          </dt>
+          <dd class="govuk-summary-list__value">
+            test@test.com
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="/v2_1-citizen/3-details/contact-email">
+              Change
+              <span class="govuk-visually-hidden"> your email address</span>
+            </a>
+          </dd>
+        </div>
+
+
+      </dl>
+
+      <!-- BANK DETAILS -->
+
+      <h2 class="govuk-heading-l">Bank details</h2>
+
+      <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-width-one-half">
+            Bank details
+          </dt>
+          <dd class="govuk-summary-list__value">
+            <strong>Account holder:</strong> Alex Smith<br>
+            <strong>Sort code:</strong> 12-34-56<br>
+            <strong>Account number:</strong> 123456789<br>
+            <strong>Building society roll or reference number:</strong>
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="/v2_1-citizen/3-details/bank-account">
+              Change
+              <span class="govuk-visually-hidden"> your bank details</span>
+            </a>
+          </dd>
+        </div>
+
+      </dl>
+
+
+      <!-- OTHER BENEFITS -->
+      <h2 class="govuk-heading-l">Other benefits</h2>
+
+      <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-width-one-half">
+            Have you applied for any other benefits in the last 12 weeks?
+          </dt>
+          <dd class="govuk-summary-list__value">
+            No
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="/v2_1-citizen/4-other-benefits/guard">
+              Change
+              <span class="govuk-visually-hidden"> your answer</span>
+            </a>
+          </dd>
+        </div>
+
+
+      </dl>
+
+      <!-- JURY SERVICE -->
+      <h2 class="govuk-heading-l">Jury service</h2>
+
+      <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-width-one-half">
+            Have you been on jury service in the last 12 weeks?
+          </dt>
+          <dd class="govuk-summary-list__value">
+            No
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="/v2_1-citizen/5-jury-service/have-been">
+              Change
+              <span class="govuk-visually-hidden"> your answer</span>
+            </a>
+          </dd>
+        </div>
+
+
+      </dl>
+
+      <!-- CURRENT EMPLOYMENT -->
+      <h2 class="govuk-heading-l">Current work</h2>
+
+      <dl class="govuk-summary-list govuk-!-margin-bottom-4">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-width-one-half">
+            Are you in any form of work at the moment?
+          </dt>
+          <dd class="govuk-summary-list__value">
+            No
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="/v2_1-citizen/6-current-employment/guard">
+              Change
+              <span class="govuk-visually-hidden"> your answer</span>
+            </a>
+          </dd>
+        </div>
+
+      </dl>
+
+
+
+      <!-- PREVIOUS EMPLOYMENT -->
+      <h2 class="govuk-heading-l govuk-!-margin-top-9">Previous employment</h2>
+
+      <dl class="govuk-summary-list govuk-!-margin-bottom-4">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-width-one-half">
+            Have you had a job that ended in the last 6 months?
+          </dt>
+          <dd class="govuk-summary-list__value">
+            Yes
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="/v2_1-citizen/7-previous-employment/job-ended-last-six-months">
+              Change
+              <span class="govuk-visually-hidden"> your answer</span>
+            </a>
+          </dd>
+        </div>
+
+      </dl>
+
+
+      <!-- FIRST PREVIOUS EMPLOYMENT -->
+
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <h3 class="govuk-heading-m">Previous employer - First</h3>
+        </div>
+        <div class="govuk-grid-column-one-third govuk-align-right" style="text-align: right;">
+            <a href="#" class="govuk-body" aria-label="Change First Previous employer">Change</a>
+        </div>
+      </div>
+
+      <dl class="govuk-summary-list govuk-!-margin-bottom-4">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-width-one-half">
+            When did you work for this employer?
+          </dt>
+          <dd class="govuk-summary-list__value">
+            01 06 2022 to 10 06 2022
+          </dd>
+          <!-- <dd class="govuk-summary-list__actions">
+            <a href="/v2_1-citizen/6-current-employment/type">
+              Change
+              <span class="govuk-visually-hidden"> your answer</span>
+            </a>
+          </dd> -->
+        </div>
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-width-one-half">
+            Why did this job end?
+          </dt>
+          <dd class="govuk-summary-list__value">
+            End of contract
+          </dd>
+          <!-- <dd class="govuk-summary-list__actions">
+            <a href="/v2_1-citizen/6-current-employment/payment-frequency">
+              Change
+              <span class="govuk-visually-hidden"> your answer</span>
+            </a>
+          </dd> -->
+        </div>
+
+
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-width-one-half">
+            What is the name of your previous employer?
+          </dt>
+          <dd class="govuk-summary-list__value">
+            Shop INC
+          </dd>
+          <!-- <dd class="govuk-summary-list__actions">
+            <a href="/v2_1-citizen/6-current-employment/employer-name">
+              Change
+              <span class="govuk-visually-hidden"> your answer</span>
+            </a>
+          </dd> -->
+        </div>
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-width-one-half">
+            What is the address of your previous employer?
+          </dt>
+          <dd class="govuk-summary-list__value">
+            1 The Avenue<br>
+            High Street<br>
+            Leeds<br>
+
+          </dd>
+          <!-- <dd class="govuk-summary-list__actions">
+            <a href="v2_1-citizen/6-current-employment/employer-address">
+              Change
+              <span class="govuk-visually-hidden"> your employers address</span>
+            </a>
+          </dd> -->
+        </div>
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-width-one-half">
+            Do you expect to receive any more payments from this job?
+          </dt>
+          <dd class="govuk-summary-list__value">
+            No
+          </dd>
+          <!-- <dd class="govuk-summary-list__actions">
+            <a href="/v2_1-citizen/6-current-employment/hours">
+              Change
+              <span class="govuk-visually-hidden"> your answer</span>
+            </a>
+          </dd> -->
+        </div>
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-width-one-half">
+            Were you self-employed or a company director?
+          </dt>
+          <dd class="govuk-summary-list__value">
+            No
+          </dd>
+          <!-- <dd class="govuk-summary-list__actions">
+            <a href="/v2_1-citizen/6-current-employment/self-employed-or-company-director">
+              Change
+              <span class="govuk-visually-hidden"> your answer</span>
+            </a>
+          </dd> -->
+        </div>
+
+      </dl>
+
+      <div class="govuk-grid-row govuk-!-margin-bottom-9">
+            <div class="govuk-grid-column-two-thirds">
+                <a href="/citizen-ui/form/previous-employment/employer-details/2/dates?edit=SECTION" class="govuk-body">Add another employer</a>
+
+
+            </div>
+            <div class="govuk-grid-column-one-third govuk-align-right" style="text-align: right;">
+                <a href="#" class="govuk-body" aria-label="Remove First previous employer details">Remove employer details</a>
+            </div>
+        </div>
+
+
+      <!-- WORKING OR CLAIMING BENEFITS ABROAD -->
+      <h2 class="govuk-heading-l govuk-!-margin-top-9">Working or claiming benefit overseas</h2>
+
+      <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-width-one-half">
+            Have you worked or claimed benefit outside of the United Kingdom in the last 4 years?
+          </dt>
+          <dd class="govuk-summary-list__value">
+            No
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="/v2_1-citizen/5-jury-service/have-been">
+              Change
+              <span class="govuk-visually-hidden"> your answer</span>
+            </a>
+          </dd>
+        </div>
+
+      </dl>
+
+      <!-- CURRENT PENSIONS -->
+      <h2 class="govuk-heading-l">Pension or annuity</h2>
+
+      <dl class="govuk-summary-list govuk-!-margin-bottom-4">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-width-one-half">
+            Are you getting money from a pension or annuity?
+          </dt>
+          <dd class="govuk-summary-list__value">
+            No
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="/v2_1-citizen/9-pensions/9a-current-pension/guard">
+              Change
+              <span class="govuk-visually-hidden"> your answer</span>
+            </a>
+          </dd>
+        </div>
+
+      </dl>
+
+      <!-- FIRST CURRENT PENSION -->
+
+
+      <!-- EDUCATION AND TRAINING -->
+      <h2 class="govuk-heading-l govuk-!-margin-top-9">Education and training</h2>
+
+      <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-width-one-half">
+            Have you been in education or training in the last 4 years?
+          </dt>
+          <dd class="govuk-summary-list__value">
+            No
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="/v2_1-citizen/10-education/guard">
+              Change
+              <span class="govuk-visually-hidden"> your answer</span>
+            </a>
+          </dd>
+        </div>
+
+
+
+      </dl>
+
+
+
+
+
+
+
+
+
+<a href="declaration" role="button" draggable="false" class="govuk-button" data-module="govuk-button">
+  Continue
+</a>
+
+
+
+        </div>
+
+    {% endblock %}

@@ -1,0 +1,63 @@
+
+{% extends "layout-live-nobanner.html" %}
+
+{% block pageTitle %}
+  DWP - Jobseeker&rsquo;s Allowance
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        <span class="govuk-caption-xl">Claim start date</span>
+        Can you tell us more about why you did not claim before today's date?
+      </h1>
+
+      <p>We may ask you to provide evidence.</p>
+
+      <form action="change-date" method="post">
+
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset" aria-describedby="">
+            <div class="govuk-radios" data-module="govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="reason-info" name="reason-info" type="radio" value="Yes" data-aria-controls="conditional-reason-info" {{ checked("reason-info", "Yes") }}>
+                <label class="govuk-label govuk-radios__label" for="reason-info">
+                  Yes
+                </label>
+              </div>
+              <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-reason-info">
+                <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="600">
+                  <div class="govuk-form-group">
+                    <label class="govuk-label" for="reason-info-details">
+                      Give as much information as you can about why you did not apply sooner.
+                    </label>
+                    <textarea class="govuk-textarea govuk-js-character-count" id="reason-info-details" name="reason-info-details" rows="5" aria-describedby="reason-info-details-info">{{ data['reason-info-details'] }}</textarea>
+                      <div id="reason-info-details-info" class="govuk-hint govuk-character-count__message" aria-live="polite">
+                        You have 600 characters remaining
+                      </div>
+                  </div>
+                </div>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="reason-info-2" name="reason-info" type="radio" value="No" {{ checked("reason-info", "No") }}>
+                <label class="govuk-label govuk-radios__label" for="reason-info-2">
+                  No
+                </label>
+              </div>
+            </div>
+
+          </fieldset>
+        </div>
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+    </div>
+  </div>
+
+{% endblock %}

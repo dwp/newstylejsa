@@ -1,0 +1,50 @@
+
+{% extends "layout-beta.html" %}
+
+{% block pageTitle %}
+  DWP - Jobseeker&rsquo;s Allowance
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        <span class="govuk-caption-xl">Personal details</span>
+        Do you have a disability or health condition that means you need letters or phone calls in an accessible format?
+      </h1>
+
+<p>We'll ask for your address and phone number to contact you about your application.</p>
+
+      <form action="guard" method="post" style="margin-top: 20px">
+
+
+        {{ govukRadios({
+          idPrefix: 'contact-telephone-number',
+          name: 'altFormat',
+          classes: "govuk-radios--inline",
+          items: [{
+            value: "yes",
+            text: "Yes",
+            conditional: {
+              html: contactPhoneYes
+            }
+          }, {
+            value: "alt-format-no",
+            text: "No"
+          }]
+        }) }}
+
+        {{ govukButton({
+            text: "Continue"
+        }) }}
+
+
+      </form>
+      </div>
+      </div>
+
+
+
+{% endblock %}

@@ -1,0 +1,147 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  DWP - Jobseeker&rsquo;s Allowance
+{% endblock %}
+
+{% block beforeContent %}
+  <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <span class="govuk-caption-xl">Accessibility</span>
+      <h1 class="govuk-heading-l">What do you need instead of standard letters?</h1>
+      <p>We usually send letters on white paper and use font size 12.</p>
+      <form class="form" action="letters-contact-preference" method="post">
+
+        {% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
+        {% from "govuk/components/input/macro.njk" import govukInput %}
+
+        {% set emailHtml %}
+        {{ govukInput({
+          id: "contact-by-email",
+          name: "contact-by-email",
+          type: "email",
+          autocomplete: "email",
+          spellcheck: false,
+          classes: "govuk-!-width-one-third",
+          label: {
+            text: "Enter an email address"
+          },
+          hint: {
+            text: "For example name@example.com"
+          }
+        }) }}
+        {% endset -%}
+
+        {% set emailHtmlWeb %}
+        {{ govukInput({
+          id: "contact-by-email",
+          name: "contact-by-email",
+          type: "email",
+          autocomplete: "email",
+          spellcheck: false,
+          classes: "govuk-!-width-one-third",
+          label: {
+            text: "We'll send PDFs by email, enter an email address"
+          },
+          hint: {
+            text: "For example name@example.com"
+          }
+        }) }}
+        {% endset -%}
+
+        {% set emailHtmlWord %}
+        {{ govukInput({
+          id: "contact-by-email",
+          name: "contact-by-email",
+          type: "email",
+          autocomplete: "email",
+          spellcheck: false,
+          classes: "govuk-!-width-one-third",
+          label: {
+            text: "We'll send Word documents by email, enter an email address"
+          },
+          hint: {
+            text: "For example name@example.com"
+          }
+        }) }}
+        {% endset -%}
+
+
+        {{ govukCheckboxes({
+          idPrefix: "letters-contact-preference",
+          name: "lettersContactPreference",
+          fieldset: {
+            legend: {
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          hint: {
+            text: "Select the best options for your needs."
+          },
+          items: [
+            {
+              value: "audio",
+              text: "Audio"
+            },
+            {
+              value: "braille",
+              text: "Braille"
+            },
+            {
+              value: "colouredPaper",
+              text: "Coloured paper"
+            },
+
+            {
+              value: "email",
+              text: "Email",
+              conditional: {
+                html: emailHtml
+              }
+            },
+
+            {
+              value: "largePrint",
+              text: "Large print"
+            },
+            {
+              value: "pdf",
+              text: "PDF",
+              conditional: {
+                html: emailHtmlWeb
+              }
+            },
+            {
+              value: "WordEmail",
+              text: "Word document",
+              conditional: {
+                html: emailHtmlWord
+              }
+            },
+
+            {
+              divider: "or"
+            },
+            {
+              value: "none",
+              text: "You can contact me by standard letter",
+              behaviour: "exclusive"
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+              text: "Continue"
+          }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

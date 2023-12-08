@@ -1,0 +1,66 @@
+
+{% extends "layout-live-nobanner.html" %}
+
+{% block pageTitle %}
+  DWP - Jobseeker&rsquo;s Allowance
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        <span class="govuk-caption-xl">Claim start date</span>
+        Have you asked for advice about applying for New Style Jobseeker&rsquo;s Allowance since {{ data['claim-start-day'] }} <span class="months">{{ data['claim-start-month'] }}</span> {{ data['claim-start-year'] }}?
+      </h1>
+      <p>This could be spoken or written advice from a government department, a legal or professional adviser or from an advice agency, such as Citizens Advice.</p>
+      <form action="/design-ideas/wt-1451-backdating-improving-user-journey/merged/3-details/nino" method="post">
+
+        {% set askedAdviceYes %}
+
+        {{ govukCharacterCount({
+            name: "more-information",
+            id: "more-information",
+            rows: 5,
+            maxlength: 600,
+            value: data['more-information'],
+            label: {
+              text: "Tell us who you contacted, when you contacted them and what information you were given."
+            }
+          }) }}
+
+        {% endset -%}
+
+        {{ govukRadios({
+          idPrefix: 'asked-for-advice',
+          name: 'asked-for-advice',
+          fieldset: {
+            legend: {
+              text: "",
+              isPageHeading: false
+            }
+          },
+          items: [{
+            value: "yes",
+            text: "Yes",
+            checked: checked("asked-for-advice", "yes"),
+            conditional: {
+              html: askedAdviceYes
+            }
+          }, {
+            value: "no",
+            checked: checked("asked-for-advice", "no"),
+            text: "No"
+          }]
+        }) }}
+
+        {{ govukButton({
+            text: "Continue"
+        }) }}
+
+      </form>
+    </div>
+  </div>
+
+{% endblock %}

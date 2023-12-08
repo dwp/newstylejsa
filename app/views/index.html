@@ -1,0 +1,1168 @@
+{% extends "layout-no-back.html" %}
+
+{% block pageTitle %}
+  DWP - Apply for New Style Jobseeker&rsquo;s Allowance
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+  <h1 class="govuk-heading-l">
+    <span class="govuk-caption-l">Prototype</span>
+    Apply for New Style Jobseeker&rsquo;s Allowance
+  </h1>
+
+  <span class="govuk-tag govuk-!-margin-bottom-2">Latest version</span>
+  <h2 class="govuk-heading-l">Current citizen journey</h2>
+
+  <p>Worked on by: Alexandra Aggelidis and Pete Lonsdale</p>
+
+
+
+  {{ govukDetails({
+    summaryText: "Version change details",
+    html: '
+    <ul class="govuk-list govuk-list--bullet">
+      <li>Aligned with the current live service post release R1.55 and R1.55.2 <br>
+        [as of 20th April 2023]: 
+        <br>Current pension page - Inherited pension content updates</li>
+      <li>Aligned with the current live service post release R1.53 and R1.54 <br>
+        [as of 13th April 2023]:
+        <br>Claim start date content updates</li>
+    </ul>'
+    }) }}
+
+    {{ govukButton({
+      text: "Start version 2.2",
+      href: "v2_2-citizen/1-eligibility/introduction",
+      isStartButton: true
+    }) }}
+  </div>
+
+  <div class="govuk-grid-column-one-quarter govuk-!-padding-0 govuk-!-margin-right-4" style="border-top: 4px solid #1d71b8; float: right;">
+    <h3 class="govuk-heading-s govuk-!-margin-top-2">
+      Quick links
+    </h3>
+      <ul class="govuk-list govuk-!-font-size-16">
+        <li><a href="v2_2-citizen/1-eligibility/introduction">Eligibility</a></li>
+        <li><a href="v2_2-citizen/2-claim-start/start-date">Claim start date</a></li>
+        <li><a href="v2_2-citizen/3-details">Personal details (NINO)</a></li>
+        <li><a href="v2_2-citizen/4-other-benefits">Other benefits</a></li>
+        <li><a href="v2_2-citizen/5-jury-service">Jury service</a></li>
+        <li><a href="v2_2-citizen/6-current-employment">Current employment</a></li>
+        <li><a href="v2_2-citizen/7-previous-employment">Previous employment</a></li>
+        <li><a href="v2_2-citizen/8-abroad">Worked or claimed benefit outside UK</a></li>
+        <li><a href="v2_2-citizen/9-pensions/9a-current-pension">Current pension</a></li>
+        <!-- <li><a href="v2_2-citizen/9-pensions/9b-deferred-pension">Deferred pension</a></li> -->
+        <!-- <li><a href="v2_2-citizen/9-pensions/9c-future-pension">Future pension</a></li> -->
+        <li><a href="v2_2-citizen/10-education">Education or training</a></li>
+        <!-- <li><a href="v2_2-citizen/11-availability">Availability</a></li> -->
+        <li><a href="v2_2-citizen/check-answers">Check your answers</a></li>
+        <li><a href="v2_2-citizen/declaration">Declaration</a></li>
+        <li><a href="v2_2-citizen/confirmation">Confirmation</a></li>
+      </ul>
+  </div>
+</div>
+
+
+  <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+  <h2 class="govuk-heading-l">New features and iterations</h2>
+
+  <div class="govuk-tabs" data-module="govuk-tabs">
+  <h2 class="govuk-tabs__title">
+    Contents
+  </h2>
+
+  <ul class="govuk-tabs__list">
+    <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
+      <a class="govuk-tabs__tab" href="#in-test">
+        Testing
+      </a>
+    </li>
+    <li class="govuk-tabs__list-item">
+      <a class="govuk-tabs__tab" href="#in-dev">
+        In development
+      </a>
+    </li>
+    <li class="govuk-tabs__list-item">
+      <a class="govuk-tabs__tab" href="#archive">
+        Archive
+      </a>
+    </li>
+  </ul>
+
+  <div class="govuk-tabs__panel" id="in-test">
+    <!-- <h2 class="govuk-heading-l">Testing</h2> -->
+<!-- Abroad quetsions-->
+<details class="govuk-details" data-module="govuk-details">
+  <summary class="govuk-details__summary">
+    <span class="govuk-details__summary-text">
+      Abroad questions
+    </span>
+  </summary>
+  <div class="govuk-details__text">
+    <table class="govuk-table">
+      <caption class="govuk-table__caption govuk-table__caption--s">Versions</caption>
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th scope="col" class="govuk-table__header" style="position: sticky; top: 0; background: white;">Links</th>
+          <th scope="col" class="govuk-table__header" style="position: sticky; top: 0; background: white;">Description</th>
+          <th scope="col" class="govuk-table__header" style="position: sticky; top: 0; background: white;">Recommendations</th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header" style="border: 0;"><a href="design-ideas/wt-3566-abroad-questions/index.html">WT-3566: Abroad questions</a></th>
+          <td class="govuk-table__cell" style="border: 0;">
+            Improved content options for “Worked or claimed benefit outside UK” question.
+            <br> New question for Armed Forces added.
+          </td>
+          <td class="govuk-table__cell" style="border: 0;">
+            <span class="govuk-tag">Tested</span>
+          </td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header" style="border: 0;"><a href="design-ideas/wt-3759-abroad-questions/index.html">WT-3759: Abroad questions</a></th>
+          <td class="govuk-table__cell" style="border: 0;">
+            Iterated content based on post-UR analysis for working abroad question.
+            <br> Value of new question for Armed Forces still tbd.
+          </td>
+          <td class="govuk-table__cell" style="border: 0;">
+            <span class="govuk-tag">UR based</span>
+          </td>
+        </tr>
+        
+        
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell" colspan="3" style="border: 0;">
+            <strong>Team:</strong> Alexandra Aggelidis, Sophia Herbert, Will Clarke
+          </td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell" colspan="3">
+            <strong>Date:</strong> September 2023 to November 2023
+          </td>
+        </tr>   
+        
+      </tbody>
+    </table>
+  </div>
+</details>
+    <!-- SIGNPOSTING -->
+    <details class="govuk-details" data-module="govuk-details">
+      <summary class="govuk-details__summary">
+        <span class="govuk-details__summary-text">
+          Green button - Signposting
+        </span>
+      </summary>
+      <div class="govuk-details__text">
+        <table class="govuk-table">
+          <caption class="govuk-table__caption govuk-table__caption--s">Versions</caption>
+          <thead class="govuk-table__head">
+            <tr class="govuk-table__row">
+              <th scope="col" class="govuk-table__header" style="position: sticky; top: 0; background: white;">Links</th>
+              <th scope="col" class="govuk-table__header" style="position: sticky; top: 0; background: white;">Description</th>
+              <th scope="col" class="govuk-table__header" style="position: sticky; top: 0; background: white;">Recommendations</th>
+            </tr>
+          </thead>
+          <tbody class="govuk-table__body">
+
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header" style="border: 0;"><a href="design-ideas/wt-3073-signposting/wt-3073-signposting-current-journey/1-eligibility/introduction">WT-3073: Current Journey</a></th>
+              <td class="govuk-table__cell" style="border: 0;">
+                 Signposting to GOV.UK 'Benefits calculaters' from every ineligible page.
+              </td>
+              <td class="govuk-table__cell" style="border: 0;">
+                <span class="govuk-tag">In test</span>
+              </td>
+            </tr>
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header" style="border: 0;"><a href="design-ideas/wt-3073-signposting/wt-3073-signposting-version-1/1-eligibility/introduction">WT-3073: Option 1</a></th>
+              <td class="govuk-table__cell" style="border: 0;">
+                 Signposting to GOV.UK 'Check benefits and financial support you can get' from ineligible page if UK resident; and to 'Claiming benefits if you live, move or travel abroad' if not a UK resident.
+              </td>
+              <td class="govuk-table__cell" style="border: 0;">
+                <span class="govuk-tag">In test</span>
+              </td>
+            </tr>
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header" style="border: 0;"><a href="design-ideas/wt-3073-signposting/wt-3073-signposting-version-2/1-eligibility/introduction">WT-3073: Option 2</a></th>
+              <td class="govuk-table__cell" style="border: 0;">
+                 Signposting to GOV.UK 'Benefits' from ineligible page if UK resident; and to 'Claiming benefits if you live, move or travel abroad' if not a UK resident.
+              </td>
+              <td class="govuk-table__cell" style="border: 0;">
+                <span class="govuk-tag">In test</span>
+              </td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell" colspan="3" style="border: 0;">
+                <strong>Team:</strong> Alexandra Aggelidis, Will Clarke, Elizabeth Hughes
+              </td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell" colspan="3">
+                <strong>Date:</strong> April 2023
+              </td>
+            </tr>   
+          </tbody>
+        </table>
+      </div>
+    </details>
+    
+    <!-- BACKDATING -->
+    <details class="govuk-details" data-module="govuk-details">
+      <summary class="govuk-details__summary">
+        <span class="govuk-details__summary-text">
+          Backdating
+        </span>
+      </summary>
+      <div class="govuk-details__text">
+        <table class="govuk-table">
+          <caption class="govuk-table__caption govuk-table__caption--s">Versions</caption>
+          <thead class="govuk-table__head">
+            <tr class="govuk-table__row">
+              <th scope="col" class="govuk-table__header" style="position: sticky; top: 0; background: white;">Links</th>
+              <th scope="col" class="govuk-table__header" style="position: sticky; top: 0; background: white;">Description</th>
+              <th scope="col" class="govuk-table__header" style="position: sticky; top: 0; background: white;">Recommendations</th>
+            </tr>
+          </thead>
+          <tbody class="govuk-table__body">
+
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header" style="border: 0;"><a href="design-ideas/wt-1451-backdating-improving-user-journey">WT-1451: Improving the backdating user journey</a></th>
+              <td class="govuk-table__cell" style="border: 0;">
+                Updates to start screen content. Improvements to how we capture reasons for backdating. New screens to give better guidance to users.
+              </td>
+              <td class="govuk-table__cell" style="border: 0;">
+                <span class="govuk-tag">In test</span>
+              </td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell" colspan="3" style="border: 0;">
+                <strong>Team:</strong> Pete Lonsdale, Will Clarke, Andrew Donaghy, Claire Powell
+              </td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell" colspan="3">
+                <strong>Date:</strong> September 2022
+              </td>
+            </tr>
+
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header" style="border: 0;"><a href="design-ideas/wt-1446-backdating-removal">WT-1446: Removing backdating</a></th>
+              <td class="govuk-table__cell" style="border: 0;">
+                Backdating content moved to Application Complete screen.
+              </td>
+              <td class="govuk-table__cell" style="border: 0;">
+                <span class="govuk-tag">In test</span>
+              </td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell" colspan="3" style="border: 0;">
+                <strong>Team:</strong> Pete Lonsdale, Will Clarke, Andrew Donaghy, Claire Powell
+              </td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell" colspan="3">
+                <strong>Date:</strong> September 2022
+              </td>
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
+    </details>
+
+  </div>
+
+  <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="in-dev">
+    <!-- <h2 class="govuk-heading-l">In development</h2> -->
+
+    <!-- PENSIONS -->
+    <details class="govuk-details" data-module="govuk-details" >
+      <summary class="govuk-details__summary">
+        <span class="govuk-details__summary-text">
+          Pensions
+        </span>
+      </summary>
+      <div class="govuk-details__text">
+        <table class="govuk-table">
+          <caption class="govuk-table__caption govuk-table__caption--s">Versions</caption>
+          <thead class="govuk-table__head">
+            <tr class="govuk-table__row">
+              <th scope="col" class="govuk-table__header" style="position: sticky; top: 0; background: white;">Links</th>
+              <th scope="col" class="govuk-table__header" style="position: sticky; top: 0; background: white;">Description</th>
+              <th scope="col" class="govuk-table__header" style="position: sticky; top: 0; background: white;">Recommendations</th>
+            </tr>
+          </thead>
+          <tbody class="govuk-table__body">
+
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header" style="border: 0;"><a href="design-ideas/wt-3046-pension-changes/guard">WT-3046: inherited pension content updates</a></th>
+              <td class="govuk-table__cell" style="border: 0;">
+                Changes to Pension start screen content and 'Do you have another pension or annuity you currently receive?' question to reflect Live service.
+              </td>
+              <td class="govuk-table__cell" style="border: 0;">
+                none
+              </td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell" colspan="3" style="border: 0;">
+                <strong>Team:</strong> Alexandra Aggelidis
+              </td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell" colspan="3">
+                <strong>Date:</strong> April 2023
+              </td>
+            </tr>
+
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header" style="border: 0;"><a href="design-ideas/wt-720-pensions-changes/9c-current-pension/guard">WT-720: version 3</a></th>
+              <td class="govuk-table__cell" style="border: 0;">
+                Changes to Pension start screen content. Introduced Inherited Pensions question.
+              </td>
+              <td class="govuk-table__cell" style="border: 0;">
+                Merged version from versions 1 and 2. No further testing required. Backlog tickets created to look into Non-UK Pensions and Multiple Pensions.
+              </td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell" colspan="3" style="border: 0;">
+                <strong>Team:</strong> Pete Lonsdale, Will Clarke, Andrew Donaghy
+              </td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell" colspan="3">
+                <strong>Date:</strong> October 2022
+              </td>
+            </tr>
+
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header" style="border: 0;"><a href="design-ideas/wt-720-pensions-changes/9b-current-pension/guard">WT-720: version 2</a></th>
+              <td class="govuk-table__cell" style="border: 0;">
+                Changes to Pension start screen content. Introduced Inherited Pensions question.
+              </td>
+              <td class="govuk-table__cell" style="border: 0;">
+                Start screen from this version preferred.
+              </td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell" colspan="3" style="border: 0;">
+                <strong>Team:</strong> Pete Lonsdale, Will Clarke, Andrew Donaghy
+              </td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell" colspan="3">
+                <strong>Date:</strong> August 2022
+              </td>
+            </tr>
+
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header" style="border: 0;"><a href="design-ideas/wt-720-pensions-changes/9a-current-pension/guard">WT-720: version 1</a></th>
+              <td class="govuk-table__cell" style="border: 0;">
+                Changes to Pension start screen content. Introduced Inherited Pensions question.
+              </td>
+              <td class="govuk-table__cell" style="border: 0;">
+                End screen from this version preferred.
+              </td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell" colspan="3" style="border: 0;">
+                <strong>Team:</strong> Pete Lonsdale, Will Clarke, Andrew Donaghy
+              </td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell" colspan="3">
+                <strong>Date:</strong> August 2022
+              </td>
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
+    </details>
+
+    <!-- DfC CONTENT CHANGES -->
+    <details class="govuk-details" data-module="govuk-details" >
+      <summary class="govuk-details__summary">
+        <span class="govuk-details__summary-text">
+          DfC content changes
+        </span>
+      </summary>
+      <div class="govuk-details__text">
+        <table class="govuk-table">
+          <caption class="govuk-table__caption govuk-table__caption--s">Versions</caption>
+          <thead class="govuk-table__head">
+            <tr class="govuk-table__row">
+              <th scope="col" class="govuk-table__header" style="position: sticky; top: 0; background: white;">Links</th>
+              <th scope="col" class="govuk-table__header" style="position: sticky; top: 0; background: white;">Description</th>
+              <th scope="col" class="govuk-table__header" style="position: sticky; top: 0; background: white;">Recommendations</th>
+            </tr>
+          </thead>
+          <tbody class="govuk-table__body">
+
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header" style="border: 0;"><a href="design-ideas/wt-3070-dfc-content/1-eligibility/introduction">WT-3070 and WT-3104: DfC content</a></th>
+              <td class="govuk-table__cell" style="border: 0;">
+                Content changes to reflect changes to DfC UCI.
+              </td>
+              <td class="govuk-table__cell" style="border: 0;">
+                <span class="govuk-tag">Not tested</span>
+              </td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell" colspan="3" style="border: 0;">
+                <strong>Team:</strong> Alexandra Aggelidis, Elizabeth Hughes
+              </td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell" colspan="3">
+                <strong>Date:</strong> 12 05 2023
+              </td>
+            </tr>
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header" style="border: 0;"><a href="design-ideas/wt-1661-dfc-content/1-eligibility/introduction">WT-1661: DfC content</a></th>
+              <td class="govuk-table__cell" style="border: 0;">
+                Content changes required as part of the onboarding of DfC.
+              </td>
+              <td class="govuk-table__cell" style="border: 0;">
+                <span class="govuk-tag">Not tested</span>
+              </td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell" colspan="3" style="border: 0;">
+                <strong>Team:</strong> Pete Lonsdale, Andrew Donaghy
+              </td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell" colspan="3">
+                <strong>Date:</strong> 22 09 2022
+              </td>
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
+    </details>
+
+    <!-- ALTERNATIVE FORMATS -->
+    <details class="govuk-details" data-module="govuk-details" >
+    <summary class="govuk-details__summary">
+      <span class="govuk-details__summary-text">
+        Alternative formats
+      </span>
+    </summary>
+    <div class="govuk-details__text">
+      <table class="govuk-table">
+        <caption class="govuk-table__caption govuk-table__caption--s">Versions</caption>
+        <thead class="govuk-table__head">
+          <tr class="govuk-table__row">
+            <th scope="col" class="govuk-table__header" style="position: sticky; top: 0; background: white;">Links</th>
+            <th scope="col" class="govuk-table__header" style="position: sticky; top: 0; background: white;">Description</th>
+            <th scope="col" class="govuk-table__header" style="position: sticky; top: 0; background: white;">Recommendations</th>
+          </tr>
+        </thead>
+        <tbody class="govuk-table__body">
+
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header" style="border: 0;"><a href="design-ideas/574-af-option-9/start-date">WT-574: Option 9</a></th>
+            <td class="govuk-table__cell" style="border: 0;">Section name changed from 'accessibility' to 'Alternative Formats'. AF moved to after contact details so we can capture Welsh addresses and provide the correct options, this will also reduce data entry. Introduced a new screen for Relay UK and Textphone users to provide specific contact numbers</td>
+            <td class="govuk-table__cell" style="border: 0;">
+              <span class="govuk-tag govuk-tag--green">In dev</span>
+            </td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell" colspan="3" style="border: 0;">
+              <strong>Team:</strong> Pete Lonsdale, Will Clarke, Andrew Donaghy
+            </td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell" colspan="3">
+              <strong>Date:</strong> 24 05 2022
+            </td>
+          </tr>
+
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header" style="border: 0;"><a href="design-ideas/1974-af-option-8/start">BWADH-1974: Option 8</a></th>
+            <td class="govuk-table__cell" style="border: 0;">Reduced the amount of content where possible to reduce cognitive load for the user and to accurately lineup with what we can deliver operationally. We've also updated the AF options that we can deliver in the letter and phone lists.</td>
+            <td class="govuk-table__cell" style="border: 0;">
+              <span class="govuk-tag govuk-tag--red">no notes</span>
+            </td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell" colspan="3" style="border: 0;">
+              <strong>Team:</strong> Camila Insalaco, Will Clarke, Poppy Davies / Andrew Donaghy
+            </td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell" colspan="3">
+              <strong>Date:</strong> 13 03 2022
+            </td>
+          </tr>
+
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header" style="border: 0;"><a href="design-ideas/1974-af-option-7/start">BWADH-1974: Option 7</a></th>
+            <td class="govuk-table__cell" style="border: 0;">We've removed the complex question pattern and now only ask one question: Do you need us to contact you in an alternative format?</td>
+            <td class="govuk-table__cell" style="border: 0;">
+              <ul class="govuk-list govuk-list--bullet">
+                <li>We removed accessible email from the content.</li>
+                <li>Space out the content / examples into a separate line so they stand out more but not a list</li>
+                <li>Reorder the list based on what are the most frequented AF requests to Hackney</li>
+              <ul>
+            </td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell" colspan="3" style="border: 0;">
+              <strong>Team:</strong> Camila Insalaco, Will Clarke, Poppy Davies / Andrew Donaghy
+            </td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell" colspan="3">
+              <strong>Date:</strong> 13 03 2022
+            </td>
+          </tr>
+
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header" style="border: 0;"><a href="design-ideas/1974-af-option-6/start">BWADH-1974: Option 6</a></th>
+            <td class="govuk-table__cell" style="border: 0;">We have removed the opportunity for a user to select that they need an alternative to a letter or a phone call.</td>
+            <td class="govuk-table__cell" style="border: 0;">
+              <span class="govuk-tag govuk-tag--red">no notes</span>
+            </td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell" colspan="3" style="border: 0;">
+              <strong>Team:</strong> Pete Leon, Penny Davies, Will Clarke, Camilla Insalaco
+            </td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell" colspan="3">
+              <strong>Date:</strong> -
+            </td>
+          </tr>
+
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header" style="border: 0;"><a href="design-ideas/1974-af-option-5/start">BWADH-1974: Option 5</a></th>
+            <td class="govuk-table__cell" style="border: 0;">We have kept the question in the same location but the formatting of the question changes. It adopts a complex question pattern.</td>
+            <td class="govuk-table__cell" style="border: 0;">
+              <span class="govuk-tag govuk-tag--red">no notes</span>
+            </td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell" colspan="3" style="border: 0;">
+              <strong>Team:</strong> Pete Leon, Penny Davies, Will Clarke, Camilla Insalaco
+            </td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell" colspan="3">
+              <strong>Date:</strong> -
+            </td>
+          </tr>
+
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header" style="border: 0;"><a href="design-ideas/1974-af-option-4/start">BWADH-1974: Option 4</a></th>
+            <td class="govuk-table__cell" style="border: 0;">Alternative format question moved to the start of the apply service, following the backdating question and before NINo question.</td>
+            <td class="govuk-table__cell" style="border: 0;">
+              <ul class="govuk-list govuk-list--bullet">
+                <li>examples should be in a sentence not bulleted list as a list looks like that’s all there is available</li>
+                <li>Replace Relay UK with Braille</li>
+                <li>combine best of content from the two first page options</li>
+                <li>radio buttons explanation needs shortening or removing</li>
+                <li>hint text to make clear what email means​</li>
+                <li>we need Hackney data on large print and colour paper options</li>
+              <ul>
+            </td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell" colspan="3" style="border: 0;">
+              <strong>Team:</strong> Pete Leon, Penny Davies, Will Clarke, Camilla Insalaco
+            </td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell" colspan="3">
+              <strong>Date:</strong> 18 02 2022
+            </td>
+          </tr>
+
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header" style="border: 0;"><a href="design-ideas/1974-af-option-2/start-date">BWADH-1974: Option 2</a></th>
+            <td class="govuk-table__cell" style="border: 0;">Alternative format question asked as it's own section. </td>
+            <td class="govuk-table__cell" style="border: 0;">
+              <ul class="govuk-list govuk-list--bullet">
+                <li>People who are not deaf don’t know what relay UK and Type talk are  - consider offering explanation text</li>
+                <li>Coloured paper needs examples of what is available again</li>
+                <li>Add simple explanations on how it will work to each to avoid confusion</li>
+                <li>All users who viewed options 1 and 2 preferred option 2 overall</li>
+              <ul>
+            </td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell" colspan="3" style="border: 0;">
+              <strong>Team:</strong> Pete Leon, Penny Davies, Will Clarke, Camilla Insalaco
+            </td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell" colspan="3">
+              <strong>Date:</strong> 09 12 2021
+            </td>
+          </tr>
+
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header" style="border: 0;"><a href="design-ideas/1974-af-option-1/start-date">BWADH-1974: Option 1</a></th>
+            <td class="govuk-table__cell" style="border: 0;">Alternative format questions asked in context with relevant contact detail question.</td>
+            <td class="govuk-table__cell" style="border: 0;">
+              <ul class="govuk-list govuk-list--bullet">
+                <li>Consider putting AF question on a separate page</li>
+                <li>Consider removing building and adding in house/flat etc</li>
+                <li>Remove reveal list</li>
+                <li>Show the colour options that are available</li>
+                <li>Re-word question to clarify what is being offered in alternative format</li>
+                <li>Consider giving examples of users who may need to use this</li>
+                <li>Consider moving email input question to earlier in journey</li>
+              <ul>
+            </td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell" colspan="3" style="border: 0;">
+              <strong>Team:</strong> Pete Leon, Penny Davies, Will Clarke, Camilla Insalaco
+            </td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell" colspan="3">
+              <strong>Date:</strong> 09 12 2021
+            </td>
+          </tr>
+
+        </tbody>
+      </table>
+  </details>
+
+
+    <!-- EMAIL CONFIRMATION -->
+    <details class="govuk-details" data-module="govuk-details" >
+      <summary class="govuk-details__summary">
+        <span class="govuk-details__summary-text">
+          Email confirmation
+        </span>
+      </summary>
+      <div class="govuk-details__text">
+        <table class="govuk-table">
+          <caption class="govuk-table__caption govuk-table__caption--s">Versions</caption>
+          <thead class="govuk-table__head">
+            <tr class="govuk-table__row">
+              <th scope="col" class="govuk-table__header" style="position: sticky; top: 0; background: white;">Links</th>
+              <th scope="col" class="govuk-table__header" style="position: sticky; top: 0; background: white;">Description</th>
+              <th scope="col" class="govuk-table__header" style="position: sticky; top: 0; background: white;">Recommendations</th>
+            </tr>
+          </thead>
+          <tbody class="govuk-table__body">
+
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header" style="border: 0;"><a href="design-ideas/wt-800-email-verification/contact-email">WT-800: Email confirmation screen</a></th>
+              <td class="govuk-table__cell" style="border: 0;">
+                Introduced verification interuption screen so the user can confirm their email address.
+              </td>
+              <td class="govuk-table__cell" style="border: 0;">
+                <span class="govuk-tag">Not tested</span>
+              </td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell" colspan="3" style="border: 0;">
+                <strong>Team:</strong> Pete Lonsdale, Andrew Donaghy
+              </td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell" colspan="3">
+                <strong>Date:</strong> -
+              </td>
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
+    </details>
+
+
+
+
+  </div>
+
+  <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="archive">
+    <!-- <h2 class="govuk-heading-l">Archived versions</h2> -->
+
+    <p><a href="design-ideas/1764-confirmation/confirmation">1764: Confirmation page update</a> Reintroducing conditionality [March 2021]</p>
+
+    <p><a href="design-ideas/1001-no-fixed-address">1001: Provide a way for claimants to proceed who don't have a fixed address</a></p>
+
+    <p><a href="design-ideas/1634-add-conditional-reveal/contact-phone">1634: Add conditional reveal to email question</a></p>
+
+    <p><a href="design-ideas/1420-change-claim-start">1420: Change claim start date</a> [November 2020]</p>
+
+    <p><a href="design-ideas/1401-eligibility">1401: Improve eligibility questions</a> [February 2021]</p>
+
+    {{ govukDetails({
+      summaryText: "1613: Additional backdating questions",
+      html: '
+        <div class="govuk-clearfix"><div class="govuk-grid-column-one-half">
+          <ul class="govuk-list govuk-list--bullet">
+            <li><a href="v1_5-citizen/2-claim-start/change-date">Iteration 1 [12 November 2020]</a></li>
+            <li><a href="/design-ideas/1613-check-your-answers/check-answers">Check your answers page [24 November 2020]</a></li>
+          </ul>
+        </div>'
+    }) }}
+
+    {{ govukDetails({
+      summaryText: "1557: Are you in receipt of Universal Credit?",
+      html: '
+        <div class="govuk-clearfix"><div class="govuk-grid-column-one-half">
+          <p>Decided we dont currently need this question.</p>
+          <ul class="govuk-list govuk-list--bullet">
+            <li><a href="design-ideas/1557-get-uc/v4">Iteration 4 [12 October 2020]</a></li>
+            <li><a href="design-ideas/1557-get-uc/v3">Iteration 3 [12 October 2020]</a></li>
+            <li><a href="design-ideas/1557-get-uc/v2">Iteration 2 [8 October 2020]</a></li>
+            <li><a href="design-ideas/1557-get-uc/v1">Iteration 1 [7 October 2020]</a></li>
+          </ul>
+        </div>'
+    }) }}
+
+    {{ govukDetails({
+      summaryText: "1420: Enable a change to claim start date (by citizen only)",
+      html: '
+        <div class="govuk-clearfix"><div class="govuk-grid-column-one-half">
+          <ul class="govuk-list govuk-list--bullet">
+            <li><a href="design-ideas/1420-change-claim-start-date/iteration-1">Iteration 1 [10th August 2020]</a></li>
+          </ul>
+        </div>'
+    }) }}
+
+    {{ govukDetails({
+      summaryText: "476: Revised backdating questions",
+      html: '
+        <div class="govuk-clearfix"><div class="govuk-grid-column-one-half">
+          <ul class="govuk-list govuk-list--bullet">
+            <li><a href="design-ideas/476-backdating-questions/iteration-1">Iteration 1 [4th August 2020]</a></li>
+          </ul>
+        </div>'
+    }) }}
+
+    {{ govukDetails({
+      summaryText: "No Fixed Address (NFA) or Person Without Address (PWA)",
+      html: '
+        <div class="govuk-clearfix"><div class="govuk-grid-column-one-half">
+          <ul class="govuk-list govuk-list--bullet">
+            <li><a href="design-ideas/nfa-pwa/iteration-1/index">Iteration 1 [8th July 2020]</a></li>
+          </ul>
+        </div>'
+    }) }}
+
+    {{ govukDetails({
+      summaryText: "Claim start date warning [22nd June 2020]",
+      html: '
+        <div class="govuk-clearfix"><div class="govuk-grid-column-one-half">
+          <ul class="govuk-list govuk-list--bullet">
+            <li><a href="design-ideas/claim-start-date-warning/start-date">Claim start date</a></li>
+            <li><a href="design-ideas/claim-start-date-warning/check-answers">Check your answers</a></li>
+          </ul>
+        </div>'
+    }) }}
+
+    {{ govukDetails({
+      summaryText: "Interruption cards [19th May 2020]",
+      html: '
+        <div class="govuk-clearfix"><div class="govuk-grid-column-one-half">
+          <ul class="govuk-list govuk-list--bullet">
+            <li><a href="design-ideas/interruption-cards/interruption-1-current-employment">Current employment</a></li>
+            <li><a href="design-ideas/interruption-cards/interruption-2-previous-employment">Previous employment</a></li>
+            <li><a href="design-ideas/interruption-cards/interruption-3-current-pension">Current pension</a></li>
+            <li><a href="design-ideas/interruption-cards/interruption-4-deferred-pension">Deferred pension</a></li>
+            <li><a href="design-ideas/interruption-cards/interruption-5-future-pension">Future pension</a></li>
+          </ul>
+        </div>'
+    }) }}
+
+    {{ govukDetails({
+      summaryText: "Session timeout [1st May 2020]",
+      html: '
+        <div class="govuk-clearfix"><div class="govuk-grid-column-one-half">
+          <ul class="govuk-list govuk-list--bullet">
+            <li><a href="design-ideas/session-timeout/session-warning">Timeout warning (wait 5 seconds after page load for warning to appear)</a></li>
+            <li><a href="design-ideas/session-timeout/session-timeout">Session has timed out</a></li>
+          </ul>
+        </div>'
+    }) }}
+
+    {{ govukDetails({
+      summaryText: "Service banner [30th April 2020]",
+      html: '
+        <div class="govuk-clearfix"><div class="govuk-grid-column-one-half">
+          <ul class="govuk-list govuk-list--bullet">
+            <li><a href="design-ideas/service-banner/severity-blue">"Blue" severity level</a></li>
+            <li><a href="design-ideas/service-banner/severity-green">"Green" severity level</a></li>
+            <li><a href="design-ideas/service-banner/severity-orange">"Orange" severity level</a></li>
+            <li><a href="design-ideas/service-banner/severity-red">"Red" severity level</a></li>
+          </ul>
+        </div>'
+    }) }}
+
+<!-- VERSION 2.1 -->
+<h3 class="govuk-heading-m">
+  <a href="v2_1-citizen/1-eligibility/introduction">Citizen journey &ndash; Version 2.1</a>
+</h3>
+
+<p>Worked on by: Pete Lonsdale, Andrew Donaghy and Will Clarke</p>
+
+<ul class="govuk-list govuk-list--bullet">
+  <li>Aligned with the current live service post ZDT release [as of 23rd August 2022]</li>
+  <li>Phase banner removed as part of live status</li>
+  <li>Check Your Answers page updated and now pulling dynamic content</li>
+  <li>Content changes on Eligible screen</li>
+  <li>Banking page
+    <ul>
+      <li>Content amends in detail component</li>
+      <li>Sort code changed from 3 to 1</li>
+    </ul>
+  </li>
+  <li>Current Employment
+    <ul>
+      <li>Content amends to titles</li>
+      <li>Employer name input width</li>
+    </ul>
+  </li>
+  <li>Start and End date content amends for Previous Employment</li>
+  <li>Pensions
+    <ul>
+      <li>Updated hint text</li>
+      <li>Updated section title</li>
+    </ul>
+  </li>
+  <li>Education
+    <ul>
+      <li>Update hours hint content</li>
+      <li>Updated Course Start and End dates labels</li>
+    </ul>
+  </li>
+  <li>Declaration content updated</li>
+  <li>Application complete screen updated</li>
+</ul>
+
+{{ govukDetails({
+  summaryText: "Version 2.1 shortcut links",
+  html: '
+    <div class="govuk-clearfix"><div class="govuk-grid-column-one-half">
+      <ul class="govuk-list govuk-list--bullet">
+        <li><a href="v2_1-citizen/1-eligibility/introduction">Eligibility</a></li>
+        <li><a href="v2_1-citizen/2-claim-start/start-date">Claim start date</a></li>
+        <li><a href="v2_1-citizen/3-details">Personal details (NINO)</a></li>
+        <li><a href="v2_1-citizen/4-other-benefits">Other benefits</a></li>
+        <li><a href="v2_1-citizen/5-jury-service">Jury service</a></li>
+        <li><a href="v2_1-citizen/6-current-employment">Current employment</a></li>
+        <li><a href="v2_1-citizen/7-previous-employment">Previous employment</a></li>
+        <li><a href="v2_1-citizen/8-abroad">Worked or claimed benefit outside UK</a></li>
+      <ul>
+    </div>
+    <div class="govuk-grid-column-one-half">
+      <ul class="govuk-list govuk-list--bullet">
+        <li><a href="v2_1-citizen/9-pensions/9a-current-pension">Current pension</a></li>
+        <li><a href="v2_1-citizen/9-pensions/9b-deferred-pension">Deferred pension</a></li>
+        <li><a href="v2_1-citizen/9-pensions/9c-future-pension">Future pension</a></li>
+        <li><a href="v2_1-citizen/10-education">Education or training</a></li>
+        <li><a href="v2_1-citizen/11-availability">Availability</a></li>
+        <li><a href="v2_1-citizen/check-answers">Check your answers</a></li>
+        <li><a href="v2_1-citizen/declaration">Declaration</a></li>
+        <li><a href="v2_1-citizen/confirmation">Confirmation</a></li>
+      </ul>
+    </div>'
+  }) }}
+
+    <!-- VERSION 2.0 -->
+    <h3 class="govuk-heading-m">
+      <a href="v2_0-citizen/1-eligibility/introduction">Citizen journey &ndash; Version 2.0</a>
+    </h3>
+
+    <p>Worked on by: Pete Leon, Poppy Davis and Camilla Insalaco</p>
+
+    <ul class="govuk-list govuk-list--bullet">
+      <li>Aligned with the current live service [as of 28th September 2021]</li>
+    </ul>
+
+    {{ govukDetails({
+      summaryText: "Version 2.0 shortcut links",
+      html: '
+        <div class="govuk-clearfix"><div class="govuk-grid-column-one-half">
+          <ul class="govuk-list govuk-list--bullet">
+            <li><a href="v2_0-citizen/1-eligibility/introduction">Eligibility</a></li>
+            <li><a href="v2_0-citizen/2-claim-start/start-date">Claim start date</a></li>
+            <li><a href="v2_0-citizen/3-details">Personal details (NINO)</a></li>
+            <li><a href="v2_0-citizen/4-other-benefits">Other benefits</a></li>
+            <li><a href="v2_0-citizen/5-jury-service">Jury service</a></li>
+            <li><a href="v2_0-citizen/6-current-employment">Current employment</a></li>
+            <li><a href="v2_0-citizen/7-previous-employment">Previous employment</a></li>
+            <li><a href="v2_0-citizen/8-abroad">Worked or claimed benefit outside UK</a></li>
+          <ul>
+        </div>
+        <div class="govuk-grid-column-one-half">
+          <ul class="govuk-list govuk-list--bullet">
+            <li><a href="v2_0-citizen/9-pensions/9a-current-pension">Current pension</a></li>
+            <li><a href="v2_0-citizen/9-pensions/9b-deferred-pension">Deferred pension</a></li>
+            <li><a href="v2_0-citizen/9-pensions/9c-future-pension">Future pension</a></li>
+            <li><a href="v2_0-citizen/10-education">Education or training</a></li>
+            <li><a href="v2_0-citizen/11-availability">Availability</a></li>
+            <li><a href="v2_0-citizen/check-answers">Check your answers</a></li>
+            <li><a href="v2_0-citizen/declaration">Declaration</a></li>
+            <li><a href="v2_0-citizen/confirmation">Confirmation</a></li>
+          </ul>
+        </div>'
+      }) }}
+
+    <!-- VERSION 1.5 -->
+    <h3 class="govuk-heading-m">
+      <a href="v1_5-citizen/1-eligibility/introduction">Citizen journey &ndash; Version 1.5</a>
+    </h3>
+
+    <p>Worked on by: Gareth Joyce & Neil Holroyd</p>
+
+    <ul class="govuk-list govuk-list--bullet">
+     <li>Additional backdating questions added</li>
+     <li>Updates application complete page with sign posting to Universal Credit</li>
+   </ul>
+
+   {{ govukDetails({
+     summaryText: "Version 1.5 shortcut links",
+     html: '
+       <div class="govuk-clearfix"><div class="govuk-grid-column-one-half">
+         <ul class="govuk-list govuk-list--bullet">
+           <li><a href="v1_5-citizen/1-eligibility/introduction">Eligibility</a></li>
+           <li><a href="v1_5-citizen/2-claim-start/start-date">Claim start date</a></li>
+           <li><a href="v1_5-citizen/3-details">Personal details (NINO)</a></li>
+           <li><a href="v1_5-citizen/4-other-benefits">Other benefits</a></li>
+           <li><a href="v1_5-citizen/5-jury-service">Jury service</a></li>
+           <li><a href="v1_5-citizen/6-current-employment">Current employment</a></li>
+           <li><a href="v1_5-citizen/7-previous-employment">Previous employment</a></li>
+           <li><a href="v1_5-citizen/8-abroad">Worked or claimed benefit outside UK</a></li>
+         <ul>
+       </div>
+       <div class="govuk-grid-column-one-half">
+         <ul class="govuk-list govuk-list--bullet">
+           <li><a href="v1_5-citizen/9-pensions/9a-current-pension">Current pension</a></li>
+           <li><a href="v1_5-citizen/9-pensions/9b-deferred-pension">Deferred pension</a></li>
+           <li><a href="v1_5-citizen/9-pensions/9c-future-pension">Future pension</a></li>
+           <li><a href="v1_5-citizen/10-education">Education or training</a></li>
+           <li><a href="v1_5-citizen/11-availability">Availability</a></li>
+           <li><a href="v1_5-citizen/check-answers">Check your answers</a></li>
+           <li><a href="v1_5-citizen/declaration">Declaration</a></li>
+           <li><a href="v1_5-citizen/confirmation">Confirmation</a></li>
+         </ul>
+       </div>'
+     }) }}
+
+    <!-- VERSION 1.4 -->
+    <h3 class="govuk-heading-m">
+      <a href="v1_4-citizen/1-eligibility/introduction">Citizen journey &ndash; Version 1.4</a>
+    </h3>
+
+    <p>Worked on by: Helen Osgerby & Mark Bateman</p>
+
+     <ul class="govuk-list govuk-list--bullet">
+      <li>Revised backdating questions</li>
+      <li>Revised 'check your answers' (prototype isn't dynamic in the event the citizen chooses to backdate)</li>
+    </ul>
+
+    {{ govukDetails({
+      summaryText: "Version 1.4 shortcut links",
+      html: '
+        <div class="govuk-clearfix"><div class="govuk-grid-column-one-half">
+          <ul class="govuk-list govuk-list--bullet">
+            <li><a href="v1_4-citizen/1-eligibility/residence">Residency</a></li>
+            <li><a href="v1_4-citizen/2-claim-start/start-date">Claim start date</a></li>
+            <li><a href="v1_4-citizen/3-details">Personal details (NINO)</a></li>
+            <li><a href="v1_4-citizen/4-other-benefits">Other benefits</a></li>
+            <li><a href="v1_4-citizen/5-jury-service">Jury service</a></li>
+            <li><a href="v1_4-citizen/6-current-employment">Current employment</a></li>
+            <li><a href="v1_4-citizen/7-previous-employment">Previous employment</a></li>
+            <li><a href="v1_4-citizen/8-abroad">Worked or claimed benefit outside UK</a></li>
+          <ul>
+        </div>
+        <div class="govuk-grid-column-one-half">
+          <ul class="govuk-list govuk-list--bullet">
+            <li><a href="v1_4-citizen/9-pensions/9a-current-pension">Current pension</a></li>
+            <li><a href="v1_4-citizen/9-pensions/9b-deferred-pension">Deferred pension</a></li>
+            <li><a href="v1_4-citizen/9-pensions/9c-future-pension">Future pension</a></li>
+            <li><a href="v1_4-citizen/10-education">Education or training</a></li>
+            <li><a href="v1_4-citizen/11-availability">Availability</a></li>
+            <li><a href="v1_4-citizen/check-answers">Check your answers</a></li>
+            <li><a href="v1_4-citizen/declaration">Declaration</a></li>
+            <li><a href="v1_4-citizen/confirmation">Confirmation</a></li>
+          </ul>
+        </div>'
+      }) }}
+
+    <!-- VERSION 1.3 -->
+    <h3 class="govuk-heading-m">
+      <a href="v1_3-citizen/1-eligibility/introduction">Citizen journey &ndash; Version 1.3</a>
+    </h3>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>Addition of conditionally revealed content surrounding "Personal detail" and contact phone number</li>
+      <li>Updated service content in line with contingency service</li>
+      <li>Included information on what you need to complete application on eligible page </li>
+    </ul>
+
+    {{ govukDetails({
+      summaryText: "Version 1.3 shortcut links",
+      html: '
+        <div class="govuk-clearfix"><div class="govuk-grid-column-one-half">
+          <ul class="govuk-list govuk-list--bullet">
+            <li><a href="v1_3-citizen/1-eligibility/residence">Residency</a></li>
+            <li><a href="v1_3-citizen/2-claim-start/start-date">Claim start date</a></li>
+            <li><a href="v1_3-citizen/3-details">Personal details (NINO)</a></li>
+            <li><a href="v1_3-citizen/4-other-benefits">Other benefits</a></li>
+            <li><a href="v1_3-citizen/5-jury-service">Jury service</a></li>
+            <li><a href="v1_3-citizen/6-current-employment">Current employment</a></li>
+            <li><a href="v1_3-citizen/7-previous-employment">Previous employment</a></li>
+            <li><a href="v1_3-citizen/8-abroad">Worked or claimed benefit outside UK</a></li>
+          <ul>
+        </div>
+        <div class="govuk-grid-column-one-half">
+          <ul class="govuk-list govuk-list--bullet">
+            <li><a href="v1_3-citizen/9-pensions/9a-current-pension">Current pension</a></li>
+            <li><a href="v1_3-citizen/9-pensions/9b-deferred-pension">Deferred pension</a></li>
+            <li><a href="v1_3-citizen/9-pensions/9c-future-pension">Future pension</a></li>
+            <li><a href="v1_3-citizen/10-education">Education or training</a></li>
+            <li><a href="v1_3-citizen/11-availability">Availability</a></li>
+            <li><a href="v1_3-citizen/check-answers">Check your answers</a></li>
+            <li><a href="v1_3-citizen/declaration">Declaration</a></li>
+            <li><a href="v1_3-citizen/confirmation">Confirmation</a></li>
+          </ul>
+        </div>'
+      }) }}
+
+    <!-- VERSION 1.2 -->
+    <h3 class="govuk-heading-m">
+      <a href="v1_2-citizen/1-eligibility/introduction">Citizen journey &ndash; Version 1.2</a>
+    </h3>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>
+        <p>The inclusion of section headers</p>
+    </li>
+  </ul>
+
+  {{ govukDetails({
+      summaryText: "Version 1.2 shortcut links",
+      html: '
+        <div class="govuk-clearfix"><div class="govuk-grid-column-one-half">
+          <ul class="govuk-list govuk-list--bullet">
+            <li><a href="v1_2-citizen/1-eligibility/residence">Residency</a></li>
+            <li><a href="v1_2-citizen/2-claim-start/start-date">Claim start date</a></li>
+            <li><a href="v1_2-citizen/3-details">Personal details (NINO)</a></li>
+            <li><a href="v1_2-citizen/4-other-benefits">Other benefits</a></li>
+            <li><a href="v1_2-citizen/5-jury-service">Jury service</a></li>
+            <li><a href="v1_2-citizen/6-current-employment">Current employment</a></li>
+            <li><a href="v1_2-citizen/7-previous-employment">Previous employment</a></li>
+            <li><a href="v1_2-citizen/8-abroad">Worked or claimed benefit outside UK</a></li>
+          <ul>
+        </div>
+        <div class="govuk-grid-column-one-half">
+          <ul class="govuk-list govuk-list--bullet">
+            <li><a href="v1_2-citizen/9-pensions/9a-current-pension">Current pension</a></li>
+            <li><a href="v1_2-citizen/9-pensions/9b-deferred-pension">Deferred pension</a></li>
+            <li><a href="v1_2-citizen/9-pensions/9c-future-pension">Future pension</a></li>
+            <li><a href="v1_2-citizen/10-education">Education or training</a></li>
+            <li><a href="v1_2-citizen/11-availability">Availability</a></li>
+            <li><a href="v1_2-citizen/check-answers">Check your answers</a></li>
+            <li><a href="v1_2-citizen/declaration">Declaration</a></li>
+            <li><a href="v1_2-citizen/confirmation">Confirmation</a></li>
+          </ul>
+        </div>'
+      }) }}
+
+  <!-- VERSION 1.1 -->
+  <h3 class="govuk-heading-m">
+    <a href="v1_1-citizen/1-eligibility/introduction">Citizen journey &ndash; Version 1.1</a>
+  </h3>
+  <ul class="govuk-list govuk-list--bullet">
+    <li>
+        <p>Grammatical issues addressed together with GDS Design System compliance</p>
+  </li>
+  <li>
+        <p>Updated eligiblity questions following instruction from SD&T and policy teams</p>
+  </li>
+  </ul>
+
+  {{ govukDetails({
+      summaryText: "Version 1.1 shortcut links",
+      html: '
+        <div class="govuk-clearfix"><div class="govuk-grid-column-one-half">
+          <ul class="govuk-list govuk-list--bullet">
+            <li><a href="v1_1-citizen/1-eligibility/residence">Residency</a></li>
+            <li><a href="v1_1-citizen/2-claim-start/start-date">Claim start date</a></li>
+            <li><a href="v1_1-citizen/3-details">Personal details (NINO)</a></li>
+            <li><a href="v1_1-citizen/4-other-benefits">Other benefits</a></li>
+            <li><a href="v1_1-citizen/5-jury-service">Jury service</a></li>
+            <li><a href="v1_1-citizen/6-current-employment">Current employment</a></li>
+            <li><a href="v1_1-citizen/7-previous-employment">Previous employment</a></li>
+            <li><a href="v1_1-citizen/8-abroad">Worked or claimed benefit outside UK</a></li>
+          <ul>
+        </div>
+        <div class="govuk-grid-column-one-half">
+          <ul class="govuk-list govuk-list--bullet">
+            <li><a href="v1_1-citizen/9-pensions/9a-current-pension">Current pension</a></li>
+            <li><a href="v1_1-citizen/9-pensions/9b-deferred-pension">Deferred pension</a></li>
+            <li><a href="v1_1-citizen/9-pensions/9c-future-pension">Future pension</a></li>
+            <li><a href="v1_1-citizen/10-education">Education or training</a></li>
+            <li><a href="v1_1-citizen/11-availability">Availability</a></li>
+            <li><a href="v1_1-citizen/check-answers">Check your answers</a></li>
+            <li><a href="v1_1-citizen/declaration">Declaration</a></li>
+            <li><a href="v1_1-citizen/confirmation">Confirmation</a></li>
+          </ul>
+        </div>'
+      }) }}
+
+  <!-- VERSION 1.0 -->
+  <h3 class="govuk-heading-m">
+  <a href="v1_0-citizen/1-eligibility/introduction">Citizen journey &ndash; Version 1.0</a>
+  </h3>
+  <ul class="govuk-list govuk-list--bullet">
+  <li>
+        <p>Aligned with the current MVP [as of 20th January 2020]</p>
+  </li>
+  </ul>
+
+  {{ govukDetails({
+      summaryText: "Version 1.0 shortcut links",
+      html: '
+        <div class="govuk-clearfix"><div class="govuk-grid-column-one-half">
+          <ul class="govuk-list govuk-list--bullet">
+            <li><a href="v1_0-citizen/1-eligibility">Residency</a></li>
+            <li><a href="v1_0-citizen/2-claim-start/start-date">Claim start date</a></li>
+            <li><a href="v1_0-citizen/3-details">Personal details (NINO)</a></li>
+            <li><a href="v1_0-citizen/4-other-benefits">Other benefits</a></li>
+            <li><a href="v1_0-citizen/5-jury-service">Jury service</a></li>
+            <li><a href="v1_0-citizen/6-current-employment">Current employment</a></li>
+            <li><a href="v1_0-citizen/7-previous-employment">Previous employment</a></li>
+            <li><a href="v1_0-citizen/8-abroad">Worked or claimed benefit outside UK</a></li>
+          <ul>
+        </div>
+        <div class="govuk-grid-column-one-half">
+          <ul class="govuk-list govuk-list--bullet">
+            <li><a href="v1_0-citizen/9-pensions/9a-current-pension">Current pension</a></li>
+            <li><a href="v1_0-citizen/9-pensions/9b-deferred-pension">Deferred pension</a></li>
+            <li><a href="v1_0-citizen/9-pensions/9c-future-pension">Future pension</a></li>
+            <li><a href="v1_0-citizen/10-education">Education or training</a></li>
+            <li><a href="v1_0-citizen/11-availability">Availability</a></li>
+            <li><a href="v1_0-citizen/check-answers">Check your answers</a></li>
+            <li><a href="v1_0-citizen/declaration">Declaration</a></li>
+            <li><a href="v1_0-citizen/confirmation">Confirmation</a></li>
+          </ul>
+        </div>'
+      }) }}
+
+  </div>
+
+
+</div>
+
+
+
+
+
+{% endblock %}

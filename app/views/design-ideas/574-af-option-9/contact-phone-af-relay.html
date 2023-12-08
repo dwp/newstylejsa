@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  DWP - Jobseeker&rsquo;s Allowance
+{% endblock %}
+
+{% block beforeContent %}
+  <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <span class="govuk-caption-xl">Alternative formats</span>
+
+      <form action="bank-account" method="post">
+
+        <!-- <p>We usually contact you by letter and phone.
+        </p>
+
+        <p>If you cannot read a letter or use the phone, we can contact you in an alternative format. This includes audio, braille and large print.</p> -->
+
+
+        <div class="govuk-form-group">
+          <h1 class="govuk-label-wrapper"><label class="govuk-label govuk-label--l" for="contact-phone-number">
+              What is your {{ data['lettersContactPreference'] }} number?
+            </label>
+          </h1>
+          <input class="govuk-input govuk-input--width-20" id="contact-phone-number" name="contact-phone-number" type="text">
+        </div>
+
+        <button class="govuk-button" data-module="govuk-button">Continue</button>
+
+      </form>
+
+  </div>
+
+{% endblock %}

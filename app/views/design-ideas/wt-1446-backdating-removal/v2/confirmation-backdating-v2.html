@@ -1,0 +1,122 @@
+
+{% extends "layout-live-complete.html" %}
+
+{% block pageTitle %}
+  DWP - Jobseeker&rsquo;s Allowance
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <div class="govuk-panel govuk-panel--confirmation">
+        <h1 class="govuk-panel__title govuk-panel__title--centred">Application complete</h1>
+      </div>
+
+    <p>If you’ve provided a mobile number or email address, we’ll send you confirmation of your application and keep you updated on its progress.</p>
+
+      <h2 class="govuk-heading-m">What happens next</h2>
+      <p>We’ll process your application.</p>
+
+      <h2 class="govuk-heading-m">If you’re eligible</h2>
+      <p>If you can get New Style JSA, we’ll contact you about an appointment to agree what you need to do to look for work. This agreement is called a ‘Claimant Commitment’. We’ll usually contact you about the appointment within 10 days.</p>
+
+      <p>The appointment will be with a work coach and will normally be over the phone.</p>
+
+      <p>You must attend the appointment and agree your Claimant Commitment before we can pay you. Once you’ve agreed your Claimant Commitment and if you’re due a payment, we’ll aim to pay you within 7 days.</p>
+
+      <h2 class="govuk-heading-m">If you’re not eligible</h2>
+      <p>If you cannot get New Style JSA, we’ll send you a letter to explain why. We’ll usually send the letter within 10 days.</p>
+
+      {{ govukInsetText({
+        html: "
+        <h2 class=govuk-heading-m>Contacting us</h2>
+         <p>You only need to <a href=https://www.gov.uk/jobseekers-allowance/report-a-change-of-circumstances>contact us to report a change of circumstances</a>, such as starting a new job or to ask for backdating.</p>
+      "
+      }) }}
+
+      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+      <h2 class="govuk-heading-m">Backdating your claim</h2>
+
+      <p>In certain circumstances, <a href="#0">you can start your claim</a> from an earlier date than today. If your claim is eligible for backdating, you can still only get New Style JSA for up to 182 days (about 6 months) from your claim start date.</p>
+
+      <div class="govuk-tabs" data-module="govuk-tabs">
+      <h2 class="govuk-tabs__title">
+        Contents
+      </h2>
+      <ul class="govuk-tabs__list">
+        <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
+          <a class="govuk-tabs__tab" href="#eligible">
+            Eligible
+          </a>
+        </li>
+        <li class="govuk-tabs__list-item">
+          <a class="govuk-tabs__tab" href="#ineligible">
+            Not eligible
+          </a>
+        </li>
+        <li class="govuk-tabs__list-item">
+          <a class="govuk-tabs__tab" href="#download">
+            Apply for backdating today
+          </a>
+        </li>
+      </ul>
+      <div class="govuk-tabs__panel" id="eligible">
+        <p><strong>If you're eligible for New Style JSA</strong></p>
+        <p>You can discuss backdating with your work coach at your first appointment. They will advise you if you can backdate your claim or not.</p>
+      </div>
+      <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="ineligible">
+        <p><strong>If you're not eligible for New Style JSA</strong></p>
+        <p>Once your letter arrives, contact Jobcentre Plus if you still want to apply for backdating.</p>
+      </div>
+      <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="download">
+        <p><strong>If you want to ask for backdating today</strong></p>
+        <p>There are 3 ways to get the JSA5 form, which you must complete and post back to us so that we can consider your claim for backdating.</p>
+
+        <p>To get the JSA5 form, you can either:</p>
+
+        <ul class="govuk-list govuk-list--bullet">
+          <li><a href="#">download the JSA5.pdf</a> form (23Kb) and print at home or somewhere convenient</li>
+          <li>collect the JSA5 form from your local Jobcentre Plus office before or during your first appointment with a work coach</li>
+          <li>call the Benefit Enquiry Line and ask for the JSA5 form to be sent you by post Telephone: 0800 055 6688 Textphone: 0800 023 4888</li>
+        </ul>
+
+        <p>Once you’ve completed the JSA5 form, you must send it to the following address:</p>
+
+        <p>New Style Jobseeker's Allowance<br>
+          Post Handling Site<br>
+          Wolverhampton<br>
+          WV99 1AJ</p>
+      </div>
+    </div>
+
+
+
+
+
+
+        <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+
+      {{ govukDetails({
+        summaryText: "Do you need help with housing costs or support for a partner or child?",
+        html: "
+        <p>If you're on a low income you might be able to apply for Universal Credit as part of a dual claim with New Style JSA.</p>
+        <p>Unlike New Style JSA, you can apply with a partner and get support for housing costs, children and childcare.</p>
+        <p>You or your partner must have less than £16,000 in savings or investments to be eligilbe.</p>
+        <p>Find out <a href=https://www.gov.uk/how-to-claim-universal-credit>how to claim Universal Credit on GOV.UK</a>.</p>
+        "
+      }) }}
+
+      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+      <p><a href="#" class="govuk-link">What did you think of this service?</a> (takes 30 seconds)</p>
+
+
+
+    </div>
+  </div>
+
+{% endblock %}

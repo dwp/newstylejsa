@@ -1,0 +1,56 @@
+
+{% extends "layout-live-nobanner.html" %}
+
+{% block pageTitle %}
+  DWP - Jobseeker&rsquo;s Allowance
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        <span class="govuk-caption-xl">Time spent abroad</span>
+        Have you worked or claimed benefits abroad in the last 4 years?
+      </h1>
+
+      <form action="working-abroad" method="post">
+
+        {{ govukRadios({
+            idPrefix: 'abroad',
+            name: 'workBenefitAbroad',
+            classes: "govuk-radios--inline",
+            items: [
+    {
+      value: "worked-abroad",
+      text: "Yes, I have worked abroad in the last 4 years",
+      hint: {
+        text: "This does not include working abroad for a UK company."
+      }
+    },
+    {
+      value: "claimed-abroad",
+      text: "Yes, I have claimed benefits abroad in the last 4 years",
+      hint: {
+        text: "This does not include UK benefits you have claimed while you were abroad."
+      }
+    },
+    {
+      value: "not-worked-abroad",
+      text: "No, I have not worked or claimed benefits abroad in the last 4 years"
+      
+    }
+  ]
+          })
+        }}
+
+        {{ govukButton({
+            text: "Continue"
+        }) }}
+
+      </form>
+    </div>
+  </div>
+
+{% endblock %}

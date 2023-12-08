@@ -1,0 +1,71 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  DWP - Jobseeker&rsquo;s Allowance
+{% endblock %}
+
+{% block beforeContent %}
+  <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <span class="govuk-caption-xl">Accessibility</span>
+      <h1 class="govuk-heading-l">Do you need us to contact you in an alternative format?</h1>
+
+      <form action="alternate-format" method="post">
+
+        <p>After you've submitted your application, we usually contact you by letter and phone.</p>
+
+          <p>If you cannot read a standard letter or use the phone, we can contact you in an alternative format, for example:
+        </p>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>large print</li>
+          <li>email</li>
+          <li>Relay UK</li>
+        </ul>
+
+        <!-- <details class="govuk-details" data-module="govuk-details">
+          <summary class="govuk-details__summary">
+              <span class="govuk-details__summary-text">
+                I cannot apply online
+                  </span>
+          </summary>
+            <div class="govuk-details__text">
+              Contact <a href="https://www.gov.uk/contact-jobcentre-plus/new-benefit-claims" class="govuk-link" rel="noreferrer noopener" target="_blank"> Jobcentre Plus</a> if you have a disability or health condition and need help applying.
+              </div>
+          </details> -->
+
+          {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+          {{ govukRadios({
+            idPrefix: "alternate-format",
+            name: "AlternateFormat",
+            fieldset: {
+              legend: {
+                isPageHeading: true,
+                classes: "govuk-fieldset__legend--l"
+              }
+            },
+
+            items: [
+              {
+                value: "alternateFormatYes",
+                text: "Yes, I need to be contacted in an alternative format"
+              },
+              {
+                value: "no",
+                text: "No, I do not need to be contacted in an alternative format"
+              }
+            ]
+          }) }}
+
+        <button class="govuk-button" data-module="govuk-button">Continue</button>
+
+      </form>
+
+  </div>
+
+{% endblock %}

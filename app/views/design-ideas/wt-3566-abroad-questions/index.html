@@ -1,0 +1,37 @@
+
+{% extends "layout-live-complete.html" %}
+
+{% block pageTitle %}
+  DWP - Jobseeker&rsquo;s Allowance
+{% endblock %}
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back()"
+  }) }}
+
+{% endblock %}
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">Iteration for abroad questions</h1>
+
+      <p>We believe that the current question on working or claiming benefits abroad is not being understood by users.
+        <br>So if we rewrite the question to make it clearer, then we will see a reduction in the volume of users selecting yes in error, resulting in less follow-up calls from agents and more efficient processing of claims.</p>
+      <p>We believe that NSJSA applicants who have travelled with a partner on an armed forces overseas posting are not receiving the NI credits that they are entitled to which may affect their eligibility for NSJSA.
+         <br>So if we add this question to the NSJSA service, then we will see more accurate decisions on NSJSA eligibility for armed forces partners and spouses.</p>
+
+         <h2 class="govuk-heading-m">Options to test:</h1>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>Option 1 - <a href="/design-ideas/wt-3566-abroad-questions/abroad-option-1/working-abroad">Working abroad option 1, Armed forces option 1</a></li>
+        <li>Option 2 - <a href="/design-ideas/wt-3566-abroad-questions/abroad-option-2/working-abroad">Working abroad option 2, Armed forces option 2</a></li>
+        <li>Option 3 - <a href="/design-ideas/wt-3566-abroad-questions/abroad-option-3/working-abroad">Working abroad option 3, Armed forces option 3</a></li>
+      </ul>
+
+
+    </div>
+  </div>
+
+{% endblock %}

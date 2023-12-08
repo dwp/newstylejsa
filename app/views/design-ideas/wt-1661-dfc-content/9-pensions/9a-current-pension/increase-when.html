@@ -1,0 +1,35 @@
+
+{% extends "layout-live-nobanner.html" %}
+
+{% block pageTitle %}
+  DWP - Jobseeker&rsquo;s Allowance
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        <span class="govuk-caption-xl">Pension or annuity</span>
+        When will your pension or annuity increase?
+      </h1>
+
+      <form action="increase-when" method="post">
+
+        {{ govukRadios({
+          idPrefix: "current-pension-increase-frequency",
+          name: "current-pension-increase-frequency",
+          items: TODAYS_DATE.month | getNextSixMonths,
+          checked: checked("current-pension-increase-frequency")
+        }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+    </div>
+  </div>
+
+{% endblock %}

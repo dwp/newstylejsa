@@ -1,0 +1,33 @@
+
+{% extends "layout-live-nobanner.html" %}
+
+{% block pageTitle %}
+  DWP - Jobseeker&rsquo;s Allowance
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        <span class="govuk-caption-xl">Claim start date</span>
+        You are not eligible for backdating
+      </h1>
+
+      <p>This is because none of the circumstances listed in the previous page applied to you in the past 3 months.</p>
+
+      <form action="/design-ideas/wt-1451-backdating-improving-user-journey/checkboxes/3-details/nino" method="post">
+
+        {{ govukButton({
+          classes: "govuk-!-margin-top-6",
+          text: "Claim from today's date"
+        }) }}
+
+      </form>
+
+      <a href="change-date" class="govuk-body">I still want to backdate my claim</a>
+    </div>
+  </div>
+
+{% endblock %}
