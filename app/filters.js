@@ -1,16 +1,44 @@
-//
-// For guidance on how to create filters see:
-// https://prototype-kit.service.gov.uk/docs/filters
-//
-
-const govukPrototypeKit = require('govuk-prototype-kit')
-const addFilter = govukPrototypeKit.views.addFilter
-
-// Add your filters here
-
 const moment = require('moment')
 
+module.exports = function (env) {
+  /**
+   * Instantiate object used to store the methods registered as a
+   * 'filter' (of the same name) within nunjucks. You can override
+   * gov.uk core filters by creating filter methods of the same name.
+   * @type {Object}
+   */
   var filters = {}
+
+  /* ------------------------------------------------------------------
+    add your methods to the filters obj below this comment block:
+    @example:
+
+    filters.sayHi = function(name) {
+        return 'Hi ' + name + '!'
+    }
+
+    Which in your templates would be used as:
+
+    {{ 'Paul' | sayHi }} => 'Hi Paul'
+
+    Notice the first argument of your filters method is whatever
+    gets 'piped' via '|' to the filter.
+
+    Filters can take additional arguments, for example:
+
+    filters.sayHi = function(name,tone) {
+      return (tone == 'formal' ? 'Greetings' : 'Hi') + ' ' + name + '!'
+    }
+
+    Which would be used like this:
+
+    {{ 'Joel' | sayHi('formal') }} => 'Greetings Joel!'
+    {{ 'Gemma' | sayHi }} => 'Hi Gemma!'
+
+    For more on filters and how to write them see the Nunjucks
+    documentation.
+
+  ------------------------------------------------------------------ */
 
   filters.getNextSixMonths = function (startMonth) {
     const COUNT = 6
@@ -69,24 +97,8 @@ const moment = require('moment')
     return newDate
   }
 
-  //Separate input from presentation - 01 to January use | toMonth and  1 to $1 use | toMoney
-  filters.toMonth = function(x){ 
-    months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];   
-    if (x > 0){ return months[x - 1]; // returns date as per month      
-    } else {
-            return x ;      
-    }}     
-    filters.toMoney = function(x){  return("£" + x );
-    //TO ADD - case to handle nothing being there 
-    }
-
-    //Format date to date format like 01/02/2024
-    filters.formatDate = function (date) {
-      return moment(date).format("DD/MM/YYYY")
-    }
   /* ------------------------------------------------------------------
     keep the following line to return your filters to the app
   ------------------------------------------------------------------ */
-
-// Add the filters using the addFilter function
-Object.entries(filters).forEach(([name, fn]) => addFilter(name, fn))
+  return filters
+}

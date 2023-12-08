@@ -1,13 +1,15 @@
-//
-// For guidance on how to create routes see:
-// https://prototype-kit.service.gov.uk/docs/create-routes
-//
+const express = require("express");
+const router = express.Router();
 
-const govukPrototypeKit = require('govuk-prototype-kit')
-const router = govukPrototypeKit.requests.setupRouter()
 
-// Add your routes here
+// Route index page
+router.get("/", function (req, res) {
+  res.render("index");
+  //pensionTracker.reset()
+  req.session.destroy();
+});
 
+// Add your routes here - above the module.exports line
 
 
 // Routing for ticket 1001
@@ -85,45 +87,6 @@ router.use(
   "/design-ideas/1557-get-uc/v4/",
   require("./views/design-ideas/1557-get-uc/v4/_routes")
 );
-
-
-///////////////////////////////////////////////////////////////////////////////
-//                                                                           //
-//  ROUTING FOR ALTERNATIVE FORMATS                                             //
-//                                                                           //
-///////////////////////////////////////////////////////////////////////////////
-
-////// ALTERNATIVE FORMATS OPTION 10 //////
-// This moves 'alternative formats option 10' routing to af directory
-router.use(
-  "/design-ideas/wt-5868-af/",
-  require("./views/design-ideas/wt-5868-af/_routes")
-);
-
-// This moves eligibility routing to eligibility directory
-router.use(
-  "/design-ideas/wt-5868-af/before/1-eligibility/",
-  require("./views/design-ideas/wt-5868-af/before/1-eligibility/_routes")
-);
-
-// This moves `abroad` routing to `abroad` directory
-router.use(
-  "/design-ideas/wt-5868-af/before/2-claim-start/",
-  require("./views/design-ideas/wt-5868-af/before/2-claim-start/_routes")
-);
-
-// This moves details routing to details directory
-router.use(
-  "/design-ideas/wt-5868-af/before/3-details/",
-  require("./views/design-ideas/wt-5868-af/before/3-details/_routes")
-);
-
-// Redirect to first question in details sequence
-router.get("/design-ideas/wt-5868-af/before/3-details/", function (req, res) {
-  res.redirect("/design-ideas/wt-5868-af/before/3-details/nino");
-});
-
-////// ALTERNATIVE FORMATS PREVIOUS OPTIONS //////
 router.use(
   "/design-ideas/1974-af-option-1/",
   require("./views/design-ideas/1974-af-option-1/_routes")
@@ -162,7 +125,6 @@ router.use(
   "/design-ideas/574-af-option-9/",
   require("./views/design-ideas/574-af-option-9/_routes")
 );
-
 
 ///////////////////////////////////////////////////////////////////////////////
 //                                                                           //
@@ -843,96 +805,6 @@ router.use(
   "/design-ideas/wt-1661-dfc-content/error/",
   require("./views/design-ideas/wt-1661-dfc-content/error/_routes")
 );
-///////////////////////////////////////////////////////////////////////////////
-//                                                                           //
-//  ROUTING FOR VERSION 3.0                                                 //
-//                                                                           //
-///////////////////////////////////////////////////////////////////////////////
-
-// This moves V3 routing routing to v3 directory
-router.use(
-  "/v3_0-citizen/",
-  require("./views/v3_0-citizen/_routes")
-);
-// This moves eligibility routing to eligibility directory
-router.use(
-  "/v3_0-citizen/1-eligibility/",
-  require("./views/v3_0-citizen/1-eligibility/_routes")
-);
-
-// This moves `abroad` routing to `abroad` directory
-router.use(
-  "/v3_0-citizen/2-claim-start/",
-  require("./views/v3_0-citizen/2-claim-start/_routes")
-);
-
-// This moves details routing to details directory
-router.use(
-  "/v3_0-citizen/3-details/",
-  require("./views/v3_0-citizen/3-details/_routes")
-);
-
-// Redirect to first question in details sequence
-router.get("/v3_0-citizen/3-details/", function (req, res) {
-  res.redirect("/v3_0-citizen/3-details/nino");
-});
-
-// This moves `other-benefits` routing to `other-benefits` directory
-router.use(
-  "/v3_0-citizen/4-other-benefits/",
-  require("./views/v3_0-citizen/4-other-benefits/_routes")
-);
-
-// This moves jury-service routing to jury-service directory
-router.use(
-  "/v3_0-citizen/5-jury-service/",
-  require("./views/v3_0-citizen/5-jury-service/_routes")
-);
-
-// This moves current-employment routing to current-employment directory
-router.use(
-  "/v3_0-citizen/6-current-employment/",
-  require("./views/v3_0-citizen/6-current-employment/_routes")
-);
-
-// This moves previous-employment routing to previous-employment directory
-router.use(
-  "/v3_0-citizen/7-previous-employment/",
-  require("./views/v3_0-citizen/7-previous-employment/_routes")
-);
-
-// This moves `abroad` routing to `abroad` directory
-router.use(
-  "/v3_0-citizen/8-abroad/",
-  require("./views/v3_0-citizen/8-abroad/_routes")
-);
-
-// This moves `pensions` routing to `pensions` directory
-router.use(
-  "/v3_0-citizen/9-pensions/",
-  require("./views/v3_0-citizen/9-pensions/_routes")
-);
-
-// This moves `education` routing to `education` directory
-router.use(
-  "/v3_0-citizen/10-education/",
-  require("./views/v3_0-citizen/10-education/_routes")
-);
-
-// This moves `availability` routing to `availability` directory
-router.use(
-  "/v3_0-citizen/11-availability/",
-  require("./views/v3_0-citizen/11-availability/_routes")
-);
-
-// This moves `error` routing to `error` directory
-router.use(
-  "/v3_0-citizen/error/",
-  require("./views/v3_0-citizen/error/_routes")
-);
-
-// {END OF ROUTING FOR VERSION 3.0} ///////////////////////////////////////////
-
 ///////////////////////////////////////////////////////////////////////////////
 //                                                                           //
 //  ROUTING FOR VERSION 2.2                                                 //
@@ -2069,3 +1941,4 @@ router.post('/design-ideas/wt-3046-pension-changes/increase-when', function (req
   }
 })
 
+module.exports = router;

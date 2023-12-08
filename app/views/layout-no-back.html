@@ -1,7 +1,7 @@
 {#- We can't mount GOV.UK Frontend's assets at root as it's done automatically by the extensions framework. -#}
 {%- set assetPath = '/govuk/assets' -%}
 
-{% extends "layouts/main.html" %}
+{% extends "govuk/template.njk" %}
 
 {% from "govuk/components/accordion/macro.njk"        import govukAccordion %}
 {% from "govuk/components/back-link/macro.njk"        import govukBackLink %}
@@ -52,17 +52,16 @@
     homepageUrl: "/",
     serviceName: serviceName,
     serviceUrl: "/",
-    containerClasses: "govuk-width-container",
-    useTudorCrown: true
+    containerClasses: "govuk-width-container"
   }) }}
 
- <!--  {{ govukPhaseBanner({
+  {{ govukPhaseBanner({
     tag: {
       text: "alpha"
     },
     classes: "govuk-width-container",
     html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
-  }) }} -->
+  }) }}
 {% endblock %}
 
 <!-- {% set mainClasses = mainClasses | default("govuk-main-wrapper--auto-spacing") %} -->
