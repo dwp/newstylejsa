@@ -84,4 +84,24 @@ router.post('/contributions', function (req, res) {
   }
 });
 
+// after ineligible-residency -> continue to apply we do working-not-resident
+
+router.post('/working-not-resident', function (req, res) {
+  var answer = req.session.data['eligibilityWorkingNotResident'];
+  if (answer === 'eligibility-working-no') {
+  res.redirect(`${ABS_BASE_PATH}/ineligible-residency-still-apply`);
+  } else {
+  res.redirect(`${ABS_BASE_PATH}/working-over-not-resident`);
+  }
+  });
+
+// after ineligible-residency -> continue to apply --> working-not-resident we do working-over-not-resident
+router.post('/working-over-not-resident', function (req, res) {
+  var answer = req.session.data['eligibilityWorkingOverNotResident'];
+  if (answer === 'eligibility-working-over-no') {
+  res.redirect(`${ABS_BASE_PATH}/ineligible-residency-still-apply`);
+  } else {
+  res.redirect(`${ABS_BASE_PATH}/ineligible-residency-more-than-16-hours`);
+  }
+  });
 module.exports = router;

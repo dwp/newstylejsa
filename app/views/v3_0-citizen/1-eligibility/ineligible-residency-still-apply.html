@@ -12,12 +12,15 @@
 
             <h1 class="govuk-heading-l">You're not eligible for New Style Jobseeker's Allowance</h1>
 
-            <p>Based on your answer, you cannot get New Style Jobseeker's Allowance. To get it you must not be working, or be working less than 16 hours a week on average.</p>
+            <section>
+                <p class="govuk-body">Based on your answer, you cannot get New Style Jobseeker’s Allowance. To get it you must live in England, Wales, Scotland or Northern Ireland.</p>
+
+            </section>
 
             <p class="govuk-!-margin-top-6">If you are not sure which benefit to apply for you can check online.</p>
             {{ govukButton({
                 text: "Find other benefits",
-                href: "https://www.gov.uk/browse/benefits"
+                href: "https://www.gov.uk/claim-benefits-abroad"
             }) }}
 
             {% include "v3_0-citizen/1-eligibility/includes/still-apply.html" %}

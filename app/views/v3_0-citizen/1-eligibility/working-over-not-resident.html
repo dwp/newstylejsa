@@ -11,23 +11,23 @@
     <div class="govuk-grid-column-two-thirds">
 
       <h1 class="govuk-heading-l">
-        Do you live in England, Wales, Scotland or Northern Ireland?
+        How many hours a week do you normally work?
       </h1>
 
-      <form action="residence" method="post">
+      <form action="working-over-not-resident" method="post">
 
         {{ govukRadios({
-            classes: "govuk-radios--inline",
-            idPrefix: 'residence',
-            name: 'eligibilityResidence',
+            classes: "govuk-radios",
+            idPrefix: 'working-over-form-not-resident',
+            name: 'eligibilityWorkingOverNotResident',
             items: [
                 {
-                    value: "eligibility-residence-yes",
-                    text: "Yes"
-                },
-                {
-                    value: "eligibility-residence-no",
-                    text: "No"
+                  value: "eligibility-working-over-yes",
+                  text: "16 hours or more"
+              },
+              {
+                  value: "eligibility-working-over-no",
+                  text: "Less than 16 hours"
                 }
             ]
           })
