@@ -11,23 +11,23 @@
     <div class="govuk-grid-column-two-thirds">
 
       <h1 class="govuk-heading-l">
-        Do you live in England, Wales, Scotland or Northern Ireland?
+        Are you in paid work?
       </h1>
 
-      <form action="residence" method="post">
+      <form action="working-not-resident" method="post">
 
         {{ govukRadios({
             classes: "govuk-radios--inline",
-            idPrefix: 'residence',
-            name: 'eligibilityResidence',
+            idPrefix: 'working-not-resident',
+            name: 'eligibilityWorkingNotResident',
             items: [
                 {
-                    value: "eligibility-residence-yes",
-                    text: "Yes"
-                },
-                {
-                    value: "eligibility-residence-no",
-                    text: "No"
+                  value: "eligibility-working-yes",
+                  text: "Yes"
+              },
+              {
+                  value: "eligibility-working-no",
+                  text: "No"
                 }
             ]
           })
