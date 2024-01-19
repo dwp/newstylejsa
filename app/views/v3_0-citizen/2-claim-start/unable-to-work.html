@@ -12,7 +12,7 @@
 
       <h1 class="govuk-heading-l">
         <span class="govuk-caption-xl">Application start date</span>
-        Have you been unable to work because of illness since 22 July 2020?
+        Have you been unable to work because of illness since {{ data['claim-start-day'] }} {{ data['claim-start-month'] | toMonth }} {{ data['claim-start-year'] }}?
       </h1>
       <p class="govuk-body">
         You will need to tell us the dates you were unable to work.
