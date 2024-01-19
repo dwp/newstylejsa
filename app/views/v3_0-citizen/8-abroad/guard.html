@@ -10,31 +10,37 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <h1 class="govuk-heading-l">
-        <span class="govuk-caption-xl">Previous employment</span>
-        Have you worked or claimed benefit outside of the United Kingdom in the last 4 years?
-      </h1>
+     <span class="govuk-caption-xl">Time spent abroad</span>
 
       <form action="guard" method="post">
 
-        {{ govukRadios({
-            idPrefix: 'abroad',
-            name: 'workBenefitAbroad',
-            classes: "govuk-radios--inline",
-            items: [
-                {
-                    value: "Yes",
-                    checked: checked("workBenefitAbroad", "Yes"),
-                    text: "Yes"
-                },
-                {
-                    value: "No",
-                    checked: checked("workBenefitAbroad", "No"),
-                    text: "No"
-                }
-            ]
-          })
-        }}
+       {{ govukRadios({
+          classes: "govuk-radios--inline",
+          name: "workBenefitAbroad",
+          fieldset: {
+            legend: {
+              text: "Have you worked or claimed benefits abroad in the last 4 years?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+              
+            }
+          },
+          hint: {
+            text: "You do not need to tell us if you have claimed UK benefits while you were on holiday abroad."
+          },
+          items: [
+            {
+              value: "yes",
+              text: "Yes"
+            },
+            {
+              value: "no",
+              text: "No"
+            }
+          ]
+        }) }}
+
+       
 
         {{ govukButton({
             text: "Continue"

@@ -12,7 +12,7 @@
 
       <h1 class="govuk-heading-l">
         <span class="govuk-caption-xl">Application start date</span>
-        Were you searching for work from 22 July 2020?
+        Were you searching for work from {{ data['claim-start-day'] }} {{ data['claim-start-month'] | toMonth }} {{ data['claim-start-year'] }}?
       </h1>
       <form action="why-have-you-not-claimed" method="post">
 

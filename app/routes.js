@@ -811,6 +811,11 @@ router.use(
 //                                                                           //
 ///////////////////////////////////////////////////////////////////////////////
 
+// This moves V3 routing routing to v3 directory
+router.use(
+  "/v3_0-citizen/",
+  require("./views/v3_0-citizen/_routes")
+);
 // This moves eligibility routing to eligibility directory
 router.use(
   "/v3_0-citizen/1-eligibility/",
