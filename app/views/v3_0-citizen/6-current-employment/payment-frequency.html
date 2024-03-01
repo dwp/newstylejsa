@@ -64,12 +64,12 @@ Note: The pound sign needs to be inside the input text box, this is styled by ma
               </div>
 
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="current-work-paid-3" name="current-work-paid" type="radio" value="Every 3 weeks" data-aria-controls="conditional-current-work-paid-3" {{ checked("current-work-paid", "Every 3 weeks") }}>
+                <input class="govuk-radios__input" id="current-work-paid-4" name="current-work-paid" type="radio" value="Every 4 weeks" data-aria-controls="conditional-current-work-paid-4" {{ checked("current-work-paid", "Every 4 weeks") }}>
                 <label class="govuk-label govuk-radios__label" for="current-work-paid">
-                  Every 3 weeks
+                  Every 4 weeks
                 </label>
               </div>
-              <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-current-work-paid-3">
+              <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-current-work-paid-4">
                 <div class="govuk-form-group">
                   <label class="govuk-label" for="current-work-paid-weekly">
                     <strong>What is your net pay?<br></strong>
@@ -78,17 +78,17 @@ Note: The pound sign needs to be inside the input text box, this is styled by ma
                   <div id="current-work-paid-weekly-hint" class="govuk-hint">
                     For example, £80.00
                   </div>
-                  <input class="govuk-input govuk-!-width-one-third" id="current-work-paid-weekly-amount" name="current-work-paid-3weeks-amount" type="numeric" spellcheck="false" autocomplete="email" value="{{ data['current-work-paid-3weeks-amount'] }}">
+                  <input class="govuk-input govuk-!-width-one-third" id="current-work-paid-weekly-amount" name="current-work-paid-4weeks-amount" type="numeric" spellcheck="false" autocomplete="email" value="{{ data['current-work-paid-4weeks-amount'] }}">
                 </div>
               </div>
 
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="current-work-paid-4" name="current-work-paid" type="radio" value="Every month" data-aria-controls="conditional-current-work-paid-4" {{ checked("current-work-paid", "Every month") }}>
+                <input class="govuk-radios__input" id="current-work-paid-month" name="current-work-paid" type="radio" value="Every month" data-aria-controls="conditional-current-work-paid-monthly" {{ checked("current-work-paid", "Every month") }}>
                 <label class="govuk-label govuk-radios__label" for="current-work-paid">
                   Every month
                 </label>
               </div>
-              <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-current-work-paid-4">
+              <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-current-work-paid-monthly">
                 <div class="govuk-form-group">
                   <label class="govuk-label" for="current-work-paid-weekly">
                     <strong>What is your net pay?<br></strong>
