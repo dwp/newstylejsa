@@ -53,7 +53,7 @@
             {% endif %}?
           </dt>
           <dd class="govuk-summary-list__value">
-            {{ data['ceCurrentlyWorking'] }}
+            {{ data['ceCurrentlyWorking'] | title }}
           </dd>
           <dd class="govuk-summary-list__actions">
             <a href="/v3_0-citizen/2-claim-start/available-for-work">
@@ -74,7 +74,7 @@
             {% endif %}?
           </dt>
           <dd class="govuk-summary-list__value">
-            {{ data['ceCurrentlySearching'] }}
+            {{ data['ceCurrentlySearching'] | title }}
           </dd>
           <dd class="govuk-summary-list__actions">
             <a href="/v3_0-citizen/2-claim-start/searching-for-work">
@@ -110,7 +110,7 @@
             {% endif %}?
           </dt>
           <dd class="govuk-summary-list__value">
-            {{ data['cePaidWork'] }}
+            {{ data['cePaidWork'] | title }}
           </dd>
           <dd class="govuk-summary-list__actions">
             <a href="/v3_0-citizen/2-claim-start/any-paid-work">
@@ -132,10 +132,10 @@
           </dt>
           <dd class="govuk-summary-list__value">
             {% if data['unableToWork']=="no" %}
-              {{ data['unableToWork'] }}
+              {{ data['unableToWork'] | title }}
             {% endif %}
             {% if data['unableToWork']=="yes" %}
-              {{ data['unableToWork'] }}, {{ data['illnessStartDay'] }} {{ data['illnessStartMonth'] }} {{ data['illnessStartYear'] }} to {{ data['illnessFinishDay'] }} {{ data['illnessFinishMonth'] }} {{ data['illnessFinishYear'] }}
+              {{ data['unableToWork'] | title }}, {{ data['illnessStartDay'] }} {{ data['illnessStartMonth'] }} {{ data['illnessStartYear'] }} to {{ data['illnessFinishDay'] }} {{ data['illnessFinishMonth'] }} {{ data['illnessFinishYear'] }}
             {% endif %}
           </dd>
           <dd class="govuk-summary-list__actions">
@@ -158,10 +158,10 @@
           </dt>
           <dd class="govuk-summary-list__value">
             {% if data['beenOnHoliday']=="no" %}
-              {{ data['beenOnHoliday'] }}
+              {{ data['beenOnHoliday'] | title }}
             {% endif %}
             {% if data['beenOnHoliday']=="yes" %}
-              {{ data['beenOnHoliday'] }}, {{ data['holidayStartDay'] }} {{ data['holidayStartMonth'] }} {{ data['holidayStartYear'] }} to {{ data['holidayFinishDay'] }} {{ data['holidayFinishMonth'] }} {{ data['holidayFinishYear'] }}
+              {{ data['beenOnHoliday'] | title }}, {{ data['holidayStartDay'] }} {{ data['holidayStartMonth'] }} {{ data['holidayStartYear'] }} to {{ data['holidayFinishDay'] }} {{ data['holidayFinishMonth'] }} {{ data['holidayFinishYear'] }}
             {% endif %}
           </dd>
           <dd class="govuk-summary-list__actions">
@@ -183,7 +183,7 @@
             {% endif %}?
           </dt>
           <dd class="govuk-summary-list__value">
-            {{ data['fulltimeEducation'] }}
+            {{ data['fulltimeEducation'] | title}}
           </dd>
           <dd class="govuk-summary-list__actions">
             <a href="/v3_0-citizen/2-claim-start/been-on-holiday">
@@ -205,7 +205,7 @@
               {% endif %}?
             </dt>
             <dd class="govuk-summary-list__value">
-              {{ data['asked-for-advice'] }} <br>
+              {{ data['asked-for-advice'] | title }} <br>
               {{ data['more-information'] }}
             </dd>
             <dd class="govuk-summary-list__actions">
@@ -259,7 +259,7 @@
             Date of birth
           </dt>
           <dd class="govuk-summary-list__value">
-            {{ data['dobDay'] }} {{ data['dobMonth'] }} {{ data['dobYear'] }}
+            {{ data['dobDay'] }}/{{ data['dobMonth'] }}/{{ data['dobYear'] }}
           </dd>
           <dd class="govuk-summary-list__actions">
             <a href="/v3_0-citizen/3-details/dob">
@@ -274,10 +274,7 @@
             Home address
           </dt>
           <dd class="govuk-summary-list__value">
-            {{ data['address-line-1'] }}<br>
-            {{ data['address-line-2'] }}<br>
-            {{ data['address-town'] }}<br>
-            {{ data['address-postcode'] }}
+            {{ data['address-line-1'] }}, {{ data['address-line-2'] }}, {{ data['address-town'] }}, {{ data['address-postcode'] }}
           </dd>
           <dd class="govuk-summary-list__actions">
             <a href="/v3_0-citizen/3-details/address">
@@ -292,22 +289,44 @@
             Do you want to add a different address for your post?
           </dt>
           <dd class="govuk-summary-list__value">
-            {{ data['detailsAddDifferentPostalAddress'] }}
+            {{ data['detailsAddDifferentPostalAddress'] | title}}
           </dd>
           <dd class="govuk-summary-list__actions">
             <a href="/v3_0-citizen/3-details/address-is-it-postal">
               Change
-              <span class="govuk-visually-hidden"> your postal address</span>
+              <span class="govuk-visually-hidden"> your your answer</span>
             </a>
           </dd>
         </div>
+
+        {% if data['detailsAddDifferentPostalAddress']=="Yes" %}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-width-one-half">
+            Postal address
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['postal-address-line-1'] }}, {{ data['postal-address-line-2'] }}, {{ data['postal-address-town'] }}, {{ data['postal-address-postcode'] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="/v3_0-citizen/3-details/address-postal-address">
+              Change
+              <span class="govuk-visually-hidden"> postal address</span>
+            </a>
+          </dd>
+        </div>
+        {% endif %}
+
 
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key govuk-!-width-one-half">
             Telephone number
           </dt>
           <dd class="govuk-summary-list__value">
+            {% if data['contact-telephone-number']=="Yes" %}
             {{ data['telephone-number'] }}
+            {% else %}
+            Not provided
+            {% endif %}
           </dd>
           <dd class="govuk-summary-list__actions">
             <a href="/v3_0-citizen/3-details/contact-phone">
@@ -336,7 +355,7 @@
       </dl>
 
       <!-- BANK DETAILS -->
-      {% if data['pay-account-holder'] %}
+      
       <h2 class="govuk-heading-l">Bank details</h2>
 
       <dl class="govuk-summary-list govuk-!-margin-bottom-9">
@@ -345,10 +364,14 @@
             Bank details
           </dt>
           <dd class="govuk-summary-list__value">
+            {% if data['pay-account-holder'] %}
             <strong>Account holder:</strong> {{ data['pay-account-holder'] }}<br>
             <strong>Sort code:</strong> {{ data['sort-code'] }}<br>
             <strong>Account number:</strong> {{ data['pay-account-number'] }}<br>
             <strong>Building society roll or reference number:</strong> {{ data['pay-reference-number'] }}
+            {% else %}
+            Not provided
+            {% endif %}
           </dd>
           <dd class="govuk-summary-list__actions">
             <a href="/v3_0-citizen/3-details/bank-account">
@@ -359,7 +382,7 @@
         </div>
 
       </dl>
-      {% endif %}
+    
 
       <!-- OTHER BENEFITS -->
       <h2 class="govuk-heading-l">Other benefits</h2>
@@ -389,10 +412,10 @@
             {{ data['ob-more-detail'] }}
           </dd>
           <dd class="govuk-summary-list__actions">
-            <a href="/v3_0-citizen/4-other-benefits/what-other-benefits">
+            <!-- <a href="/v3_0-citizen/4-other-benefits/what-other-benefits">
               Change
               <span class="govuk-visually-hidden"> your answer</span>
-            </a>
+            </a>-->
           </dd>
         </div>
         {% endif %}
@@ -423,13 +446,13 @@
             When was this jury service?
           </dt>
           <dd class="govuk-summary-list__value">
-            {{ data['juryStartDay'] }} {{ data['juryStartMonth'] }} {{ data['juryStartYear'] }} till {{ data['juryFinishDay'] }} {{ data['juryFinishMonth'] }} {{ data['juryFinishYear'] }}
+            {{ data['juryStartDay'] }}/{{ data['juryStartMonth'] }}/{{ data['juryStartYear'] }} to {{ data['juryFinishDay'] }}/{{ data['juryFinishMonth'] }}/{{ data['juryFinishYear'] }}
           </dd>
           <dd class="govuk-summary-list__actions">
-            <a href="/v3_0-citizen/5-jury-service/period">
+             <!--<a href="/v3_0-citizen/5-jury-service/period">
               Change
               <span class="govuk-visually-hidden"> jury service dates</span>
-            </a>
+            </a> -->
           </dd>
         </div>
         {% endif %}
@@ -447,13 +470,14 @@
             {{ data['ceCurrentlyWorking'] }}
           </dd>
           <dd class="govuk-summary-list__actions">
+            {% if data['ceCurrentlyWorking']=="No" %}
             <a href="/v3_0-citizen/6-current-employment/guard">
               Change
               <span class="govuk-visually-hidden"> your answer</span>
             </a>
+            {% endif %}
           </dd>
         </div>
-
       </dl>
 
       {% if data['ceCurrentlyWorking']=="Yes" %}
@@ -481,6 +505,38 @@
             </a>
           </dd> -->
         </div>
+
+        {% if data['ceCurrentWorkType']=="Voluntary" %}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-width-one-half">
+            Can you choose if you're paid for this voluntary work?
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['ceVoluntaryWorkCanYouChoose'] | title }}
+          </dd>
+          <!-- <dd class="govuk-summary-list__actions">
+            <a href="/v3_0-citizen/6-current-employment/choose-to-be-paid">
+              Change
+              <span class="govuk-visually-hidden"> your answer</span>
+            </a>
+          </dd> -->
+        </div>
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-width-one-half">
+            Do you get paid for this voluntary work?
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['ceGetPaid'] | title}}
+          </dd>
+          <!-- <dd class="govuk-summary-list__actions">
+            <a href="/v3_0-citizen/6-current-employment/get-paid">
+              Change
+              <span class="govuk-visually-hidden"> your answer</span>
+            </a>
+          </dd> -->
+        </div>
+       {% endif %}
 
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key govuk-!-width-one-half">
@@ -543,10 +599,7 @@
             What is the address of your current employer?
           </dt>
           <dd class="govuk-summary-list__value">
-            {{ data['ce-address-line-1'] }}<br>
-            {{ data['ce-address-line-2'] }}<br>
-            {{ data['ce-address-town'] }}<br>
-            {{ data['ce-address-postcode'] }}
+            {{ data['ce-address-line-1'] }},{% if data['ce-address-line-2'] %} {{ data['ce-address-line-2'] }},{% endif %} {{ data['ce-address-town'] }}, {{ data['ce-address-postcode'] }}
           </dd>
           <!-- <dd class="govuk-summary-list__actions">
             <a href="v3_0-citizen/6-current-employment/employer-address">
@@ -590,12 +643,12 @@
 
       <div class="govuk-grid-row govuk-!-margin-bottom-9">
             <div class="govuk-grid-column-two-thirds">
-                <a href="/citizen-ui/form/previous-employment/employer-details/2/dates?edit=SECTION" class="govuk-body">Add another employer</a>
+                <a href="/v3_0-citizen/6-current-employment/type" class="govuk-body">Add another employer</a>
 
 
             </div>
             <div class="govuk-grid-column-one-third govuk-align-right" style="text-align: right;">
-                <a href="#" class="govuk-body" aria-label="Remove First previous employer details">Remove employer details</a>
+                <a href="remove-ce-employer" class="govuk-body" aria-label="Remove First previous employer details">Remove employer details</a>
             </div>
         </div>
       {% endif %}
@@ -612,10 +665,12 @@
             {{ data['peLastSixMonths'] }}
           </dd>
           <dd class="govuk-summary-list__actions">
+            {% if data['peLastSixMonths']=="No" %}
             <a href="/v3_0-citizen/7-previous-employment/job-ended-last-six-months">
               Change
               <span class="govuk-visually-hidden"> your answer</span>
             </a>
+            {% endif %}
           </dd>
         </div>
 
@@ -639,10 +694,10 @@
             When did you work for this employer?
           </dt>
           <dd class="govuk-summary-list__value">
-            {{ data['peStartDay'] }} {{ data['peStartMonth'] }} {{ data['peStartYear'] }} to {{ data['peFinishDay'] }} {{ data['peFinishMonth'] }} {{ data['peFinishYear'] }}
+            {{ data['peStartDay'] }}/{{ data['peStartMonth'] }}/{{ data['peStartYear'] }} to {{ data['peFinishDay'] }}/{{ data['peFinishMonth'] }}/{{ data['peFinishYear'] }}
           </dd>
           <!-- <dd class="govuk-summary-list__actions">
-            <a href="/v3_0-citizen/6-current-employment/type">
+            <a href="/v3_0-citizen/7-previous-employment/type">
               Change
               <span class="govuk-visually-hidden"> your answer</span>
             </a>
@@ -657,7 +712,7 @@
             {{ data['peWhyEnd'] }}
           </dd>
           <!-- <dd class="govuk-summary-list__actions">
-            <a href="/v3_0-citizen/6-current-employment/payment-frequency">
+            <a href="/v3_0-citizen/7-previous-employment/payment-frequency">
               Change
               <span class="govuk-visually-hidden"> your answer</span>
             </a>
@@ -673,7 +728,7 @@
             {{ data['pe-more-detail'] }}
           </dd>
           <!-- <dd class="govuk-summary-list__actions">
-            <a href="/v3_0-citizen/6-current-employment/payment-frequency">
+            <a href="/v3_0-citizen/7-previous-employment/payment-frequency">
               Change
               <span class="govuk-visually-hidden"> your answer</span>
             </a>
@@ -689,7 +744,7 @@
             {{ data['peEmployerName'] }}
           </dd>
           <!-- <dd class="govuk-summary-list__actions">
-            <a href="/v3_0-citizen/6-current-employment/employer-name">
+            <a href="/v3_0-citizen/7-previous-employment/employer-name">
               Change
               <span class="govuk-visually-hidden"> your answer</span>
             </a>
@@ -701,13 +756,10 @@
             What is the address of your previous employer?
           </dt>
           <dd class="govuk-summary-list__value">
-            {{ data['pe-address-line-1'] }}<br>
-            {{ data['pe-address-line-2'] }}<br>
-            {{ data['pe-address-town'] }}<br>
-            {{ data['pe-address-postcode'] }}
+            {{ data['pe-address-line-1'] }}, {{ data['pe-address-line-2'] }}, {{ data['pe-address-town'] }}, {{ data['pe-address-postcode'] }}
           </dd>
           <!-- <dd class="govuk-summary-list__actions">
-            <a href="v3_0-citizen/6-current-employment/employer-address">
+            <a href="v3_0-citizen/7-previous-employment/employer-address">
               Change
               <span class="govuk-visually-hidden"> your employers address</span>
             </a>
@@ -722,7 +774,7 @@
             {{ data['peExpectPayment'] }}
           </dd>
           <!-- <dd class="govuk-summary-list__actions">
-            <a href="/v3_0-citizen/6-current-employment/hours">
+            <a href="/v3_0-citizen/7-previous-employment/hours">
               Change
               <span class="govuk-visually-hidden"> your answer</span>
             </a>
@@ -737,7 +789,7 @@
             {{ data['peSelfEmployedOrCompanyDirector'] }}
           </dd>
           <!-- <dd class="govuk-summary-list__actions">
-            <a href="/v3_0-citizen/6-current-employment/self-employed-or-company-director">
+            <a href="/v3_0-citizen/7-previous-employment/self-employed-or-company-director">
               Change
               <span class="govuk-visually-hidden"> your answer</span>
             </a>
@@ -748,17 +800,17 @@
 
       <div class="govuk-grid-row govuk-!-margin-bottom-9">
             <div class="govuk-grid-column-two-thirds">
-                <a href="/citizen-ui/form/previous-employment/employer-details/2/dates?edit=SECTION" class="govuk-body">Add another employer</a>
+                <a href="/v3_0-citizen/7-previous-employment/when-employer" class="govuk-body">Add another employer</a>
 
 
             </div>
             <div class="govuk-grid-column-one-third govuk-align-right" style="text-align: right;">
-                <a href="#" class="govuk-body" aria-label="Remove First previous employer details">Remove employer details</a>
+                <a href="remove-pe-employer" class="govuk-body" aria-label="Remove First previous employer details">Remove employer details</a>
             </div>
         </div>
       {% endif %}
 
-      <!-- WORKING OR CLAIMING BENEFITS ABROAD -->
+      <!-- TIME SPENT ABROAD -->
       <h2 class="govuk-heading-l govuk-!-margin-top-9">Time spent abroad</h2>
 
       <dl class="govuk-summary-list govuk-!-margin-bottom-9">
@@ -787,14 +839,17 @@
           <dt class="govuk-summary-list__key govuk-!-width-one-half">
             Are you getting money from a pension or annuity?
           </dt>
+
           <dd class="govuk-summary-list__value">
             {{ data['currentPensionGuard'] }}
           </dd>
           <dd class="govuk-summary-list__actions">
+            {% if data['currentPensionGuard']=="No" %}
             <a href="/v3_0-citizen/9-pensions/9a-current-pension/guard">
               Change
               <span class="govuk-visually-hidden"> your answer</span>
             </a>
+            {% endif %}
           </dd>
         </div>
 
@@ -820,7 +875,7 @@
             {{ data['current-pension-provider-name'] }}
           </dd>
           <!-- <dd class="govuk-summary-list__actions">
-            <a href="/v3_0-citizen/6-current-employment/type">
+            <a href="/v3_0-citizen/9-pensions/9a-current-pension/provider-name">
               Change
               <span class="govuk-visually-hidden"> your answer</span>
             </a>
@@ -832,13 +887,10 @@
             What is the address of your pension or annuity provider?
           </dt>
           <dd class="govuk-summary-list__value">
-            {{ data['current-pension-address-line-1'] }}<br>
-            {{ data['current-pension-address-line-2'] }}<br>
-            {{ data['current-pension-address-town'] }}<br>
-            {{ data['current-pension-address-postcode'] }}
+            {{ data['current-pension-address-line-1'] }}, {{ data['current-pension-address-line-2'] }}, {{ data['current-pension-address-town'] }}, {{ data['current-pension-address-postcode'] }}
           </dd>
           <!-- <dd class="govuk-summary-list__actions">
-            <a href="v3_0-citizen/6-current-employment/employer-address">
+            <a href="v3_0-citizen/9-pensions/9a-current-pension/provider-address">
               Change
               <span class="govuk-visually-hidden"> your employers address</span>
             </a>
@@ -853,7 +905,7 @@
             {{ data['current-pension-paid'] }}
           </dd>
           <!-- <dd class="govuk-summary-list__actions">
-            <a href="/v3_0-citizen/6-current-employment/payment-frequency">
+            <a href="/v3_0-citizen/9-pensions/9a-current-pension/payment-frequency">
               Change
               <span class="govuk-visually-hidden"> your answer</span>
             </a>
@@ -889,7 +941,7 @@
             {% endif %}
           </dd>
           <!-- <dd class="govuk-summary-list__actions">
-            <a href="/v3_0-citizen/6-current-employment/payment-frequency">
+            <a href="/v3_0-citizen/9-pensions/9a-current-pension/payment-frequency">
               Change
               <span class="govuk-visually-hidden"> your answer</span>
             </a>
@@ -905,7 +957,7 @@
             {{ data['currentPensionDoesItIncrease'] }}
           </dd>
           <!-- <dd class="govuk-summary-list__actions">
-            <a href="/v3_0-citizen/6-current-employment/employer-name">
+            <a href="/v3_0-citizen/9-pensions/9a-current-pension/increase-does-it">
               Change
               <span class="govuk-visually-hidden"> your answer</span>
             </a>
@@ -921,7 +973,7 @@
             {{ data['current-pension-increase-frequency'] }}
           </dd>
           <!-- <dd class="govuk-summary-list__actions">
-            <a href="/v3_0-citizen/6-current-employment/hours">
+            <a href="/v3_0-citizen/9-pensions/9a-current-pension/increase-when">
               Change
               <span class="govuk-visually-hidden"> your answer</span>
             </a>
@@ -933,12 +985,12 @@
 
       <div class="govuk-grid-row govuk-!-margin-bottom-9">
             <div class="govuk-grid-column-two-thirds">
-                <a href="/citizen-ui/form/previous-employment/employer-details/2/dates?edit=SECTION" class="govuk-body">Add another current pension</a>
+                <a href="/v3_0-citizen/9-pensions/9a-current-pension/provider-name" class="govuk-body">Add another current pension</a>
 
 
             </div>
             <div class="govuk-grid-column-one-third govuk-align-right" style="text-align: right;">
-                <a href="#" class="govuk-body" aria-label="Remove First previous employer details">Remove pension details</a>
+                <a href="remove-pension" class="govuk-body" aria-label="Remove First previous employer details">Remove pension details</a>
             </div>
         </div>
       {% endif %}
@@ -971,10 +1023,12 @@
             {{ data['eduCourseName'] }}
           </dd>
           <dd class="govuk-summary-list__actions">
-            <a href="/v3_0-citizen/10-education/guard">
+             <!--
+              <a href="/v3_0-citizen/10-education/guard">
               Change
               <span class="govuk-visually-hidden"> your answer</span>
-            </a>
+             </a>
+             -->
           </dd>
         </div>
 
@@ -986,10 +1040,12 @@
             {{ data['eduInstitutionName'] }}
           </dd>
           <dd class="govuk-summary-list__actions">
-            <a href="/v3_0-citizen/10-education/guard">
+            <!--
+              <a href="/v3_0-citizen/10-education/guard">
               Change
               <span class="govuk-visually-hidden"> your answer</span>
             </a>
+            -->
           </dd>
         </div>
 
@@ -1001,10 +1057,12 @@
             {{ data['eduCourseHours'] }}
           </dd>
           <dd class="govuk-summary-list__actions">
-            <a href="/v3_0-citizen/10-education/guard">
+            <!--
+              <a href="/v3_0-citizen/10-education/guard">
               Change
               <span class="govuk-visually-hidden"> your answer</span>
             </a>
+            -->
           </dd>
         </div>
 
@@ -1013,13 +1071,15 @@
             When did you attend this course?
           </dt>
           <dd class="govuk-summary-list__value">
-            {{ data['eduStartDay'] }} {{ data['eduStartMonth'] }} {{ data['eduStartYear'] }} to {{ data['eduFinishDay'] }} {{ data['eduFinishMonth'] }} {{ data['eduFinishYear'] }}
+            {{ data['eduStartDay'] }}/{{ data['eduStartMonth'] }}/{{ data['eduStartYear'] }} to {{ data['eduFinishDay'] }}/{{ data['eduFinishMonth'] }}/{{ data['eduFinishYear'] }}
           </dd>
           <dd class="govuk-summary-list__actions">
-            <a href="/v3_0-citizen/10-education/guard">
+            <!--
+              <a href="/v3_0-citizen/10-education/guard">
               Change
               <span class="govuk-visually-hidden"> your answer</span>
-            </a>
+              </a>
+            -->
           </dd>
         </div>
         {% endif %}
