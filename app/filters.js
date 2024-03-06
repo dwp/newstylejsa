@@ -109,6 +109,11 @@ module.exports = function (env) {
     filters.toMoney = function(x){  return("£" + x );
     //TO ADD - case to handle nothing being there 
     }
+
+    //Format date to date format like 01/02/2024
+    filters.formatDate = function (date) {
+      return moment(date).format("DD/MM/YYYY")
+    }
   /* ------------------------------------------------------------------
     keep the following line to return your filters to the app
   ------------------------------------------------------------------ */

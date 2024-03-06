@@ -60,8 +60,8 @@ router.post('/bank-account', function (req, res) {
 });
 
 // Show language preferences when a Welsh postcode is entered
-router.post('/address', function (req, res) {
-  var answer = req.session.data['address-postcode'];
+router.post('/check-postcode', function (req, res) {
+  var answer = req.session.data['address-postcode'].toUpperCase();
   if (answer.startsWith("LL") || answer.startsWith("SY")|| answer.startsWith("SA") || answer.startsWith("CH") || answer.startsWith("LD") || answer.startsWith("NP") || answer.startsWith("CF")) {
     res.redirect(`${ABS_BASE_PATH}/welsh`);
   } else {

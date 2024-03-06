@@ -6,9 +6,11 @@ const ABS_BASE_PATH = `/${BASE_PATH}`;
 
 // this routes claims with BT postcodes to confirmation-dfc page
 router.post('/declaration', function (req, res) {
-  var answer = req.session.data['address-postcode'];
-  if (answer.startsWith("BT") || answer.startsWith("bt")|| answer.startsWith("Bt")) {
-    res.redirect(`${ABS_BASE_PATH}/confirmation-dfc`);
+  var answer = req.session.data['address-postcode'].toUpperCase();
+  if (answer) {
+    if (answer.startsWith("BT")) {
+      res.redirect(`${ABS_BASE_PATH}/confirmation-dfc`);
+    } 
   } else {
     res.redirect(`${ABS_BASE_PATH}/confirmation`);
   }
