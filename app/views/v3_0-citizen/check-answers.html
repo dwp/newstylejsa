@@ -135,7 +135,7 @@
               {{ data['unableToWork'] | title }}
             {% endif %}
             {% if data['unableToWork']=="yes" %}
-              {{ data['unableToWork'] | title }}, {{ data['illnessStartDay'] }} {{ data['illnessStartMonth'] }} {{ data['illnessStartYear'] }} to {{ data['illnessFinishDay'] }} {{ data['illnessFinishMonth'] }} {{ data['illnessFinishYear'] }}
+              {{ data['unableToWork'] | title }}, {{ data['illnessStartDay'] }}/{{ data['illnessStartMonth'] }}/{{ data['illnessStartYear'] }} to {{ data['illnessFinishDay'] }}/{{ data['illnessFinishMonth'] }}/{{ data['illnessFinishYear'] }}
             {% endif %}
           </dd>
           <dd class="govuk-summary-list__actions">
@@ -274,7 +274,11 @@
             Home address
           </dt>
           <dd class="govuk-summary-list__value">
-            {{ data['address-line-1'] }}, {{ data['address-line-2'] }}, {{ data['address-town'] }}, {{ data['address-postcode'] }}
+            {{ data['address-line-1'] }}, 
+            {% if data['address-line-2'] %}
+            {{ data['address-line-2'] }},
+            {% endif %} {{ data['address-town'] }}, 
+            {{ data['address-postcode'] }}
           </dd>
           <dd class="govuk-summary-list__actions">
             <a href="/v3_0-citizen/3-details/address">
@@ -446,7 +450,9 @@
             When was this jury service?
           </dt>
           <dd class="govuk-summary-list__value">
-            {{ data['juryStartDay'] }}/{{ data['juryStartMonth'] }}/{{ data['juryStartYear'] }} to {{ data['juryFinishDay'] }}/{{ data['juryFinishMonth'] }}/{{ data['juryFinishYear'] }}
+            {% set juryStartDate = data['juryStartDay'] + ' ' + data['juryStartMonth'] + ' ' + data['juryStartYear'] %}
+            {% set juryFinishDate = data['juryFinishDay'] + ' ' + data['juryFinishMonth'] + ' ' + data['juryFinishYear'] %}
+            {{ juryStartDate | formatDate }} to {{ juryFinishDate | formatDate }}
           </dd>
           <dd class="govuk-summary-list__actions">
              <!--<a href="/v3_0-citizen/5-jury-service/period">
@@ -486,7 +492,7 @@
             <h3 class="govuk-heading-m">Current employer - First</h3>
         </div>
         <div class="govuk-grid-column-one-third govuk-align-right" style="text-align: right;">
-            <a href="#" class="govuk-body" aria-label="Change First Previous employer">Change</a>
+            <a href="/v3_0-citizen/6-current-employment/guard" class="govuk-body" aria-label="Change First Previous employer">Change</a>
         </div>
       </div>
 
@@ -684,7 +690,7 @@
             <h3 class="govuk-heading-m">Previous employer - First</h3>
         </div>
         <div class="govuk-grid-column-one-third govuk-align-right" style="text-align: right;">
-            <a href="#" class="govuk-body" aria-label="Change First Previous employer">Change</a>
+            <a href="/v3_0-citizen/7-previous-employment/job-ended-last-six-months" class="govuk-body" aria-label="Change First Previous employer">Change</a>
         </div>
       </div>
 
@@ -822,7 +828,7 @@
             {{ data['juryService'] }}
           </dd>
           <dd class="govuk-summary-list__actions">
-            <a href="/v3_0-citizen/5-jury-service/have-been">
+            <a href="/v3_0-citizen/8-abroad/guard">
               Change
               <span class="govuk-visually-hidden"> your answer</span>
             </a>
