@@ -17,7 +17,7 @@
         Your language preferences
       </h1>
     </legend>
-    <div id="changedName-hint" class="govuk-hint">
+    <div id="welsh-hint" class="govuk-hint">
       If you live in Wales you can choose to communicate with us in Welsh.
     </div>
   </fieldset>
@@ -39,11 +39,13 @@
   items: [
     {
       value: "welsh",
-      text: "Welsh"
+      text: "Welsh",
+      checked: checked("contactInWelsh", "welsh")
     },
     {
       value: "english",
-      text: "English"
+      text: "English",
+      checked: checked("contactInWelsh", "english")
     }
   ]
 }) }}
@@ -64,11 +66,13 @@
   items: [
     {
       value: "welsh",
-      text: "Welsh"
+      text: "Welsh",
+      checked: checked("speakInWelsh", "welsh")
     },
     {
       value: "english",
-      text: "English"
+      text: "English",
+      checked: checked("speakInWelsh", "english")
     }
   ]
 }) }}
