@@ -16,7 +16,7 @@
   {% set startDateItems = todaysDate.original | moment %}
 
   <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
+    <div class="govuk-grid-column-full">
       <h1 class="govuk-heading-xl">
         Check your answers
       </h1>
@@ -26,7 +26,7 @@
 
       <dl class="govuk-summary-list govuk-!-margin-bottom-9">
         <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key govuk-!-width-one-half">
+          <dt class="govuk-summary-list__key">
             Claim start date
           </dt>
           <dd class="govuk-summary-list__value">
@@ -43,7 +43,7 @@
 
         {% if data['claimstart']=="no" %}
         <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key govuk-!-width-one-half">
+          <dt class="govuk-summary-list__key">
             Available for work since
             {% if data['claimstart']=="yes" %}
               <span class='date'></span>
@@ -64,7 +64,7 @@
         </div>
 
         <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key govuk-!-width-one-half">
+          <dt class="govuk-summary-list__key">
             Searching for work since
             {% if data['claimstart']=="yes" %}
               <span class='date'></span>
@@ -85,7 +85,7 @@
         </div>
 
         <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key govuk-!-width-one-half">
+          <dt class="govuk-summary-list__key">
             Why did you not apply before today?
           </dt>
           <dd class="govuk-summary-list__value">
@@ -100,7 +100,7 @@
         </div>
 
         <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key govuk-!-width-one-half">
+          <dt class="govuk-summary-list__key">
             In paid work since 
             {% if data['claimstart']=="yes" %}
               <span class='date'></span>
@@ -121,7 +121,7 @@
         </div>
 
         <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key govuk-!-width-one-half">
+          <dt class="govuk-summary-list__key">
             Unable to work because of illness since
             {% if data['claimstart']=="yes" %}
               <span class='date'></span>
@@ -147,7 +147,7 @@
         </div>
 
         <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key govuk-!-width-one-half">
+          <dt class="govuk-summary-list__key">
             Travelled outside of England, Wales, Scotland or Northern Irleand since
             {% if data['claimstart']=="yes" %}
               <span class='date'></span>
@@ -161,7 +161,7 @@
               {{ data['beenOnHoliday'] | title }}
             {% endif %}
             {% if data['beenOnHoliday']=="yes" %}
-              {{ data['beenOnHoliday'] | title }}, {{ data['holidayStartDay'] }} {{ data['holidayStartMonth'] }} {{ data['holidayStartYear'] }} to {{ data['holidayFinishDay'] }} {{ data['holidayFinishMonth'] }} {{ data['holidayFinishYear'] }}
+              {{ data['beenOnHoliday'] | title }}, {{ data['holidayStartDay'] }}/{{ data['holidayStartMonth'] }}/{{ data['holidayStartYear'] }} to {{ data['holidayFinishDay'] }}/{{ data['holidayFinishMonth'] }}/{{ data['holidayFinishYear'] }}
             {% endif %}
           </dd>
           <dd class="govuk-summary-list__actions">
@@ -173,7 +173,7 @@
         </div>
 
         <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key govuk-!-width-one-half">
+          <dt class="govuk-summary-list__key">
             Had been in full-time education since
             {% if data['claimstart']=="yes" %}
               <span class='date'></span>
@@ -195,7 +195,7 @@
 
         {% if data['asked-for-advice']=="yes" %}
           <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key govuk-!-width-one-half">
+            <dt class="govuk-summary-list__key">
               Had asked for advice about applying since
               {% if data['claimstart']=="yes" %}
                 <span class='date'></span>
@@ -225,7 +225,7 @@
 
       <dl class="govuk-summary-list govuk-!-margin-bottom-9">
         <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key govuk-!-width-one-half">
+          <dt class="govuk-summary-list__key">
             National Insurance number
           </dt>
           <dd class="govuk-summary-list__value">
@@ -240,7 +240,7 @@
         </div>
 
         <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key govuk-!-width-one-half">
+          <dt class="govuk-summary-list__key">
             Name
           </dt>
           <dd class="govuk-summary-list__value">
@@ -255,12 +255,13 @@
         </div>
 
         <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key govuk-!-width-one-half">
+          <dt class="govuk-summary-list__key">
             Date of birth
           </dt>
           <dd class="govuk-summary-list__value">
-            {% set dobDate = data['dobDay'] + ' ' + data['dobMonth'] + ' ' + data['dobYear'] %}
-            {{ dobDate | formatDate }}
+             <!-- {% set dobDate = data['dobDay'] + ' ' + data['dobMonth'] + ' ' + data['dobYear'] %}
+            {{ dobDate | formatDate }} -->
+            {{ data['dobDay'] }} {{ data['dobMonth'] | toMonth }} {{ data['dobYear'] }}
           </dd>
           <dd class="govuk-summary-list__actions">
             <a href="/v3_0-citizen/3-details/dob">
@@ -271,7 +272,7 @@
         </div>
 
         <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key govuk-!-width-one-half">
+          <dt class="govuk-summary-list__key">
             Home address
           </dt>
           <dd class="govuk-summary-list__value">
@@ -290,7 +291,7 @@
         </div>
         {% if data['contactInWelsh'] %}
         <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key govuk-!-width-one-half">
+          <dt class="govuk-summary-list__key">
             Which language would you like us to contact you in?
           </dt>
           <dd class="govuk-summary-list__value">
@@ -305,7 +306,7 @@
         </div>
 
         <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key govuk-!-width-one-half">
+          <dt class="govuk-summary-list__key">
             Which language would you like us to speak to you in?
           </dt>
           <dd class="govuk-summary-list__value">
@@ -320,7 +321,7 @@
         </div>
         {% endif %}
         <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key govuk-!-width-one-half">
+          <dt class="govuk-summary-list__key">
             Do you want to add a different address for your post?
           </dt>
           <dd class="govuk-summary-list__value">
@@ -336,7 +337,7 @@
 
         {% if data['detailsAddDifferentPostalAddress']=="Yes" %}
         <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key govuk-!-width-one-half">
+          <dt class="govuk-summary-list__key">
             Postal address
           </dt>
           <dd class="govuk-summary-list__value">
@@ -357,7 +358,7 @@
 
 
         <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key govuk-!-width-one-half">
+          <dt class="govuk-summary-list__key">
             Telephone number
           </dt>
           <dd class="govuk-summary-list__value">
@@ -377,7 +378,7 @@
         </div>
 
         <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key govuk-!-width-one-half">
+          <dt class="govuk-summary-list__key">
             Email address
           </dt>
           <dd class="govuk-summary-list__value">
@@ -405,7 +406,7 @@
 
       <dl class="govuk-summary-list govuk-!-margin-bottom-9">
         <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key govuk-!-width-one-half">
+          <dt class="govuk-summary-list__key">
             Bank details
           </dt>
           <dd class="govuk-summary-list__value">
@@ -436,7 +437,7 @@
 
       <dl class="govuk-summary-list govuk-!-margin-bottom-9">
         <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key govuk-!-width-one-half">
+          <dt class="govuk-summary-list__key">
             Have you applied for any other benefits in the last 12 weeks?
           </dt>
           <dd class="govuk-summary-list__value">
@@ -452,7 +453,7 @@
 
         {% if data['obAreYou']=="Yes" %}
         <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key govuk-!-width-one-half">
+          <dt class="govuk-summary-list__key">
             Tell us what other benefits you have applied for in the last 12 weeks
           </dt>
           <dd class="govuk-summary-list__value">
@@ -473,7 +474,7 @@
 
       <dl class="govuk-summary-list govuk-!-margin-bottom-9">
         <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key govuk-!-width-one-half">
+          <dt class="govuk-summary-list__key">
             Have you been on jury service in the last 12 weeks?
           </dt>
           <dd class="govuk-summary-list__value">
@@ -489,13 +490,14 @@
 
         {% if data['juryService']=="Yes" %}
         <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key govuk-!-width-one-half">
+          <dt class="govuk-summary-list__key">
             When was this jury service?
           </dt>
           <dd class="govuk-summary-list__value">
-            {% set juryStartDate = data['juryStartDay'] + ' ' + data['juryStartMonth'] + ' ' + data['juryStartYear'] %}
+           <!-- {% set juryStartDate = data['juryStartDay'] + ' ' + data['juryStartMonth'] + ' ' + data['juryStartYear'] %}
             {% set juryFinishDate = data['juryFinishDay'] + ' ' + data['juryFinishMonth'] + ' ' + data['juryFinishYear'] %}
-            {{ juryStartDate | formatDate }} to {{ juryFinishDate | formatDate }}
+            {{ juryStartDate | formatDate }} to {{ juryFinishDate | formatDate }} --> 
+            {{ data['juryStartDay'] }}/{{ data['juryStartMonth']}}/{{ data['juryStartYear'] }} to {{ data['juryFinishDay'] }}/{{ data['juryFinishMonth']}}/{{ data['juryFinishYear'] }}
           </dd>
           <dd class="govuk-summary-list__actions">
              <!--<a href="/v3_0-citizen/5-jury-service/period">
@@ -512,7 +514,7 @@
 
       <dl class="govuk-summary-list govuk-!-margin-bottom-4">
         <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key govuk-!-width-one-half">
+          <dt class="govuk-summary-list__key">
             Are you in any form of work at the moment?
           </dt>
           <dd class="govuk-summary-list__value">
@@ -541,7 +543,7 @@
 
       <dl class="govuk-summary-list govuk-!-margin-bottom-4">
         <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key govuk-!-width-one-half">
+          <dt class="govuk-summary-list__key">
             Is this paid or voluntary?
           </dt>
           <dd class="govuk-summary-list__value">
@@ -557,7 +559,7 @@
 
         {% if data['ceCurrentWorkType']=="Voluntary" %}
         <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key govuk-!-width-one-half">
+          <dt class="govuk-summary-list__key">
             Can you choose if you're paid for this voluntary work?
           </dt>
           <dd class="govuk-summary-list__value">
@@ -572,7 +574,7 @@
         </div>
 
         <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key govuk-!-width-one-half">
+          <dt class="govuk-summary-list__key">
             Do you get paid for this voluntary work?
           </dt>
           <dd class="govuk-summary-list__value">
@@ -586,9 +588,9 @@
           </dd> -->
         </div>
        {% endif %}
-
+       {% if data['ceCurrentWorkType']=="Paid" or data['ceGetPaid']=="yes" %}
         <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key govuk-!-width-one-half">
+          <dt class="govuk-summary-list__key">
             How often are you paid?
           </dt>
           <dd class="govuk-summary-list__value">
@@ -603,7 +605,7 @@
         </div>
 
         <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key govuk-!-width-one-half">
+          <dt class="govuk-summary-list__key">
             What’s your net pay?
           </dt>
           <dd class="govuk-summary-list__value">
@@ -627,9 +629,9 @@
             </a>
           </dd> -->
         </div>
-
+        {% endif %}
         <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key govuk-!-width-one-half">
+          <dt class="govuk-summary-list__key">
             What is the name of your current employer?
           </dt>
           <dd class="govuk-summary-list__value">
@@ -644,7 +646,7 @@
         </div>
 
         <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key govuk-!-width-one-half">
+          <dt class="govuk-summary-list__key">
             What is the address of your current employer?
           </dt>
           <dd class="govuk-summary-list__value">
@@ -665,7 +667,7 @@
         </div>
 
         <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key govuk-!-width-one-half">
+          <dt class="govuk-summary-list__key">
             How many hours a week do you normally work in this job?
           </dt>
           <dd class="govuk-summary-list__value">
@@ -680,7 +682,7 @@
         </div>
 
         <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key govuk-!-width-one-half">
+          <dt class="govuk-summary-list__key">
             Are you self-employed or a company director in this job?
           </dt>
           <dd class="govuk-summary-list__value">
@@ -713,7 +715,7 @@
 
       <dl class="govuk-summary-list govuk-!-margin-bottom-4">
         <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key govuk-!-width-one-half">
+          <dt class="govuk-summary-list__key">
             Have you had a job that ended in the last 6 months?
           </dt>
           <dd class="govuk-summary-list__value">
@@ -745,13 +747,14 @@
 
       <dl class="govuk-summary-list govuk-!-margin-bottom-4">
         <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key govuk-!-width-one-half">
+          <dt class="govuk-summary-list__key">
             When did you work for this employer?
           </dt>
           <dd class="govuk-summary-list__value">
-            {% set peStartDate = data['peStartDay'] + ' ' + data['peStartMonth'] + ' ' + data['peStartYear'] %}
+            <!-- {% set peStartDate = data['peStartDay'] + ' ' + data['peStartMonth'] + ' ' + data['peStartYear'] %}
             {% set peFinishDate = data['peFinishDay'] + ' ' + data['peFinishMonth'] + ' ' + data['peFinishYear'] %}
-            {{ peStartDate | formatDate }} to {{ peFinishDate | formatDate }}
+            {{ peStartDate | formatDate }} to {{ peFinishDate | formatDate }} -->
+            {{ data['peStartDay'] }}/{{ data['peStartMonth']}}/{{ data['peStartYear'] }} to {{ data['peFinishDay'] }}/{{ data['peFinishMonth']}}/{{ data['peFinishYear'] }}
           </dd>
           <!-- <dd class="govuk-summary-list__actions">
             <a href="/v3_0-citizen/7-previous-employment/type">
@@ -762,7 +765,7 @@
         </div>
 
         <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key govuk-!-width-one-half">
+          <dt class="govuk-summary-list__key">
             Why did this job end?
           </dt>
           <dd class="govuk-summary-list__value">
@@ -778,7 +781,7 @@
 
         {% if data['peWhyEnd']=="Other" %}
         <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key govuk-!-width-one-half">
+          <dt class="govuk-summary-list__key">
             Can you provide more detail?
           </dt>
           <dd class="govuk-summary-list__value">
@@ -794,7 +797,7 @@
         {% endif %}
 
         <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key govuk-!-width-one-half">
+          <dt class="govuk-summary-list__key">
             What is the name of your previous employer?
           </dt>
           <dd class="govuk-summary-list__value">
@@ -809,7 +812,7 @@
         </div>
 
         <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key govuk-!-width-one-half">
+          <dt class="govuk-summary-list__key">
             What is the address of your previous employer?
           </dt>
           <dd class="govuk-summary-list__value">
@@ -831,7 +834,7 @@
         </div>
 
         <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key govuk-!-width-one-half">
+          <dt class="govuk-summary-list__key">
             Do you expect to receive any more payments from this job?
           </dt>
           <dd class="govuk-summary-list__value">
@@ -846,7 +849,7 @@
         </div>
 
         <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key govuk-!-width-one-half">
+          <dt class="govuk-summary-list__key">
             Were you self-employed or a company director?
           </dt>
           <dd class="govuk-summary-list__value">
@@ -879,11 +882,11 @@
 
       <dl class="govuk-summary-list govuk-!-margin-bottom-9">
         <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key govuk-!-width-one-half">
+          <dt class="govuk-summary-list__key">
             Have you worked or claimed benefits abroad in the last 4 years?
           </dt>
           <dd class="govuk-summary-list__value">
-            {{ data['juryService'] }}
+            {{ data['workBenefitAbroad'] }}
           </dd>
           <dd class="govuk-summary-list__actions">
             <a href="/v3_0-citizen/8-abroad/guard">
@@ -900,7 +903,7 @@
 
       <dl class="govuk-summary-list govuk-!-margin-bottom-4">
         <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key govuk-!-width-one-half">
+          <dt class="govuk-summary-list__key">
             Are you getting money from a pension or annuity?
           </dt>
 
@@ -932,7 +935,7 @@
 
       <dl class="govuk-summary-list govuk-!-margin-bottom-4">
         <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key govuk-!-width-one-half">
+          <dt class="govuk-summary-list__key">
             What is the name of your pension or annuity provider?
           </dt>
           <dd class="govuk-summary-list__value">
@@ -947,7 +950,7 @@
         </div>
 
         <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key govuk-!-width-one-half">
+          <dt class="govuk-summary-list__key">
             What is the address of your pension or annuity provider?
           </dt>
           <dd class="govuk-summary-list__value">
@@ -968,7 +971,7 @@
         </div>
 
         <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key govuk-!-width-one-half">
+          <dt class="govuk-summary-list__key">
             How often is your pension or annuity paid?
           </dt>
           <dd class="govuk-summary-list__value">
@@ -984,7 +987,7 @@
 
         
         <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key govuk-!-width-one-half">
+          <dt class="govuk-summary-list__key">
             What is your gross pension or annuity?
           </dt>
           <dd class="govuk-summary-list__value">
@@ -1020,7 +1023,7 @@
        
 
         <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key govuk-!-width-one-half">
+          <dt class="govuk-summary-list__key">
             Does your pension or annuity increase in the next six months?
           </dt>
           <dd class="govuk-summary-list__value">
@@ -1036,7 +1039,7 @@
 
         {% if data['currentPensionDoesItIncrease']=="Yes" %}
         <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key govuk-!-width-one-half">
+          <dt class="govuk-summary-list__key">
             When will your pension or annuity increase?
           </dt>
           <dd class="govuk-summary-list__value" style="text-transform: capitalize;">
@@ -1070,7 +1073,7 @@
 
       <dl class="govuk-summary-list govuk-!-margin-bottom-9">
         <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key govuk-!-width-one-half">
+          <dt class="govuk-summary-list__key">
             Have you been in education or training in the last 4 years?
           </dt>
           <dd class="govuk-summary-list__value">
@@ -1086,7 +1089,7 @@
 
         {% if data['eduHaveYou']=="Yes" %}
         <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key govuk-!-width-one-half">
+          <dt class="govuk-summary-list__key">
             What was the name of the course?
           </dt>
           <dd class="govuk-summary-list__value">
@@ -1103,7 +1106,7 @@
         </div>
 
         <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key govuk-!-width-one-half">
+          <dt class="govuk-summary-list__key">
             What was the name of the education or training provider?
           </dt>
           <dd class="govuk-summary-list__value">
@@ -1120,7 +1123,7 @@
         </div>
 
         <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key govuk-!-width-one-half">
+          <dt class="govuk-summary-list__key">
             How many hours a week did you spend on the course?
           </dt>
           <dd class="govuk-summary-list__value">
@@ -1137,13 +1140,14 @@
         </div>
 
         <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key govuk-!-width-one-half">
+          <dt class="govuk-summary-list__key">
             When did you attend this course?
           </dt>
           <dd class="govuk-summary-list__value">
-            {% set eduStartDate = data['eduStartDay'] + ' ' + data['eduStartMonth'] + ' ' + data['eduStartYear'] %}
+            <!-- {% set eduStartDate = data['eduStartDay'] + ' ' + data['eduStartMonth'] + ' ' + data['eduStartYear'] %}
             {% set eduFinishDate = data['eduFinishDay'] + ' ' + data['eduFinishMonth'] + ' ' + data['eduFinishYear'] %}
-            {{ eduStartDate | formatDate }} to {{ eduFinishDate | formatDate }}
+            {{ eduStartDate | formatDate }} to {{ eduFinishDate | formatDate }} -->
+            {{ data['eduStartDay'] }}/{{ data['eduStartMonth']}}/{{ data['eduStartYear'] }} to {{ data['eduFinishDay'] }}/{{ data['eduFinishMonth']}}/{{ data['eduFinishYear'] }}
           </dd>
           <dd class="govuk-summary-list__actions">
             <!--
