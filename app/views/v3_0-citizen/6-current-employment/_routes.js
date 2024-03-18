@@ -46,7 +46,7 @@ router.post('/choose-to-be-paid', function (req, res) {
 router.post('/get-paid', function (req, res) {
   const answer = req.body.ceGetPaid;
 
-  if (answer === 'ce-get-paid-no') {
+  if (answer === 'no') {
     res.redirect(`${ABS_BASE_PATH}/employer-name`);
   } else {
     res.redirect(`${ABS_BASE_PATH}/payment-frequency`);
