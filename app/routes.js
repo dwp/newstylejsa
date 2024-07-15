@@ -1,15 +1,13 @@
-const express = require("express");
-const router = express.Router();
+//
+// For guidance on how to create routes see:
+// https://prototype-kit.service.gov.uk/docs/create-routes
+//
 
+const govukPrototypeKit = require('govuk-prototype-kit')
+const router = govukPrototypeKit.requests.setupRouter()
 
-// Route index page
-router.get("/", function (req, res) {
-  res.render("index");
-  //pensionTracker.reset()
-  req.session.destroy();
-});
+// Add your routes here
 
-// Add your routes here - above the module.exports line
 
 
 // Routing for ticket 1001
@@ -2031,4 +2029,3 @@ router.post('/design-ideas/wt-3046-pension-changes/increase-when', function (req
   }
 })
 
-module.exports = router;
