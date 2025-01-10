@@ -85,6 +85,45 @@ router.use(
   "/design-ideas/1557-get-uc/v4/",
   require("./views/design-ideas/1557-get-uc/v4/_routes")
 );
+
+
+///////////////////////////////////////////////////////////////////////////////
+//                                                                           //
+//  ROUTING FOR ALTERNATIVE FORMATS                                             //
+//                                                                           //
+///////////////////////////////////////////////////////////////////////////////
+
+////// ALTERNATIVE FORMATS OPTION 10 //////
+// This moves 'alternative formats option 10' routing to af directory
+router.use(
+  "/design-ideas/wt-5868-af/",
+  require("./views/design-ideas/wt-5868-af/_routes")
+);
+
+// This moves eligibility routing to eligibility directory
+router.use(
+  "/design-ideas/wt-5868-af/before/1-eligibility/",
+  require("./views/design-ideas/wt-5868-af/before/1-eligibility/_routes")
+);
+
+// This moves `abroad` routing to `abroad` directory
+router.use(
+  "/design-ideas/wt-5868-af/before/2-claim-start/",
+  require("./views/design-ideas/wt-5868-af/before/2-claim-start/_routes")
+);
+
+// This moves details routing to details directory
+router.use(
+  "/design-ideas/wt-5868-af/before/3-details/",
+  require("./views/design-ideas/wt-5868-af/before/3-details/_routes")
+);
+
+// Redirect to first question in details sequence
+router.get("/design-ideas/wt-5868-af/before/3-details/", function (req, res) {
+  res.redirect("/design-ideas/wt-5868-af/before/3-details/nino");
+});
+
+////// ALTERNATIVE FORMATS PREVIOUS OPTIONS //////
 router.use(
   "/design-ideas/1974-af-option-1/",
   require("./views/design-ideas/1974-af-option-1/_routes")
@@ -123,6 +162,7 @@ router.use(
   "/design-ideas/574-af-option-9/",
   require("./views/design-ideas/574-af-option-9/_routes")
 );
+
 
 ///////////////////////////////////////////////////////////////////////////////
 //                                                                           //

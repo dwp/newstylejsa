@@ -1,0 +1,65 @@
+
+{% extends "layout-live-nobanner.html" %}
+
+{% block pageTitle %}
+  DWP - Jobseeker&rsquo;s Allowance
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        <span class="govuk-caption-xl">Application start date</span>
+        When do you want your application to start?
+      </h1>
+
+      <p>You can ask for your claim to be backdated by up to 3 months. You'll need to tell us why you want to backdate your claim later in the application.</p>
+
+      <form action="available-for-work" method="post">
+
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset" role="group" aria-describedby="claim-start-hint">
+            <div id="claim-start-hint" class="govuk-hint">
+              For example, 01 08 2022
+            </div>
+            <div class="govuk-date-input" id="claim-start">
+              <div class="govuk-date-input__item">
+                <div class="govuk-form-group">
+                  <label class="govuk-label govuk-date-input__label" for="claim-start-day">
+                    Day
+                  </label>
+                  <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="claim-start-day" name="claim-start-day" type="text" inputmode="numeric" value="{{ data['claim-start-day'] }}">
+                </div>
+              </div>
+              <div class="govuk-date-input__item">
+                <div class="govuk-form-group">
+                  <label class="govuk-label govuk-date-input__label" for="claim-start-month">
+                    Month
+                  </label>
+                  <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="claim-start-month" name="claim-start-month" type="text" inputmode="numeric" value="{{ data['claim-start-month'] }}">
+                </div>
+              </div>
+              <div class="govuk-date-input__item">
+                <div class="govuk-form-group">
+                  <label class="govuk-label govuk-date-input__label" for="claim-start-year">
+                    Year
+                  </label>
+                  <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="claim-start-year" name="claim-start-year" type="text" inputmode="numeric" value="{{ data['claim-start-year'] }}">
+                </div>
+              </div>
+            </div>
+
+          </fieldset>
+        </div>
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+    </div>
+  </div>
+
+{% endblock %}
