@@ -1,149 +1,405 @@
 {% extends "layout-live-nobanner.html" %}
 
 {% block pageTitle %}
-  Check your answers template – {{ serviceName }} – GOV.UK Prototype Kit
+  DWP - Jobseeker&rsquo;s Allowance
 {% endblock %}
-{% set checkanswers = data['visited'] %}
 
 {% block beforeContent %}
-{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
-{{ govukPhaseBanner({
-  tag: {
-    text: "Prototype"
-  },
-  html: 'This is a prototype. No data is saved or stored.'
-}) }}
-{{ govukBackLink({
-  text: "Back",
-  href: "screens"
-}) }}
-  
+  {# Remove the "< Back" button from this instance of the template #}
 {% endblock %}
 
 {% block content %}
+
+  {% set currentlyworking = false %}
+  {% set jservice = false %}
+  {% set resultjservice = "no" %}
+  {% set startDateItems = todaysDate.original | moment %}
+
   <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds-from-desktop">
-
-      <h1 class="govuk-heading-l">
-        Check your answers before sending your application
+    <div class="govuk-grid-column-full">
+      <h1 class="govuk-heading-xl">
+        Check your answers
       </h1>
-      <h2 class="govuk-heading-m govuk-!-padding-top-6">Personal details</h2>
-      {{ govukSummaryList({
-        rows: [
-          {
-            key: {
-              text: "Name"
-            },
-            value: {
-              text: "Ian Johnson"
-            },
-            actions: {
-              items: [
-                {
-                  href: "#",
-                  text: "Change",
-                  visuallyHiddenText: "name"
-                }
-              ]
-            }
-          }
-          ,
-          {
-            key: {
-              text: "Date of birth"
-            },
-            value: {
-              text: "12 January 1988"
-            },
-            actions: {
-              items: [
-                {
-                  href: "#",
-                  text: "Change",
-                  visuallyHiddenText: "date of birth"
-                }
-              ]
-            }
-          }
-          ,
-          {
-            key: {
-              text: "National Insurance number"
-            },
-            value: {
-              text: "QQ 12 34 56 C"
-            },
-            actions: {
-              items: [
-                {
-                  href: "#",
-                  text: "Change",
-                  visuallyHiddenText: "national insurance number"
-                }
-              ]
-            }
-          }
-        ]
-      }) }}
 
-       <h2 class="govuk-heading-m govuk-!-padding-top-6">Contact details</h2>
-      {{ govukSummaryList({
-        rows: [
-          {
-            key: {
-              text: "Address"
-            },
-            value: {
-              html: "1 Main Street<br>Leeds<br>LS11NS"
-            },
-            actions: {
-              items: [
-                {
-                  href: "#",
-                  text: "Change",
-                  visuallyHiddenText: "address"
-                }
-              ]
-            }
-          },
-          {
-            key: {
-              text: "Mobile phone number"
-            },
-            value: {
-              text: "07700 112233"
-            },
-            actions: {
-              items: [
-                {
-                  href: "#",
-                  text: "Change",
-                  visuallyHiddenText: "mobile phone number"
-                }
-              ]
-            }
-          }
-          ,
-          {
-            key: {
-              text: "Email address"
-            },
-            value: {
-              text: "ian.johnson88@email.com"
-            },
-            actions: {
-              items: [
-                {
-                  href: "#",
-                  text: "Change",
-                  visuallyHiddenText: "email address"
-                }
-              ]
-            }
-          }
-        ]
-      }) }}
+      <!-- APPLICATION START DATE -->
+      <h2 class="govuk-heading-l">Claim start date</h2>
 
+      <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Claim start date
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['claimstart']=="yes" %}
+              <span class='date'></span>
+            {% endif %}
+            {% if data['claimstart']=="no" %}
+              {{ data['claim-start-day'] }} {{ data['claim-start-month'] | toMonth }} {{ data['claim-start-year'] }}
+            {% endif %}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+          </dd>
+        </div>
+
+        {% if data['claimstart']=="no" %}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Available for work since
+            {% if data['claimstart']=="yes" %}
+              <span class='date'></span>
+            {% endif %}
+            {% if data['claimstart']=="no" %}
+              {{ data['claim-start-day'] }} {{ data['claim-start-month'] | toMonth }} {{ data['claim-start-year'] }}
+            {% endif %}?
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['ceCurrentlyWorking'] | title }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="/v3_0-citizen/2-claim-start/available-for-work">
+              Change
+              <span class="govuk-visually-hidden"> answer</span>
+            </a>
+          </dd>
+        </div>
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Searching for work since
+            {% if data['claimstart']=="yes" %}
+              <span class='date'></span>
+            {% endif %}
+            {% if data['claimstart']=="no" %}
+              {{ data['claim-start-day'] }} {{ data['claim-start-month'] | toMonth }} {{ data['claim-start-year'] }}
+            {% endif %}?
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['ceCurrentlySearching'] | title }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="/v3_0-citizen/2-claim-start/searching-for-work">
+              Change
+              <span class="govuk-visually-hidden"> answer</span>
+            </a>
+          </dd>
+        </div>
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Why did you not apply before today?
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['why-did-you-not-claim'] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="/v3_0-citizen/2-claim-start/why-have-you-not-claimed">
+              Change
+              <span class="govuk-visually-hidden"> answer</span>
+            </a>
+          </dd>
+        </div>
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            In paid work since 
+            {% if data['claimstart']=="yes" %}
+              <span class='date'></span>
+            {% endif %}
+            {% if data['claimstart']=="no" %}
+              {{ data['claim-start-day'] }} {{ data['claim-start-month'] | toMonth }} {{ data['claim-start-year'] }}
+            {% endif %}?
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['cePaidWork'] | title }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="/v3_0-citizen/2-claim-start/any-paid-work">
+              Change
+              <span class="govuk-visually-hidden"> answer</span>
+            </a>
+          </dd>
+        </div>
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Unable to work because of illness since
+            {% if data['claimstart']=="yes" %}
+              <span class='date'></span>
+            {% endif %}
+            {% if data['claimstart']=="no" %}
+              {{ data['claim-start-day'] }} {{ data['claim-start-month'] | toMonth }} {{ data['claim-start-year'] }}
+            {% endif %}?
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['unableToWork']=="no" %}
+              {{ data['unableToWork'] | title }}
+            {% endif %}
+            {% if data['unableToWork']=="yes" %}
+              {{ data['unableToWork'] | title }}, {{ data['illnessStartDay'] }}/{{ data['illnessStartMonth'] }}/{{ data['illnessStartYear'] }} to {{ data['illnessFinishDay'] }}/{{ data['illnessFinishMonth'] }}/{{ data['illnessFinishYear'] }}
+            {% endif %}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="/v3_0-citizen/2-claim-start/any-paid-work">
+              Change
+              <span class="govuk-visually-hidden"> answer</span>
+            </a>
+          </dd>
+        </div>
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Travelled outside of England, Wales, Scotland or Northern Irleand since
+            {% if data['claimstart']=="yes" %}
+              <span class='date'></span>
+            {% endif %}
+            {% if data['claimstart']=="no" %}
+              {{ data['claim-start-day'] }} {{ data['claim-start-month'] | toMonth }} {{ data['claim-start-year'] }}
+            {% endif %}?
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['beenOnHoliday']=="no" %}
+              {{ data['beenOnHoliday'] | title }}
+            {% endif %}
+            {% if data['beenOnHoliday']=="yes" %}
+              {{ data['beenOnHoliday'] | title }}, {{ data['holidayStartDay'] }}/{{ data['holidayStartMonth'] }}/{{ data['holidayStartYear'] }} to {{ data['holidayFinishDay'] }}/{{ data['holidayFinishMonth'] }}/{{ data['holidayFinishYear'] }}
+            {% endif %}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="/v3_0-citizen/2-claim-start/been-on-holiday">
+              Change
+              <span class="govuk-visually-hidden"> answer</span>
+            </a>
+          </dd>
+        </div>
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Had been in full-time education since
+            {% if data['claimstart']=="yes" %}
+              <span class='date'></span>
+            {% endif %}
+            {% if data['claimstart']=="no" %}
+              {{ data['claim-start-day'] }} {{ data['claim-start-month'] | toMonth }} {{ data['claim-start-year'] }}
+            {% endif %}?
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['fulltimeEducation'] | title}}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="/v3_0-citizen/2-claim-start/been-on-holiday">
+              Change
+              <span class="govuk-visually-hidden"> answer</span>
+            </a>
+          </dd>
+        </div>
+
+        {% if data['asked-for-advice']=="yes" %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Had asked for advice about applying since
+              {% if data['claimstart']=="yes" %}
+                <span class='date'></span>
+              {% endif %}
+              {% if data['claimstart']=="no" %}
+                {{ data['claim-start-day'] }} {{ data['claim-start-month'] | toMonth }} {{ data['claim-start-year'] }}
+              {% endif %}?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['asked-for-advice'] | title }} <br>
+              {{ data['more-information'] }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a href="/v3_0-citizen/2-claim-start/asked-for-advice">
+                Change
+                <span class="govuk-visually-hidden"> answer</span>
+              </a>
+            </dd>
+          </div>
+        {% endif %}
+
+        {% endif %}
+      </dl>
+
+      <!-- PERSONAL DETAILS -->
+      <h2 class="govuk-heading-l">Personal details</h2>
+
+      <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            National Insurance number
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['national-insurance-number'] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="/v3_0-citizen/3-details/nino">
+              Change
+              <span class="govuk-visually-hidden"> your National Insurance number</span>
+            </a>
+          </dd>
+        </div>
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Name
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['first-name'] }} {{ data['last-name'] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="/v3_0-citizen/3-details/about-you">
+              Change
+              <span class="govuk-visually-hidden"> your name</span>
+            </a>
+          </dd>
+        </div>
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Date of birth
+          </dt>
+          <dd class="govuk-summary-list__value">
+             <!-- {% set dobDate = data['dobDay'] + ' ' + data['dobMonth'] + ' ' + data['dobYear'] %}
+            {{ dobDate | formatDate }} -->
+            {{ data['dobDay'] }} {{ data['dobMonth'] | toMonth }} {{ data['dobYear'] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="/v3_0-citizen/3-details/dob">
+              Change
+              <span class="govuk-visually-hidden"> your date of birth</span>
+            </a>
+          </dd>
+        </div>
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Home address
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['address-line-1'] }}, 
+            {% if data['address-line-2'] %}
+            {{ data['address-line-2'] }},
+            {% endif %} {{ data['address-town'] }}, 
+            {{ data['address-postcode'] | upper }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="/v3_0-citizen/3-details/address">
+              Change
+              <span class="govuk-visually-hidden"> your address</span>
+            </a>
+          </dd>
+        </div>
+        {% if data['contactInWelsh'] %}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Which language would you like us to contact you in?
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['contactInWelsh']| title }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="/v3_0-citizen/3-details/welsh">
+              Change
+              <span class="govuk-visually-hidden"> your name</span>
+            </a>
+          </dd>
+        </div>
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Which language would you like us to speak to you in?
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['speakInWelsh'] | title}}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="/v3_0-citizen/3-details/welsh">
+              Change
+              <span class="govuk-visually-hidden"> your name</span>
+            </a>
+          </dd>
+        </div>
+        {% endif %}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Do you want to add a different address for your post?
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['detailsAddDifferentPostalAddress'] | title}}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="/v3_0-citizen/3-details/address-is-it-postal">
+              Change
+              <span class="govuk-visually-hidden"> your your answer</span>
+            </a>
+          </dd>
+        </div>
+
+        {% if data['detailsAddDifferentPostalAddress']=="Yes" %}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Postal address
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['postal-address-line-1'] }}, 
+            {% if data['postal-address-line-2'] %}
+            {{ data['postal-address-line-2'] }},
+            {% endif %} {{ data['postal-address-town'] }}, 
+            {{ data['postal-address-postcode'] | upper}}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="/v3_0-citizen/3-details/address-postal-address">
+              Change
+              <span class="govuk-visually-hidden"> postal address</span>
+            </a>
+          </dd>
+        </div>
+        {% endif %}
+
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Telephone number
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['contact-telephone-number']=="yes" %}
+            {{ data['telephone-number'] }}
+            {% endif %}
+            {% if data['contact-telephone-number']=="no" %}
+            Not provided
+            {% endif %}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="/v3_0-citizen/3-details/contact-phone">
+              Change
+              <span class="govuk-visually-hidden"> your phone number</span>
+            </a>
+          </dd>
+        </div>
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Email address
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['contact-email-address']=="yes" %}
+            {{ data['contactemail-address'] }}
+            {% endif %}
+            {% if data['contact-email-address']=="no" %}
+            Not provided
+            {% endif %}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="/v3_0-citizen/3-details/contact-email">
+              Change
+              <span class="govuk-visually-hidden"> your email address</span>
+            </a>
+          </dd>
+        </div>
+
+
+      </dl>
+      <!-- ALTERNATIVE FORMATS -->
       <h2 class="govuk-heading-m govuk-!-padding-top-6">Accessible formats</h2>
       {{ govukSummaryList({
         rows: [
@@ -253,496 +509,796 @@
           }
         ]
       }) }}
+       <!-- REASONABLE ADJUSTMENTS -->
 
-       <h2 class="govuk-heading-m govuk-!-padding-top-6">Accessibility needs</h2>
-      {{ govukSummaryList({
-        rows: [
-          {
-            key: {
-              text: "Other accessibility needs"
-            },
-            value: {
-              text: data['adjustments'] | capitalize or "Yes"
-            },
-            
-            actions: {
-              items: [
-                {
-                  href: "reasonable-adjustment?checkanswers=visited",
-                  text: "Change",
-                  visuallyHiddenText: "other accessibility needs"
-                }
-              ]
-            }
-          }
-        ]
-      }) }}
 
-      <h2 class="govuk-heading-m govuk-!-padding-top-6">Health details</h2>
-      {{ govukSummaryList({
-        rows: [
-          {
-            key: {
-              text: "Health condition"
-            },
-            value: {
-              html: "Asthma <br> 1 March 2022"
-            },
-            actions: {
-              items: [
-                {
-                  href: "#",
-                  text: "Change",
-                  visuallyHiddenText: "health condition"
-                }
-              ]
-            }
-          },
-          {
-            key: {
-              text: "Any other health conditions"
-            },
-            value: {
-              text: "No"
-            },
-            actions: {
-              items: [
-                {
-                  href: "#",
-                  text: "Change",
-                  visuallyHiddenText: "any other health conditions"
-                }
-              ]
-            }
-          }
-          ,
-          {
-            key: {
-              text: "GP surgery or medical centre details"
-            },
-            value: {
-              html: "New Amsterdam Medical Surgery<br> 
-                    49 Hospital Street <br>
-                    Leeds <br>
-                    LS11HT <br>
-                    01632 960000 <br>
-                    Dr Maxwell Goodwin"
-            },
-            actions: {
-              items: [
-                {
-                  href: "#",
-                  text: "Change",
-                  visuallyHiddenText: "GP surgery or medical centre details"
-                }
-              ]
-            }
-          },
-          {
-            key: {
-              text: "Doctor said you might have less than 12 months to live"
-            },
-            value: {
-              text: "No"
-            },
-            actions: {
-              items: [
-                {
-                  href: "#",
-                  text: "Change",
-                  visuallyHiddenText: "doctor said you might have less than 12 months to live"
-                }
-              ]
-            }
-          }
-          ,
-          {
-            key: {
-              text: "Currently in hospital"
-            },
-            value: {
-              text: "No"
-            },
-            actions: {
-              items: [
-                {
-                  href: "#",
-                  text: "Change",
-                  visuallyHiddenText: "currently in hospital"
-                }
-              ]
-            }
-          },
-          {
-            key: {
-              text: "Pregnant"
-            },
-            value: {
-              text: "No"
-            },
-            actions: {
-              items: [
-                {
-                  href: "#",
-                  text: "Change",
-                  visuallyHiddenText: "pregnant"
-                }
-              ]
-            }
-          }
-          ,
-          {
-            key: {
-              text: "Doctor can share details with DWP"
-            },
-            value: {
-              text: "Yes, information about my health can be shared with DWP or the healthcare professionals that work for them"
-            },
-            actions: {
-              items: [
-                {
-                  href: "#",
-                  text: "Change",
-                  visuallyHiddenText: "doctor can share details with DWP"
-                }
-              ]
-            }
-          }
-        ]
-      }) }}
-      <h2 class="govuk-heading-m govuk-!-padding-top-6">Voluntary work</h2>
-      {{ govukSummaryList({
-        rows: [
-          {
-            key: {
-              text: "Doing voluntary work"
-            },
-            value: {
-              text: "No"
-            },
-            actions: {
-              items: [
-                {
-                  href: "#",
-                  text: "Change",
-                  visuallyHiddenText: "doing voluntary work"
-                }
-              ]
-            }
-          }
-        ]
-      }) }}
+      <h2 class="govuk-heading-l govuk-!-margin-top-9">Accessibility needs</h2>
 
-      <h2 class="govuk-heading-m govuk-!-padding-top-6">Paid work</h2>
-      {{ govukSummaryList({
-        rows: [
-          {
-            key: {
-              text: "Currently employed"
-            },
-            value: {
-              text: "No"
-            },
-            actions: {
-              items: [
-                {
-                  href: "#",
-                  text: "Change",
-                  visuallyHiddenText: "currently employed"
-                }
-              ]
-            }
-          }
-        ]
-      }) }}
+      <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Other accessibility needs
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['adjustments'] | capitalize or "Yes"}}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="reasonable-adjustment?checkanswers=visited">
+              Change
+              <span class="govuk-visually-hidden"> other accessibility needs</span>
+            </a>
+          </dd>
+        </div>
 
-       <h2 class="govuk-heading-m govuk-!-padding-top-6">Statutory pay</h2>
-      {{ govukSummaryList({
-        rows: [
-          {
-            key: {
-              text: "Getting Statutory Sick Pay"
-            },
-            value: {
-              text: "Yes"
-            },
-            actions: {
-              items: [
-                {
-                  href: "#",
-                  text: "Change",
-                  visuallyHiddenText: "getting statutory sick pay"
-                }
-              ]
-            }
-          }
-          ,
-          {
-            key: {
-              text: "Statutory Sick Pay end date"
-            },
-            value: {
-              text: "10 September 2024"
-            },
-            actions: {
-              items: [
-                {
-                  href: "#",
-                  text: "Change",
-                  visuallyHiddenText: "statutory sick pay end date"
-                }
-              ]
-            }
-          }
-          ,
-          {
-            key: {
-              text: "Other statutory payments"
-            },
-            value: {
-              text: "None"
-            },
-            actions: {
-              items: [
-                {
-                  href: "#",
-                  text: "Change",
-                  visuallyHiddenText: "other statutory payments"
-                }
-              ]
-            }
-          },
-          {
-            key: {
-              text: "Universal Credit"
-            },
-            value: {
-              text: "No"
-            },
-            actions: {
-              items: [
-                {
-                  href: "#",
-                  text: "Change",
-                  visuallyHiddenText: "universal credit"
-                }
-              ]
-            }
-          }
-        ]
-      }) }}
+      </dl>
 
-      <h2 class="govuk-heading-m govuk-!-padding-top-6">Claim date</h2>
-      {{ govukSummaryList({
-        rows: [
-          {
-            key: {
-              text: "Claim from 11 September 2024"
-            },
-            value: {
-              text: "Yes"
-            },
-            actions: {
-              items: [
-                {
-                  href: "#",
-                  text: "Change",
-                  visuallyHiddenText: "claim date"
-                }
-              ]
-            }
-          },
-          {
-            key: {
-              text: "Claim end date"
-            },
-            value: {
-              text: "No, I do not know"
-            },
-            actions: {
-              items: [
-                {
-                  href: "#",
-                  text: "Change",
-                  visuallyHiddenText: "claim end date"
-                }
-              ]
-            }
-          }
-        ]
-      }) }}
-
-       <h2 class="govuk-heading-m govuk-!-padding-top-6">Working and living abroad</h2>
-      {{ govukSummaryList({
-        rows: [
-          {
-            key: {
-              text: "Worked abroad in the last 5 years"
-            },
-            value: {
-              text: "No"
-            },
-            actions: {
-              items: [
-                {
-                  href: "#",
-                  text: "Change",
-                  visuallyHiddenText: "worked abroad"
-                }
-              ]
-            }
-          },
-          {
-            key: {
-              text: "Lived abroad with family member in the armed forces in the last 12 weeks"
-            },
-            value: {
-              text: "No"
-            },
-            actions: {
-              items: [
-                {
-                  href: "#",
-                  text: "Change",
-                  visuallyHiddenText: "lived abroad"
-                }
-              ]
-            }
-          }
-        ]
-      }) }}
-
-      <h2 class="govuk-heading-m govuk-!-padding-top-6">Pensions</h2>
-      {{ govukSummaryList({
-        rows: [
-          {
-            key: {
-              text: "Getting money from a pension or annuity"
-            },
-            value: {
-              text: "No"
-            },
-            actions: {
-              items: [
-                {
-                  href: "#",
-                  text: "Change",
-                  visuallyHiddenText: "getting money from a pension or annuity"
-                }
-              ]
-            }
-          }
-        ]
-      }) }}
-
-      <h2 class="govuk-heading-m govuk-!-padding-top-6">Permanent health insurance</h2>
-      {{ govukSummaryList({
-        rows: [
-          {
-            key: {
-              text: "Permanent health insurance"
-            },
-            value: {
-              text: "No"
-            },
-            actions: {
-              items: [
-                {
-                  href: "#",
-                  text: "Change",
-                  visuallyHiddenText: "permanent health insurance"
-                }
-              ]
-            }
-          }
-        ]
-      }) }}
-
-      <h2 class="govuk-heading-m govuk-!-padding-top-6">Sharing the decision with your doctor</h2>
-      {{ govukSummaryList({
-        rows: [
-          {
-            key: {
-              text: "DWP can share decision with your doctor"
-            },
-            value: {
-              text: "Yes"
-            },
-            actions: {
-              items: [
-                {
-                  href: "#",
-                  text: "Change",
-                  visuallyHiddenText: "DWP can share decision with your doctor"
-                }
-              ]
-            }
-          }
-        ]
-      }) }}
-
-      <h2 class="govuk-heading-m govuk-!-padding-top-6">Bank details</h2>
-      {{ govukSummaryList({
-        rows: [
-          {
-            key: {
-              text: "Bank or building society details"
-            },
-            value: {
-              html: "<strong>Account holder:</strong> Ian Johson <br>
-                     <strong>Sort code:</strong> 80 26 50<br>
-            <strong>Account number:</strong> 10014069"
-            },
-            actions: {
-              items: [
-                {
-                  href: "#",
-                  text: "Change",
-                  visuallyHiddenText: "Bank or building society details"
-                }
-              ]
-            }
-          }
-        ]
-      }) }}
-{# BANK DETAILS option 2 formatting
-       <h2 class="govuk-heading-m govuk-!-padding-top-6">Bank or building society details</h2>
-      {{ govukSummaryList({
-        rows: [
-          {
-            key: {
-              html: "<strong>Account holder:</strong> <br>
-                     <strong>Sort code:</strong><br>
-                     <strong>Account number:</strong>"
-            },
-            value: {
-              html: "Ian Johson <br>
-                      80 26 50<br>
-                       10014069"
-            },
-            actions: {
-              items: [
-                {
-                  href: "#",
-                  text: "Change",
-                  visuallyHiddenText: "Bank or building society details"
-                }
-              ]
-            }
-          }
-        ]
-      }) }}
-      #}
-
-      <form action="#" method="post" novalidate>
-
-        {{ govukButton({
-          text: "Continue"
-        }) }}
+      <!-- BANK DETAILS -->
       
+      <h2 class="govuk-heading-l">Bank details</h2>
 
-      </form>
+      <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Bank details
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['pay-account-holder'] %}
+            <strong>Account holder:</strong> {{ data['pay-account-holder'] }}<br>
+            <strong>Sort code:</strong> {{ data['sort-code'] }}<br>
+            <strong>Account number:</strong> {{ data['pay-account-number'] }}
+            {% if data['pay-reference-number'] %}
+            <strong>Building society roll or reference number:</strong> {{ data['pay-reference-number'] }}
+            {% endif %}
+            {% else %}
+            Not provided
+            {% endif %}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="/v3_0-citizen/3-details/bank-account">
+              Change
+              <span class="govuk-visually-hidden"> your bank details</span>
+            </a>
+          </dd>
+        </div>
 
-    </div>
-  </div>
-{% endblock %}
+      </dl>
+    
+
+      <!-- OTHER BENEFITS -->
+      <h2 class="govuk-heading-l">Other benefits</h2>
+
+      <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Have you applied for any other benefits in the last 12 weeks?
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['obAreYou'] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="/v3_0-citizen/4-other-benefits/guard">
+              Change
+              <span class="govuk-visually-hidden"> your answer</span>
+            </a>
+          </dd>
+        </div>
+
+        {% if data['obAreYou']=="Yes" %}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Tell us what other benefits you have applied for in the last 12 weeks
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['ob-more-detail'] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <!-- <a href="/v3_0-citizen/4-other-benefits/what-other-benefits">
+              Change
+              <span class="govuk-visually-hidden"> your answer</span>
+            </a>-->
+          </dd>
+        </div>
+        {% endif %}
+      </dl>
+
+      <!-- JURY SERVICE -->
+      <h2 class="govuk-heading-l">Jury service</h2>
+
+      <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Have you been on jury service in the last 12 weeks?
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['juryService'] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="/v3_0-citizen/5-jury-service/have-been">
+              Change
+              <span class="govuk-visually-hidden"> your answer</span>
+            </a>
+          </dd>
+        </div>
+
+        {% if data['juryService']=="Yes" %}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            When was this jury service?
+          </dt>
+          <dd class="govuk-summary-list__value">
+           <!-- {% set juryStartDate = data['juryStartDay'] + ' ' + data['juryStartMonth'] + ' ' + data['juryStartYear'] %}
+            {% set juryFinishDate = data['juryFinishDay'] + ' ' + data['juryFinishMonth'] + ' ' + data['juryFinishYear'] %}
+            {{ juryStartDate | formatDate }} to {{ juryFinishDate | formatDate }} --> 
+            {{ data['juryStartDay'] }}/{{ data['juryStartMonth']}}/{{ data['juryStartYear'] }} to {{ data['juryFinishDay'] }}/{{ data['juryFinishMonth']}}/{{ data['juryFinishYear'] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+             <!--<a href="/v3_0-citizen/5-jury-service/period">
+              Change
+              <span class="govuk-visually-hidden"> jury service dates</span>
+            </a> -->
+          </dd>
+        </div>
+        {% endif %}
+      </dl>
+
+      <!-- CURRENT EMPLOYMENT -->
+      <h2 class="govuk-heading-l">Current work</h2>
+
+      <dl class="govuk-summary-list govuk-!-margin-bottom-4">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Are you in any form of work at the moment?
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['ceCurrentlyWorking'] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            {% if data['ceCurrentlyWorking']=="No" %}
+            <a href="/v3_0-citizen/6-current-employment/guard">
+              Change
+              <span class="govuk-visually-hidden"> your answer</span>
+            </a>
+            {% endif %}
+          </dd>
+        </div>
+      </dl>
+
+      {% if data['ceCurrentlyWorking']=="Yes" %}
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <h3 class="govuk-heading-m">Current employer - First</h3>
+        </div>
+        <div class="govuk-grid-column-one-third govuk-align-right" style="text-align: right;">
+            <a href="/v3_0-citizen/6-current-employment/guard" class="govuk-body" aria-label="Change First Previous employer">Change</a>
+        </div>
+      </div>
+
+      <dl class="govuk-summary-list govuk-!-margin-bottom-4">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Is this paid or voluntary?
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['ceCurrentWorkType'] }}
+          </dd>
+          <!-- <dd class="govuk-summary-list__actions">
+            <a href="/v3_0-citizen/6-current-employment/type">
+              Change
+              <span class="govuk-visually-hidden"> your answer</span>
+            </a>
+          </dd> -->
+        </div>
+
+        {% if data['ceCurrentWorkType']=="Voluntary" %}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Can you choose if you're paid for this voluntary work?
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['ceVoluntaryWorkCanYouChoose'] | title }}
+          </dd>
+          <!-- <dd class="govuk-summary-list__actions">
+            <a href="/v3_0-citizen/6-current-employment/choose-to-be-paid">
+              Change
+              <span class="govuk-visually-hidden"> your answer</span>
+            </a>
+          </dd> -->
+        </div>
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Do you get paid for this voluntary work?
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['ceGetPaid'] | title}}
+          </dd>
+          <!-- <dd class="govuk-summary-list__actions">
+            <a href="/v3_0-citizen/6-current-employment/get-paid">
+              Change
+              <span class="govuk-visually-hidden"> your answer</span>
+            </a>
+          </dd> -->
+        </div>
+       {% endif %}
+       {% if data['ceCurrentWorkType']=="Paid" or data['ceGetPaid']=="yes" %}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            How often are you paid?
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['current-work-paid'] }}
+          </dd>
+          <!-- <dd class="govuk-summary-list__actions">
+            <a href="/v3_0-citizen/6-current-employment/payment-frequency">
+              Change
+              <span class="govuk-visually-hidden"> your answer</span>
+            </a>
+          </dd> -->
+        </div>
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            What’s your net pay?
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['current-work-paid']=="Weekly" %}
+              £{{ data['current-work-paid-weekly-amount'] }}
+            {% endif %}
+            {% if data['current-work-paid']=="Every 2 weeks" %}
+              £{{ data['current-work-paid-fortnightly-amount'] }}
+            {% endif %}
+            {% if data['current-work-paid']=="Every 4 weeks" %}
+              £{{ data['current-work-paid-4weeks-amount'] }}
+            {% endif %}
+            {% if data['current-work-paid']=="Every month" %}
+              £{{ data['current-work-paid-monthly-amount'] }}
+            {% endif %}
+          </dd>
+          <!-- <dd class="govuk-summary-list__actions">
+            <a href="/v3_0-citizen/6-current-employment/payment-frequency">
+              Change
+              <span class="govuk-visually-hidden"> your answer</span>
+            </a>
+          </dd> -->
+        </div>
+        {% endif %}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            What is the name of your current employer?
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['employer-name'] }}
+          </dd>
+          <!-- <dd class="govuk-summary-list__actions">
+            <a href="/v3_0-citizen/6-current-employment/employer-name">
+              Change
+              <span class="govuk-visually-hidden"> your answer</span>
+            </a>
+          </dd> -->
+        </div>
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            What is the address of your current employer?
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['ce-address-line-1'] }},
+            {% if data['ce-address-line-2'] %} {{ data['ce-address-line-2'] }},
+            {% endif %} 
+            {{ data['ce-address-town'] }}
+            {% if data['ce-address-postcode'] %}
+            , {{ data['ce-address-postcode'] | upper }}
+            {% endif %} 
+          </dd>
+          <!-- <dd class="govuk-summary-list__actions">
+            <a href="v3_0-citizen/6-current-employment/employer-address">
+              Change
+              <span class="govuk-visually-hidden"> your employers address</span>
+            </a>
+          </dd> -->
+        </div>
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            How many hours a week do you normally work in this job?
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['ceHoursWorkedAWeek'] }}
+          </dd>
+          <!-- <dd class="govuk-summary-list__actions">
+            <a href="/v3_0-citizen/6-current-employment/hours">
+              Change
+              <span class="govuk-visually-hidden"> your answer</span>
+            </a>
+          </dd> -->
+        </div>
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Are you self-employed or a company director in this job?
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['ceSelfEmployedOrCompanyDirector'] }}
+          </dd>
+          <!-- <dd class="govuk-summary-list__actions">
+            <a href="/v3_0-citizen/6-current-employment/self-employed-or-company-director">
+              Change
+              <span class="govuk-visually-hidden"> your answer</span>
+            </a>
+          </dd> -->
+        </div>
+
+      </dl>
+
+      <div class="govuk-grid-row govuk-!-margin-bottom-9">
+            <div class="govuk-grid-column-two-thirds">
+                <a href="/v3_0-citizen/6-current-employment/type" class="govuk-body">Add another employer</a>
+
+
+            </div>
+            <div class="govuk-grid-column-one-third govuk-align-right" style="text-align: right;">
+                <a href="remove-ce-employer" class="govuk-body" aria-label="Remove First previous employer details">Remove employer details</a>
+            </div>
+        </div>
+      {% endif %}
+
+      <!-- PREVIOUS EMPLOYMENT -->
+      <h2 class="govuk-heading-l govuk-!-margin-top-9">Previous employment</h2>
+
+      <dl class="govuk-summary-list govuk-!-margin-bottom-4">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Have you had a job that ended in the last 6 months?
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['peLastSixMonths'] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            {% if data['peLastSixMonths']=="No" %}
+            <a href="/v3_0-citizen/7-previous-employment/job-ended-last-six-months">
+              Change
+              <span class="govuk-visually-hidden"> your answer</span>
+            </a>
+            {% endif %}
+          </dd>
+        </div>
+
+      </dl>
+
+
+      <!-- FIRST PREVIOUS EMPLOYMENT -->
+      {% if data['peLastSixMonths']=="Yes" %}
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <h3 class="govuk-heading-m">Previous employer - First</h3>
+        </div>
+        <div class="govuk-grid-column-one-third govuk-align-right" style="text-align: right;">
+            <a href="/v3_0-citizen/7-previous-employment/job-ended-last-six-months" class="govuk-body" aria-label="Change First Previous employer">Change</a>
+        </div>
+      </div>
+
+      <dl class="govuk-summary-list govuk-!-margin-bottom-4">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            When did you work for this employer?
+          </dt>
+          <dd class="govuk-summary-list__value">
+            <!-- {% set peStartDate = data['peStartDay'] + ' ' + data['peStartMonth'] + ' ' + data['peStartYear'] %}
+            {% set peFinishDate = data['peFinishDay'] + ' ' + data['peFinishMonth'] + ' ' + data['peFinishYear'] %}
+            {{ peStartDate | formatDate }} to {{ peFinishDate | formatDate }} -->
+            {{ data['peStartDay'] }}/{{ data['peStartMonth']}}/{{ data['peStartYear'] }} to {{ data['peFinishDay'] }}/{{ data['peFinishMonth']}}/{{ data['peFinishYear'] }}
+          </dd>
+          <!-- <dd class="govuk-summary-list__actions">
+            <a href="/v3_0-citizen/7-previous-employment/type">
+              Change
+              <span class="govuk-visually-hidden"> your answer</span>
+            </a>
+          </dd> -->
+        </div>
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Why did this job end?
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['peWhyEnd'] }}
+          </dd>
+          <!-- <dd class="govuk-summary-list__actions">
+            <a href="/v3_0-citizen/7-previous-employment/payment-frequency">
+              Change
+              <span class="govuk-visually-hidden"> your answer</span>
+            </a>
+          </dd> -->
+        </div>
+
+        {% if data['peWhyEnd']=="Other" %}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Can you provide more detail?
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['pe-more-detail'] }}
+          </dd>
+          <!-- <dd class="govuk-summary-list__actions">
+            <a href="/v3_0-citizen/7-previous-employment/payment-frequency">
+              Change
+              <span class="govuk-visually-hidden"> your answer</span>
+            </a>
+          </dd> -->
+        </div>
+        {% endif %}
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            What is the name of your previous employer?
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['peEmployerName'] }}
+          </dd>
+          <!-- <dd class="govuk-summary-list__actions">
+            <a href="/v3_0-citizen/7-previous-employment/employer-name">
+              Change
+              <span class="govuk-visually-hidden"> your answer</span>
+            </a>
+          </dd> -->
+        </div>
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            What is the address of your previous employer?
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['pe-address-line-1'] }}, 
+            {% if data['pe-address-line-2'] %}
+            {{ data['pe-address-line-2'] }},
+            {% endif %} 
+            {{ data['pe-address-town'] }} 
+            {% if data['pe-address-postcode'] %}
+            , {{ data['pe-address-postcode'] | upper}}
+            {% endif %} 
+          </dd>
+          <!-- <dd class="govuk-summary-list__actions">
+            <a href="v3_0-citizen/7-previous-employment/employer-address">
+              Change
+              <span class="govuk-visually-hidden"> your employers address</span>
+            </a>
+          </dd> -->
+        </div>
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Do you expect to receive any more payments from this job?
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['peExpectPayment'] }}
+          </dd>
+          <!-- <dd class="govuk-summary-list__actions">
+            <a href="/v3_0-citizen/7-previous-employment/hours">
+              Change
+              <span class="govuk-visually-hidden"> your answer</span>
+            </a>
+          </dd> -->
+        </div>
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Were you self-employed or a company director?
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['peSelfEmployedOrCompanyDirector'] }}
+          </dd>
+          <!-- <dd class="govuk-summary-list__actions">
+            <a href="/v3_0-citizen/7-previous-employment/self-employed-or-company-director">
+              Change
+              <span class="govuk-visually-hidden"> your answer</span>
+            </a>
+          </dd> -->
+        </div>
+
+      </dl>
+
+      <div class="govuk-grid-row govuk-!-margin-bottom-9">
+            <div class="govuk-grid-column-two-thirds">
+                <a href="/v3_0-citizen/7-previous-employment/when-employer" class="govuk-body">Add another employer</a>
+
+
+            </div>
+            <div class="govuk-grid-column-one-third govuk-align-right" style="text-align: right;">
+                <a href="remove-pe-employer" class="govuk-body" aria-label="Remove First previous employer details">Remove employer details</a>
+            </div>
+        </div>
+      {% endif %}
+
+      <!-- TIME SPENT ABROAD -->
+      <h2 class="govuk-heading-l govuk-!-margin-top-9">Time spent abroad</h2>
+
+      <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Have you worked or claimed benefits abroad in the last 4 years?
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['workBenefitAbroad'] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="/v3_0-citizen/8-abroad/guard">
+              Change
+              <span class="govuk-visually-hidden"> your answer</span>
+            </a>
+          </dd>
+        </div>
+
+      </dl>
+
+      <!-- CURRENT PENSIONS -->
+      <h2 class="govuk-heading-l">Pension or annuity</h2>
+
+      <dl class="govuk-summary-list govuk-!-margin-bottom-4">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Are you getting money from a pension or annuity?
+          </dt>
+
+          <dd class="govuk-summary-list__value">
+            {{ data['currentPensionGuard'] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            {% if data['currentPensionGuard']=="No" %}
+            <a href="/v3_0-citizen/9-pensions/9a-current-pension/guard">
+              Change
+              <span class="govuk-visually-hidden"> your answer</span>
+            </a>
+            {% endif %}
+          </dd>
+        </div>
+
+      </dl>
+
+      <!-- FIRST CURRENT PENSION -->
+      {% if data['currentPensionGuard']=="Yes" %}
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <h3 class="govuk-heading-m">Pension or annuity - First</h3>
+        </div>
+        <div class="govuk-grid-column-one-third govuk-align-right" style="text-align: right;">
+            <a href="/v3_0-citizen/9-pensions/9a-current-pension/guard" class="govuk-body" aria-label="Change First Previous employer">Change</a>
+        </div>
+      </div>
+
+      <dl class="govuk-summary-list govuk-!-margin-bottom-4">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            What is the name of your pension or annuity provider?
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['current-pension-provider-name'] }}
+          </dd>
+          <!-- <dd class="govuk-summary-list__actions">
+            <a href="/v3_0-citizen/9-pensions/9a-current-pension/provider-name">
+              Change
+              <span class="govuk-visually-hidden"> your answer</span>
+            </a>
+          </dd> -->
+        </div>
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            What is the address of your pension or annuity provider?
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['current-pension-address-line-1'] }},
+            {% if data['current-pension-address-line-2'] %} {{ data['current-pension-address-line-2'] }},
+            {% endif %} 
+            {{ data['current-pension-address-town'] }}
+            {% if data['current-pension-address-postcode'] %}
+            , {{ data['current-pension-address-postcode'] | upper }}
+            {% endif %} 
+          </dd>
+          <!-- <dd class="govuk-summary-list__actions">
+            <a href="v3_0-citizen/9-pensions/9a-current-pension/provider-address">
+              Change
+              <span class="govuk-visually-hidden"> your employers address</span>
+            </a>
+          </dd> -->
+        </div>
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            How often is your pension or annuity paid?
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['current-pension-paid'] }}
+          </dd>
+          <!-- <dd class="govuk-summary-list__actions">
+            <a href="/v3_0-citizen/9-pensions/9a-current-pension/payment-frequency">
+              Change
+              <span class="govuk-visually-hidden"> your answer</span>
+            </a>
+          </dd> -->
+        </div>
+
+        
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            What is your gross pension or annuity?
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['current-pension-paid']=="Weekly" %}
+              £{{ data['current-pension-paid-weekly-amount'] }}
+            {% endif %}
+            {% if data['current-pension-paid']=="Every 2 weeks" %}
+              £{{ data['current-pension-paid-fortnightly-amount'] }}
+            {% endif %}
+            {% if data['current-pension-paid']=="Every 4 weeks" %}
+              £{{ data['current-pension-paid-4weeks-amount'] }}
+            {% endif %}
+            {% if data['current-pension-paid']=="Every month" %}
+              £{{ data['current-pension-paid-monthly-amount'] }}
+            {% endif %}
+            {% if data['current-pension-paid']=="Every 3 months" %}
+              £{{ data['current-pension-paid-3monthly-amount'] }}
+            {% endif %}
+            {% if data['current-pension-paid']=="Twice a year" %}
+              £{{ data['current-pension-paid-twiceyearly-amount'] }}
+            {% endif %}
+            {% if data['current-pension-paid']=="Once a year" %}
+              £{{ data['current-pension-paid-yearly-amount'] }}
+            {% endif %}
+          </dd>
+          <!-- <dd class="govuk-summary-list__actions">
+            <a href="/v3_0-citizen/9-pensions/9a-current-pension/payment-frequency">
+              Change
+              <span class="govuk-visually-hidden"> your answer</span>
+            </a>
+          </dd> -->
+        </div>
+       
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Does your pension or annuity increase in the next six months?
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['currentPensionDoesItIncrease'] }}
+          </dd>
+          <!-- <dd class="govuk-summary-list__actions">
+            <a href="/v3_0-citizen/9-pensions/9a-current-pension/increase-does-it">
+              Change
+              <span class="govuk-visually-hidden"> your answer</span>
+            </a>
+          </dd> -->
+        </div>
+
+        {% if data['currentPensionDoesItIncrease']=="Yes" %}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            When will your pension or annuity increase?
+          </dt>
+          <dd class="govuk-summary-list__value" style="text-transform: capitalize;">
+            {{ data['current-pension-increase-frequency'] }}
+          </dd>
+          <!-- <dd class="govuk-summary-list__actions">
+            <a href="/v3_0-citizen/9-pensions/9a-current-pension/increase-when">
+              Change
+              <span class="govuk-visually-hidden"> your answer</span>
+            </a>
+          </dd> -->
+        </div>
+        {% endif %}
+
+      </dl>
+
+      <div class="govuk-grid-row govuk-!-margin-bottom-9">
+            <div class="govuk-grid-column-two-thirds">
+                <a href="/v3_0-citizen/9-pensions/9a-current-pension/provider-name" class="govuk-body">Add another current pension</a>
+
+
+            </div>
+            <div class="govuk-grid-column-one-third govuk-align-right" style="text-align: right;">
+                <a href="remove-pension" class="govuk-body" aria-label="Remove First previous employer details">Remove pension details</a>
+            </div>
+        </div>
+      {% endif %}
+
+      <!-- EDUCATION AND TRAINING -->
+      <h2 class="govuk-heading-l govuk-!-margin-top-9">Education and training</h2>
+
+      <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Have you been in education or training in the last 4 years?
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['eduHaveYou'] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="/v3_0-citizen/10-education/guard">
+              Change
+              <span class="govuk-visually-hidden"> your answer</span>
+            </a>
+          </dd>
+        </div>
+
+        {% if data['eduHaveYou']=="Yes" %}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            What was the name of the course?
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['eduCourseName'] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+             <!--
+              <a href="/v3_0-citizen/10-education/course-name">
+              Change
+              <span class="govuk-visually-hidden"> your answer</span>
+             </a>
+             -->
+          </dd>
+        </div>
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            What was the name of the education or training provider?
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['eduInstitutionName'] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <!--
+              <a href="/v3_0-citizen/10-education/institution-name">
+              Change
+              <span class="govuk-visually-hidden"> your answer</span>
+            </a>
+            -->
+          </dd>
+        </div>
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            How many hours a week did you spend on the course?
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['eduCourseHours'] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <!--
+              <a href="/v3_0-citizen/10-education/course-hours">
+              Change
+              <span class="govuk-visually-hidden"> your answer</span>
+            </a>
+            -->
+          </dd>
+        </div>
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            When did you attend this course?
+          </dt>
+          <dd class="govuk-summary-list__value">
+            <!-- {% set eduStartDate = data['eduStartDay'] + ' ' + data['eduStartMonth'] + ' ' + data['eduStartYear'] %}
+            {% set eduFinishDate = data['eduFinishDay'] + ' ' + data['eduFinishMonth'] + ' ' + data['eduFinishYear'] %}
+            {{ eduStartDate | formatDate }} to {{ eduFinishDate | formatDate }} -->
+            {{ data['eduStartDay'] }}/{{ data['eduStartMonth']}}/{{ data['eduStartYear'] }} to {{ data['eduFinishDay'] }}/{{ data['eduFinishMonth']}}/{{ data['eduFinishYear'] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <!--
+              <a href="/v3_0-citizen/10-education/course-duration">
+              Change
+              <span class="govuk-visually-hidden"> your answer</span>
+              </a>
+            -->
+          </dd>
+        </div>
+        {% endif %}
+
+      </dl>
+
+
+
+      {{ govukButton({
+  text: "Continue",
+  href: "declaration"
+}) }}
+
+    {% endblock %}
