@@ -28,7 +28,8 @@
         {% from "govuk/components/radios/macro.njk" import govukRadios %}
 
         {{ govukRadios({
-          name: "braille",
+          name: 'brailleType',
+          value: data['brailleType'],
           fieldset: {
             legend: {
               text: "What type of braille do you need?",
@@ -40,11 +41,13 @@
           items: [
             {
               value: "uncontracted-braille-grade-1",
-              text: "Uncontracted braille (grade 1)"
+              text: "Uncontracted braille (grade 1)",
+              checked: checked("brailleType", "Uncontracted braille (grade 1)")
             },
             {
               value: "contracted-braille-grade-2",
-              text: "Contracted braille (grade 2)"
+              text: "Contracted braille (grade 2)",
+              checked: checked("brailleType", "Contracted braille (grade 2)")
             }
           ]
         }) }}

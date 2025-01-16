@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block beforeContent %}
-  {# Remove the "< Back" button from this instance of the template #}
+  {# Removes the "Back" button from this instance of the template #}
 {% endblock %}
 
 {% block content %}
@@ -14,6 +14,7 @@
   {% set jservice = false %}
   {% set resultjservice = "no" %}
   {% set startDateItems = todaysDate.original | moment %}
+  {% set checkanswers = data['visited'] %}
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-full">
@@ -27,15 +28,10 @@
       <dl class="govuk-summary-list govuk-!-margin-bottom-9">
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
-            Claim start date
+            Claim start date 
           </dt>
           <dd class="govuk-summary-list__value">
-            {% if data['claimstart']=="yes" %}
-              <span class='date'></span>
-            {% endif %}
-            {% if data['claimstart']=="no" %}
-              {{ data['claim-start-day'] }} {{ data['claim-start-month'] | toMonth }} {{ data['claim-start-year'] }}
-            {% endif %}
+            1 January 2025
           </dd>
           <dd class="govuk-summary-list__actions">
           </dd>
@@ -56,7 +52,7 @@
             {{ data['ceCurrentlyWorking'] | title }}
           </dd>
           <dd class="govuk-summary-list__actions">
-            <a href="/v3_0-citizen/2-claim-start/available-for-work">
+            <a href="#">
               Change
               <span class="govuk-visually-hidden"> answer</span>
             </a>
@@ -77,7 +73,7 @@
             {{ data['ceCurrentlySearching'] | title }}
           </dd>
           <dd class="govuk-summary-list__actions">
-            <a href="/v3_0-citizen/2-claim-start/searching-for-work">
+            <a href="#">
               Change
               <span class="govuk-visually-hidden"> answer</span>
             </a>
@@ -92,7 +88,7 @@
             {{ data['why-did-you-not-claim'] }}
           </dd>
           <dd class="govuk-summary-list__actions">
-            <a href="/v3_0-citizen/2-claim-start/why-have-you-not-claimed">
+            <a href="#">
               Change
               <span class="govuk-visually-hidden"> answer</span>
             </a>
@@ -113,7 +109,7 @@
             {{ data['cePaidWork'] | title }}
           </dd>
           <dd class="govuk-summary-list__actions">
-            <a href="/v3_0-citizen/2-claim-start/any-paid-work">
+            <a href="#">
               Change
               <span class="govuk-visually-hidden"> answer</span>
             </a>
@@ -139,7 +135,7 @@
             {% endif %}
           </dd>
           <dd class="govuk-summary-list__actions">
-            <a href="/v3_0-citizen/2-claim-start/any-paid-work">
+            <a href="#">
               Change
               <span class="govuk-visually-hidden"> answer</span>
             </a>
@@ -165,7 +161,7 @@
             {% endif %}
           </dd>
           <dd class="govuk-summary-list__actions">
-            <a href="/v3_0-citizen/2-claim-start/been-on-holiday">
+            <a href="#">
               Change
               <span class="govuk-visually-hidden"> answer</span>
             </a>
@@ -186,7 +182,7 @@
             {{ data['fulltimeEducation'] | title}}
           </dd>
           <dd class="govuk-summary-list__actions">
-            <a href="/v3_0-citizen/2-claim-start/been-on-holiday">
+            <a href="#">
               Change
               <span class="govuk-visually-hidden"> answer</span>
             </a>
@@ -209,7 +205,7 @@
               {{ data['more-information'] }}
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a href="/v3_0-citizen/2-claim-start/asked-for-advice">
+              <a href="#">
                 Change
                 <span class="govuk-visually-hidden"> answer</span>
               </a>
@@ -229,10 +225,10 @@
             National Insurance number
           </dt>
           <dd class="govuk-summary-list__value">
-            {{ data['national-insurance-number'] }}
+            {{ data['national-insurance-number'] or "QQ 12 34 56 C"}}
           </dd>
           <dd class="govuk-summary-list__actions">
-            <a href="/v3_0-citizen/3-details/nino">
+            <a href="#">
               Change
               <span class="govuk-visually-hidden"> your National Insurance number</span>
             </a>
@@ -244,10 +240,10 @@
             Name
           </dt>
           <dd class="govuk-summary-list__value">
-            {{ data['first-name'] }} {{ data['last-name'] }}
+            {{ data['first-name'] }} {{ data['last-name'] or "Mr Test Tester"}}
           </dd>
           <dd class="govuk-summary-list__actions">
-            <a href="/v3_0-citizen/3-details/about-you">
+            <a href="#">
               Change
               <span class="govuk-visually-hidden"> your name</span>
             </a>
@@ -261,10 +257,10 @@
           <dd class="govuk-summary-list__value">
              <!-- {% set dobDate = data['dobDay'] + ' ' + data['dobMonth'] + ' ' + data['dobYear'] %}
             {{ dobDate | formatDate }} -->
-            {{ data['dobDay'] }} {{ data['dobMonth'] | toMonth }} {{ data['dobYear'] }}
+            {{ data['dobDay'] }} {{ data['dobMonth'] | toMonth }} {{ data['dobYear'] or "25 December 2000"}}
           </dd>
           <dd class="govuk-summary-list__actions">
-            <a href="/v3_0-citizen/3-details/dob">
+            <a href="#">
               Change
               <span class="govuk-visually-hidden"> your date of birth</span>
             </a>
@@ -276,14 +272,14 @@
             Home address
           </dt>
           <dd class="govuk-summary-list__value">
-            {{ data['address-line-1'] }}, 
+            {{ data['address-line-1'] or "Test Street"}}, 
             {% if data['address-line-2'] %}
             {{ data['address-line-2'] }},
-            {% endif %} {{ data['address-town'] }}, 
-            {{ data['address-postcode'] | upper }}
+            {% endif %} {{ data['address-town'] or "Test Town"}}, 
+            {{ data['address-postcode'] | upper or "AB12 3CD"}}
           </dd>
           <dd class="govuk-summary-list__actions">
-            <a href="/v3_0-citizen/3-details/address">
+            <a href="#">
               Change
               <span class="govuk-visually-hidden"> your address</span>
             </a>
@@ -298,7 +294,7 @@
             {{ data['contactInWelsh']| title }}
           </dd>
           <dd class="govuk-summary-list__actions">
-            <a href="/v3_0-citizen/3-details/welsh">
+            <a href="#">
               Change
               <span class="govuk-visually-hidden"> your name</span>
             </a>
@@ -313,7 +309,7 @@
             {{ data['speakInWelsh'] | title}}
           </dd>
           <dd class="govuk-summary-list__actions">
-            <a href="/v3_0-citizen/3-details/welsh">
+            <a href="#">
               Change
               <span class="govuk-visually-hidden"> your name</span>
             </a>
@@ -325,10 +321,10 @@
             Do you want to add a different address for your post?
           </dt>
           <dd class="govuk-summary-list__value">
-            {{ data['detailsAddDifferentPostalAddress'] | title}}
+            {{ data['detailsAddDifferentPostalAddress'] | title or "No"}}
           </dd>
           <dd class="govuk-summary-list__actions">
-            <a href="/v3_0-citizen/3-details/address-is-it-postal">
+            <a href="#">
               Change
               <span class="govuk-visually-hidden"> your your answer</span>
             </a>
@@ -348,7 +344,7 @@
             {{ data['postal-address-postcode'] | upper}}
           </dd>
           <dd class="govuk-summary-list__actions">
-            <a href="/v3_0-citizen/3-details/address-postal-address">
+            <a href="#">
               Change
               <span class="govuk-visually-hidden"> postal address</span>
             </a>
@@ -362,15 +358,17 @@
             Telephone number
           </dt>
           <dd class="govuk-summary-list__value">
-            {% if data['contact-telephone-number']=="yes" %}
+            {% if data['contact-telephone-number']=="yes"%}
             {{ data['telephone-number'] }}
             {% endif %}
             {% if data['contact-telephone-number']=="no" %}
             Not provided
+            {% else%}
+            Not provided
             {% endif %}
           </dd>
           <dd class="govuk-summary-list__actions">
-            <a href="/v3_0-citizen/3-details/contact-phone">
+            <a href="#">
               Change
               <span class="govuk-visually-hidden"> your phone number</span>
             </a>
@@ -383,14 +381,16 @@
           </dt>
           <dd class="govuk-summary-list__value">
             {% if data['contact-email-address']=="yes" %}
-            {{ data['contactemail-address'] }}
+            {{ data['contactemail-address']}}
             {% endif %}
             {% if data['contact-email-address']=="no" %}
+            Not provided
+            {% else%}
             Not provided
             {% endif %}
           </dd>
           <dd class="govuk-summary-list__actions">
-            <a href="/v3_0-citizen/3-details/contact-email">
+            <a href="#">
               Change
               <span class="govuk-visually-hidden"> your email address</span>
             </a>
@@ -409,23 +409,23 @@
             Accessible format needs
           </dt>
           <dd class="govuk-summary-list__value">
-            {{ data['altFormatNeeds'] }}
+            {{ data['altFormatNeeds'] | capitalize or "No"}}
           </dd>
           <dd class="govuk-summary-list__actions">
-            <a href="guard?checkanswers=visitedd">
+            <a href="guard?checkanswers=visited">
               Change
               <span class="govuk-visually-hidden"> accessible format needs</span>
             </a>
           </dd>
         </div>
 
-        {% if data['altFormatNeeds']=="Yes" %}
+        {% if data['altFormatNeeds']=="yes" %}
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
             Instead of a standard phone call
           </dt>
           <dd class="govuk-summary-list__value">
-            {{ data['phoneContactPreference'] }}
+            {{ data['phoneContactPreference'] | replace("-", " ")}}
           </dd>
           <dd class="govuk-summary-list__actions">
              
@@ -436,47 +436,47 @@
              
           </dd>
         </div>
-
+        {% if data['phoneContactPreference']=="Relay-UK" %}
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
             Relay UK number
           </dt>
           <dd class="govuk-summary-list__value">
-            {{ data['relayNumber'] }}
+            {{ data['relayNumber'] or "123 456" }}
           </dd>
           <dd class="govuk-summary-list__actions">
-            
+            <!--
               <a href="contact-phone-af-relay?checkanswers=visited">
               Change
               <span class="govuk-visually-hidden"> relay UK number</span>
             </a>
-    
+            -->
           </dd>
         </div>
-
+        {% elif data['phoneContactPreference']=="Textphone" %}
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
             Textphone number
           </dt>
           <dd class="govuk-summary-list__value">
-            {{ data['textphoneNumber'] }}
+            {{ data['textphoneNumber'] or "123 456"}}
           </dd>
           <dd class="govuk-summary-list__actions">
-            
+            <!--
               <a href="contact-phone-af-textphone?checkanswers=visited">
               Change
               <span class="govuk-visually-hidden"> textphone number</span>
             </a>
-    
+            -->
           </dd>
         </div>
-
+        {% endif %}
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
             Instead of a standard letter
           </dt>
           <dd class="govuk-summary-list__value">
-            {{ data['lettersContactPreference'] }}
+            {{ data['lettersContactPreference'] | replace("-", " ") }}
           </dd>
           <dd class="govuk-summary-list__actions">
             
@@ -487,141 +487,114 @@
     
           </dd>
         </div>
-
+        {% if data['lettersContactPreference']=="Large-print" %}
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
-            When did you attend this course?
+            Font size
           </dt>
           <dd class="govuk-summary-list__value">
-            <!-- {% set eduStartDate = data['eduStartDay'] + ' ' + data['eduStartMonth'] + ' ' + data['eduStartYear'] %}
-            {% set eduFinishDate = data['eduFinishDay'] + ' ' + data['eduFinishMonth'] + ' ' + data['eduFinishYear'] %}
-            {{ eduStartDate | formatDate }} to {{ eduFinishDate | formatDate }} -->
-            {{ data['eduStartDay'] }}/{{ data['eduStartMonth']}}/{{ data['eduStartYear'] }} to {{ data['eduFinishDay'] }}/{{ data['eduFinishMonth']}}/{{ data['eduFinishYear'] }}
+            {{ data['print-size'] or "16"}}
           </dd>
           <dd class="govuk-summary-list__actions">
             <!--
-              <a href="/v3_0-citizen/10-education/course-duration">
+              <a href="#">
               Change
-              <span class="govuk-visually-hidden"> your answer</span>
-              </a>
+              <span class="govuk-visually-hidden"> font size</span>
+            </a>
             -->
           </dd>
         </div>
+        {% elif data['lettersContactPreference']=="Coloured-paper"%}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Coloured paper
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['colouredPaper'] or "Cream"}}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <!--
+              <a href="#">
+              Change
+              <span class="govuk-visually-hidden">paper colour</span>
+            </a>
+            -->
+          </dd>
+        </div>
+        {% elif data['lettersContactPreference']=="Coloured-paper-and-large-print" %}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Coloured paper
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['colouredPaper'] or "Cream"}}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <!--
+              <a href="#">
+              Change
+              <span class="govuk-visually-hidden">paper colour</span>
+            </a>
+            -->
+          </dd>
+        </div>
+         <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Font size
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['print-size'] or "16"}}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <!--
+              <a href="#">
+              Change
+              <span class="govuk-visually-hidden"> font size</span>
+            </a>
+            -->
+          </dd>
+        </div>
+        {% elif data['lettersContactPreference']=="Braille" %}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Braille type
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['brailleType'] or "Uncontracted braille (grade 1)"}}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <!--
+              <a href="#">
+              Change
+              <span class="govuk-visually-hidden">braille type</span>
+            </a>
+            -->
+          </dd>
+        </div>
+        {% elif data['lettersContactPreference']=="Audio" %}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Audio type
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['audioType']  or "CD"}}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <!--
+              <a href="#">
+              Change
+              <span class="govuk-visually-hidden">audio type</span>
+            </a>
+            -->
+          </dd>
+        </div>
+        {% endif %}
+        
         {% endif %}
 
       </dl>
     
     
-      <!-- ALTERNATIVE FORMATS -->
-      <h2 class="govuk-heading-m govuk-!-padding-top-6">Accessible formats</h2>
-      {{ govukSummaryList({
-        rows: [
-          {
-            key: {
-              text: "Accessible format needs"
-            },
-            value: {
-              html: "Yes"
-            },
-            actions: {
-              items: [
-                {
-                  href: "#",
-                  text: "Change",
-                  visuallyHiddenText: "accessible format needs"
-                }
-              ]
-            }
-          },
-          {
-            key: {
-              text: "Instead of a standard phone call"
-            },
-            value: {
-              text: "Relay UK"
-            },
-            actions: {
-              items: [
-                {
-                  href: "#",
-                  text: "Change",
-                  visuallyHiddenText: "phone call needs"
-                }
-              ]
-            }
-          }
-          ,
-          {
-            key: {
-              text: "Relay UK number"
-            },
-            value: {
-              text: "18002 778899"
-            },
-            actions: {
-              items: [
-                {
-                  href: "#",
-                  text: "Change",
-                  visuallyHiddenText: "relay uk number"
-                }
-              ]
-            }
-          },
-          {
-            key: {
-              text: "Instead of a standard letter"
-            },
-            value: {
-              text: "Coloured paper and large print"
-            },
-            actions: {
-              items: [
-                {
-                  href: "#",
-                  text: "Change",
-                  visuallyHiddenText: "standard letter needs"
-                }
-              ]
-            }
-          }
-          ,
-          {
-            key: {
-              text: "Coloured paper"
-            },
-            value: {
-              text: "Cream"
-            },
-            actions: {
-              items: [
-                {
-                  href: "#",
-                  text: "Change",
-                  visuallyHiddenText: "font size"
-                }
-              ]
-            }
-          },
-          {
-            key: {
-              text: "Font size"
-            },
-            value: {
-              text: "16"
-            },
-            actions: {
-              items: [
-                {
-                  href: "#",
-                  text: "Change",
-                  visuallyHiddenText: "font size"
-                }
-              ]
-            }
-          }
-        ]
-      }) }}
        <!-- REASONABLE ADJUSTMENTS -->
 
 
@@ -656,9 +629,9 @@
           </dt>
           <dd class="govuk-summary-list__value">
             {% if data['pay-account-holder'] %}
-            <strong>Account holder:</strong> {{ data['pay-account-holder'] }}<br>
-            <strong>Sort code:</strong> {{ data['sort-code'] }}<br>
-            <strong>Account number:</strong> {{ data['pay-account-number'] }}
+            <strong>Account holder:</strong> {{ data['pay-account-holder'] or "Test Tester"}}<br>
+            <strong>Sort code:</strong> {{ data['sort-code']or "11 11 11" }}<br>
+            <strong>Account number:</strong> {{ data['pay-account-number'] or "12345678" }}
             {% if data['pay-reference-number'] %}
             <strong>Building society roll or reference number:</strong> {{ data['pay-reference-number'] }}
             {% endif %}
@@ -667,7 +640,7 @@
             {% endif %}
           </dd>
           <dd class="govuk-summary-list__actions">
-            <a href="/v3_0-citizen/3-details/bank-account">
+            <a href="#">
               Change
               <span class="govuk-visually-hidden"> your bank details</span>
             </a>
@@ -686,10 +659,10 @@
             Have you applied for any other benefits in the last 12 weeks?
           </dt>
           <dd class="govuk-summary-list__value">
-            {{ data['obAreYou'] }}
+            {{ data['obAreYou'] or "No" }}
           </dd>
           <dd class="govuk-summary-list__actions">
-            <a href="/v3_0-citizen/4-other-benefits/guard">
+            <a href="#">
               Change
               <span class="govuk-visually-hidden"> your answer</span>
             </a>
@@ -723,10 +696,10 @@
             Have you been on jury service in the last 12 weeks?
           </dt>
           <dd class="govuk-summary-list__value">
-            {{ data['juryService'] }}
+            {{ data['juryService'] or "No"}}
           </dd>
           <dd class="govuk-summary-list__actions">
-            <a href="/v3_0-citizen/5-jury-service/have-been">
+            <a href="#">
               Change
               <span class="govuk-visually-hidden"> your answer</span>
             </a>
@@ -763,15 +736,13 @@
             Are you in any form of work at the moment?
           </dt>
           <dd class="govuk-summary-list__value">
-            {{ data['ceCurrentlyWorking'] }}
+            {{ data['ceCurrentlyWorking'] or "No"}}
           </dd>
           <dd class="govuk-summary-list__actions">
-            {% if data['ceCurrentlyWorking']=="No" %}
-            <a href="/v3_0-citizen/6-current-employment/guard">
+            <a href="#">
               Change
               <span class="govuk-visually-hidden"> your answer</span>
             </a>
-            {% endif %}
           </dd>
         </div>
       </dl>
@@ -964,15 +935,15 @@
             Have you had a job that ended in the last 6 months?
           </dt>
           <dd class="govuk-summary-list__value">
-            {{ data['peLastSixMonths'] }}
+            {{ data['peLastSixMonths'] or "No" }}
           </dd>
           <dd class="govuk-summary-list__actions">
-            {% if data['peLastSixMonths']=="No" %}
-            <a href="/v3_0-citizen/7-previous-employment/job-ended-last-six-months">
+            
+            <a href="#">
               Change
               <span class="govuk-visually-hidden"> your answer</span>
             </a>
-            {% endif %}
+           
           </dd>
         </div>
 
@@ -1131,10 +1102,10 @@
             Have you worked or claimed benefits abroad in the last 4 years?
           </dt>
           <dd class="govuk-summary-list__value">
-            {{ data['workBenefitAbroad'] }}
+            {{ data['workBenefitAbroad'] or "No" }}
           </dd>
           <dd class="govuk-summary-list__actions">
-            <a href="/v3_0-citizen/8-abroad/guard">
+            <a href="#">
               Change
               <span class="govuk-visually-hidden"> your answer</span>
             </a>
@@ -1153,15 +1124,14 @@
           </dt>
 
           <dd class="govuk-summary-list__value">
-            {{ data['currentPensionGuard'] }}
+            {{ data['currentPensionGuard']or "No"}}
           </dd>
           <dd class="govuk-summary-list__actions">
-            {% if data['currentPensionGuard']=="No" %}
-            <a href="/v3_0-citizen/9-pensions/9a-current-pension/guard">
+            
+            <a href="#">
               Change
               <span class="govuk-visually-hidden"> your answer</span>
             </a>
-            {% endif %}
           </dd>
         </div>
 
@@ -1322,10 +1292,10 @@
             Have you been in education or training in the last 4 years?
           </dt>
           <dd class="govuk-summary-list__value">
-            {{ data['eduHaveYou'] }}
+            {{ data['eduHaveYou'] or "No" }}
           </dd>
           <dd class="govuk-summary-list__actions">
-            <a href="/v3_0-citizen/10-education/guard">
+            <a href="#">
               Change
               <span class="govuk-visually-hidden"> your answer</span>
             </a>

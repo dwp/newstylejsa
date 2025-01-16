@@ -12,7 +12,7 @@ const NEXT_PATH = '/design-ideas/wt-5868-af';
 router.post('/guard', function (req, res) {
   const answer = req.body.altFormatNeeds;
 
-  if (answer === 'yes-alt-formats') {
+  if (answer === 'yes') {
     res.redirect(`${ABS_BASE_PATH}/phone-contact-preference`);
   } else {
     res.redirect(`${ABS_BASE_PATH}/reasonable-adjustment`);
@@ -24,11 +24,11 @@ router.post('/guard', function (req, res) {
 router.post('/phone-contact-preference', function (req, res) {
   const answer = req.body.phoneContactPreference;
 
-  if (answer === 'relay-uk') {
+  if (answer === 'Relay-UK') {
     res.redirect(`${ABS_BASE_PATH}/contact-phone-af-relay`);
-  } else if (answer === 'textphone') {
+  } else if (answer === 'Textphone') {
     res.redirect(`${ABS_BASE_PATH}/contact-phone-af-textphone`);
-  } else if (answer === 'email-af-phone') {
+  } else if (answer === 'Email,-DWP-will-contact-you-to-find-the-best-format-for-you') {
     res.redirect(`${ABS_BASE_PATH}/letters-contact-preference`);
   }else {
     res.redirect(`${ABS_BASE_PATH}/letters-contact-preference`);
@@ -50,18 +50,18 @@ router.post('/letters-contact-preference', function (req, res) {
   answer = [].concat(answer);
   console.log(answer, typeof answer);
 
-  if (answer.includes('audio')) {
-    res.redirect(`${ABS_BASE_PATH}/audio`);
-  } else if (answer.includes('braille')) {
-    res.redirect(`${ABS_BASE_PATH}/braille`);
-  } else if (answer.includes('coloured-paper')) {
-    res.redirect(`${ABS_BASE_PATH}/coloured-paper`);
-  } else if (answer.includes('coloured-paper-large-print')) {
-    res.redirect(`${ABS_BASE_PATH}/coloured-paper`);
-  } else if (answer.includes('email-af')) {
+  if (answer.includes('Audio')) {
+    res.redirect(`${ABS_BASE_PATH}/Audio`);
+  } else if (answer.includes('Braille')) {
+    res.redirect(`${ABS_BASE_PATH}/Braille`);
+  } else if (answer.includes('Coloured-paper')) {
+    res.redirect(`${ABS_BASE_PATH}/Coloured-paper`);
+  } else if (answer.includes('Coloured-paper-and-large-print')) {
+    res.redirect(`${ABS_BASE_PATH}/Coloured-paper`);
+  } else if (answer.includes('Email,-DWP-will-contact-you-to-find-the-best-format-for-you')) {
     res.redirect(`${ABS_BASE_PATH}/reasonable-adjustment?checkanswers`);
-  } else if (answer.includes('large-print')) {
-    res.redirect(`${ABS_BASE_PATH}/large-print`);
+  } else if (answer.includes('Large-print')) {
+    res.redirect(`${ABS_BASE_PATH}/Large-print`);
   } else {
     res.redirect(`${ABS_BASE_PATH}/reasonable-adjustment?checkanswers`);
   }
