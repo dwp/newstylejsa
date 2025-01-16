@@ -51,17 +51,17 @@ router.post('/letters-contact-preference', function (req, res) {
   console.log(answer, typeof answer);
 
   if (answer.includes('Audio')) {
-    res.redirect(`${ABS_BASE_PATH}/Audio`);
+    res.redirect(`${ABS_BASE_PATH}/audio`);
   } else if (answer.includes('Braille')) {
-    res.redirect(`${ABS_BASE_PATH}/Braille`);
+    res.redirect(`${ABS_BASE_PATH}/braille`);
   } else if (answer.includes('Coloured-paper')) {
-    res.redirect(`${ABS_BASE_PATH}/Coloured-paper`);
+    res.redirect(`${ABS_BASE_PATH}/boloured-paper`);
   } else if (answer.includes('Coloured-paper-and-large-print')) {
-    res.redirect(`${ABS_BASE_PATH}/Coloured-paper`);
+    res.redirect(`${ABS_BASE_PATH}/coloured-paper`);
   } else if (answer.includes('Email,-DWP-will-contact-you-to-find-the-best-format-for-you')) {
     res.redirect(`${ABS_BASE_PATH}/reasonable-adjustment?checkanswers`);
   } else if (answer.includes('Large-print')) {
-    res.redirect(`${ABS_BASE_PATH}/Large-print`);
+    res.redirect(`${ABS_BASE_PATH}/large-print`);
   } else {
     res.redirect(`${ABS_BASE_PATH}/reasonable-adjustment?checkanswers`);
   }
