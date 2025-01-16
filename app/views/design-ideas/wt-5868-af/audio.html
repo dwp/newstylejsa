@@ -28,7 +28,8 @@
         {% from "govuk/components/radios/macro.njk" import govukRadios %}
 
         {{ govukRadios({
-          name: "audio",
+          name: "audioType",
+          value: data['audioType'],
           fieldset: {
             legend: {
               text: "What type of audio do you need?",

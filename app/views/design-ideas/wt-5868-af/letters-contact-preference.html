@@ -36,44 +36,44 @@
             </div>
             <div class="govuk-radios" data-module="govuk-radios">
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="largePrint" name="lettersContactPreference" type="radio" value="large-print">
+                <input class="govuk-radios__input" id="largePrint" name="lettersContactPreference" type="radio" value="Large-print" {{ checked('lettersContactPreference','Large-print') }}>
                 <label class="govuk-label govuk-radios__label" for="largePrint">
                   Large print
                 </label>
               </div>
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="colouredPaper" name="lettersContactPreference" type="radio" value="coloured-paper">
+                <input class="govuk-radios__input" id="colouredPaper" name="lettersContactPreference" type="radio" value="Coloured-paper" {{ checked('lettersContactPreference','Coloured-paper') }}>
                 <label class="govuk-label govuk-radios__label" for="colouredPaper">
                   Coloured paper
                 </label>
               </div>
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="colouredPaperLargePrint" name="lettersContactPreference" type="radio" value="coloured-paper-large-print">
+                <input class="govuk-radios__input" id="colouredPaperLargePrint" name="lettersContactPreference" type="radio" value="Coloured-paper-and-large-print" {{ checked('lettersContactPreference','Coloured-paper-and-large-print') }}>
                 <label class="govuk-label govuk-radios__label" for="colouredPaperLargePrint">
                   Coloured paper and large print
                 </label>
               </div>
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="braille" name="lettersContactPreference" type="radio" value="braille">
+                <input class="govuk-radios__input" id="braille" name="lettersContactPreference" type="radio" value="Braille" {{ checked('lettersContactPreference','Braille') }}>
                 <label class="govuk-label govuk-radios__label" for="braille">
                   Braille
                 </label>
               </div>
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="audio" name="lettersContactPreference" type="radio" value="audio">
+                <input class="govuk-radios__input" id="audio" name="lettersContactPreference" type="radio" value="Audio" {{ checked('lettersContactPreference','Audio') }}>
                 <label class="govuk-label govuk-radios__label" for="audio">
                   Audio
                 </label>
               </div>
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="email-af" name="lettersContactPreference" type="radio" value="email-af">
+                <input class="govuk-radios__input" id="email-af" name="lettersContactPreference" type="radio" value="Email,-DWP-will-contact-you-to-find-the-best-format-for-you" {{ checked('lettersContactPreference','Email,-DWP-will-contact-you-to-find-the-best-format-for-you') }}>
                 <label class="govuk-label govuk-radios__label" for="email-af">
                   Email, DWP will contact you to find the best format for you
                 </label>
               </div>
               <div class="govuk-radios__divider">or</div>
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="none" name="lettersContactPreference" type="radio" value="none">
+                <input class="govuk-radios__input" id="none" name="lettersContactPreference" type="radio" value="DWP-can-contact-you-by-standard-letter" {{ checked('lettersContactPreference','DWP-can-contact-you-by-standard-letter') }}>
                 <label class="govuk-label govuk-radios__label" for="none">
                   DWP can contact you by standard letter
                 </label>

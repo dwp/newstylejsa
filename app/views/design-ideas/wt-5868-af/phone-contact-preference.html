@@ -37,26 +37,26 @@
             
             <div class="govuk-radios" data-module="govuk-radios">
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="relay-uk" name="phoneContactPreference" type="radio" value="relay-uk">
+                <input class="govuk-radios__input" id="relay-uk" name="phoneContactPreference" type="radio" value="Relay-UK" {{ checked('phoneContactPreference','Relay-UK') }}>
                 <label class="govuk-label govuk-radios__label" for="relay-uk">
                   Relay UK
                 </label>
               </div>
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="textphone" name="phoneContactPreference" type="radio" value="textphone">
+                <input class="govuk-radios__input" id="textphone" name="phoneContactPreference" type="radio" value="Textphone" {{ checked('phoneContactPreference','Textphone') }}>
                 <label class="govuk-label govuk-radios__label" for="textphone">
                   Textphone
                 </label>
               </div>
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="email-af-phone" name="phoneContactPreference" type="radio" value="email-af-phone">
+                <input class="govuk-radios__input" id="email-af-phone" name="phoneContactPreference" type="radio" value="Email,-DWP-will-contact-you-to-find-the-best-format-for-you" {{ checked('phoneContactPreference','Email,-DWP-will-contact-you-to-find-the-best-format-for-you') }}>
                 <label class="govuk-label govuk-radios__label" for="email-af-phone">
                   Email, DWP will contact you to find the best format for you
                 </label>
               </div>
               <div class="govuk-radios__divider">or</div>
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="none" name="phoneContactPreference" type="radio" value="none">
+                <input class="govuk-radios__input" id="none" name="phoneContactPreference" type="radio" value="DWP-can-contact-you-by-standard-letter" {{ checked('phoneContactPreference','DWP-can-contact-you-by-standard-letter') }}>
                 <label class="govuk-label govuk-radios__label" for="none">
                   DWP can contact you by phone
                 </label>

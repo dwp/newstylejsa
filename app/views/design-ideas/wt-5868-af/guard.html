@@ -43,6 +43,7 @@
 
         {{ govukRadios({
           name: "altFormatNeeds",
+          value: data['altFormatNeeds'],
           fieldset: {
             legend: {
               text: "Do you need an accessible format?",
@@ -52,11 +53,11 @@
           },
           items: [
             {
-              value: "yes-alt-formats",
+              value: "yes",
               text: "Yes"
             },
             {
-              value: "no-alt-formats",
+              value: "no",
               text: "No"
             }
           ]

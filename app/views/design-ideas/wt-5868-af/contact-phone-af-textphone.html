@@ -33,7 +33,7 @@ What is your Textphone number? – {{ serviceName }} – GOV.UK Prototype Kit
               <p class="govuk-body">Enter the full textphone number that DWP should call you on.</p>
               <p class="govuk-body">If DWP need to use a prefix such as 18001, include it at the beginning of your textphone number.</p>
             </div>
-          <input class="govuk-input govuk-input--width-20" id="textphone-number" name="textphoneNumber" type="tel" autocomplete="tel" aria-describedby="textphone-hint">
+          <input class="govuk-input govuk-input--width-20" id="textphone-number" name="textphoneNumber" type="tel" autocomplete="tel" aria-describedby="textphone-hint" value="{{ data['textphoneNumber'] }}">
         </div>
          {{ govukButton({
           text: "Continue",
