@@ -55,7 +55,7 @@ router.post('/letters-contact-preference', function (req, res) {
   } else if (answer.includes('Braille')) {
     res.redirect(`${ABS_BASE_PATH}/braille`);
   } else if (answer.includes('Coloured-paper')) {
-    res.redirect(`${ABS_BASE_PATH}/boloured-paper`);
+    res.redirect(`${ABS_BASE_PATH}/coloured-paper`);
   } else if (answer.includes('Coloured-paper-and-large-print')) {
     res.redirect(`${ABS_BASE_PATH}/coloured-paper`);
   } else if (answer.includes('Email,-DWP-will-contact-you-to-find-the-best-format-for-you')) {
