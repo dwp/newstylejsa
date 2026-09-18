@@ -11,7 +11,7 @@
     "govuk-frontend": "5.14.0",
     "govuk-prototype-kit": "13.20.4",
     "jquery": "3.7.1",
-    "moment": "2.30.1",
+    "moment": "2.31.0",
     "notifications-node-client": "5.2.3"
   }
 }
